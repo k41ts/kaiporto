@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PORTFOLIO // OVERDRIVE</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Teko:wght@500;600;700&family=Noto+Sans+JP:wght@400;700&family=Fira+Code:wght@400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Initial Loading Screen -->
+    <div class="cyber-loader">
+        <div class="loader-content">
+            <div class="loader-jp">システム起動中 // SYSTEM_BOOT_SEQUENCE</div>
+            <div class="loader-text glitch-title" data-text="LOADING">LOADING</div>
+            <div class="loader-bar-container">
+                <div class="loader-bar"></div>
+            </div>
+            <div class="loader-status">
+                <span class="jp-text">システム起動中...</span> // LOADING ASSETS...
+            </div>
+            <div class="loading-progress">0%</div>
+        </div>
+    </div>
+
+    <!-- Fixed Overlay / HUD -->
+    <div class="hud-wrapper">
+        <div class="hazard-border-top"></div>
+        <div class="hazard-border-bottom"></div>
+        <div class="hazard-border-left"></div>
+        <div class="hazard-border-right"></div>
+
+        <!-- Running Japanese Marquee -->
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <span>システム・オーバー・ドライブ // 警告: セクター侵入 // データのロード中... // SYSTEM OVERDRIVE // WARNING: SECTOR INTRUSION //
+                    LOADING DATA...</span>
+                <span>システム・オーバー・ドライブ // 警告: セクター侵入 // データのロード中... // SYSTEM OVERDRIVE // WARNING: SECTOR INTRUSION //
+                    LOADING DATA...</span>
+            </div>
+        </div>
+
+        <!-- Fixed Navigation -->
+        <nav class="cyber-nav">
+            <a href="#hero" class="nav-link active" data-text="01.HERO">01.HERO</a>
+            <a href="#about" class="nav-link" data-text="02.ABOUT">02.ABOUT</a>
+            <a href="#projects" class="nav-link" data-text="03.PROJECTS">03.PROJECTS</a>
+            <a href="#contact" class="nav-link" data-text="04.CONTACT">04.CONTACT</a>
+        </nav>
+    </div>
+
+    <!-- Scrollable Content Area -->
+    <div class="content-scroll">
+
+        <!-- ==================== HERO SECTION ==================== -->
+        <section id="hero" class="cyber-section">
+            <div class="bg-grid"></div>
+
+            <!-- Hero Background Elements -->
+            <div class="hero-bg-elements">
+                <!-- Topography Lines -->
+                <svg class="topo-lines" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <path d="M0,70 C30,40 70,100 100,70" fill="none" stroke="rgba(17,17,17,0.15)" stroke-width="0.3" />
+                    <path d="M0,75 C30,45 70,105 100,75" fill="none" stroke="rgba(17,17,17,0.15)" stroke-width="0.3" />
+                    <path d="M0,80 C30,50 70,110 100,80" fill="none" stroke="rgba(17,17,17,0.15)" stroke-width="0.3" />
+                    <path d="M0,85 C30,55 70,115 100,85" fill="none" stroke="rgba(17,17,17,0.15)" stroke-width="0.3" />
+                    <path d="M0,90 C30,60 70,120 100,90" fill="none" stroke="rgba(17,17,17,0.15)" stroke-width="0.3" />
+                    <path d="M0,95 C30,65 70,125 100,95" fill="none" stroke="rgba(17,17,17,0.15)" stroke-width="0.3" />
+                    <path d="M0,100 C30,70 70,130 100,100" fill="none" stroke="rgba(17,17,17,0.15)"
+                        stroke-width="0.3" />
+                    <path d="M0,105 C30,75 70,135 100,105" fill="none" stroke="rgba(17,17,17,0.15)"
+                        stroke-width="0.3" />
+                </svg>
+
+                <!-- Spirograph Element -->
+                <svg class="spirograph" viewBox="0 0 100 100">
+                    <ellipse cx="50" cy="50" rx="40" ry="10" transform="rotate(0 50 50)" fill="none"
+                        stroke="rgba(17,17,17,0.2)" stroke-width="0.5" />
+                    <ellipse cx="50" cy="50" rx="40" ry="10" transform="rotate(30 50 50)" fill="none"
+                        stroke="rgba(17,17,17,0.2)" stroke-width="0.5" />
+                    <ellipse cx="50" cy="50" rx="40" ry="10" transform="rotate(60 50 50)" fill="none"
+                        stroke="rgba(17,17,17,0.2)" stroke-width="0.5" />
+                    <ellipse cx="50" cy="50" rx="40" ry="10" transform="rotate(90 50 50)" fill="none"
+                        stroke="rgba(17,17,17,0.2)" stroke-width="0.5" />
+                    <ellipse cx="50" cy="50" rx="40" ry="10" transform="rotate(120 50 50)" fill="none"
+                        stroke="rgba(17,17,17,0.2)" stroke-width="0.5" />
+                    <ellipse cx="50" cy="50" rx="40" ry="10" transform="rotate(150 50 50)" fill="none"
+                        stroke="rgba(17,17,17,0.2)" stroke-width="0.5" />
+                </svg>
+
+                <div class="bg-hash hash-1"></div>
+                <div class="bg-hash hash-2"></div>
+                <div class="bg-radar-huge"></div>
+                <div class="bg-watermark-vertical">INTERFACE_ACTIVE</div>
+            </div>
+
+            <!-- Top Left Module -->
+            <div class="module mod-top-left yellow-bg">
+                <div class="mod-header">
+                    <span class="bracket-text">[+03]</span>
+                    <div class="header-icons">
+                        <div class="gi-cross"><svg viewBox="0 0 24 24">
+                                <path d="M4 4L20 20M20 4L4 20" stroke="#111" stroke-width="4" stroke-linecap="square" />
+                            </svg></div>
+                        <div class="gi-tri"><svg viewBox="0 0 24 24">
+                                <polygon points="12,4 22,20 2,20" fill="#111" />
+                            </svg></div>
+                        <div class="gi-circle"><svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="8" fill="#111" />
+                            </svg></div>
+                    </div>
+                </div>
+                <div class="arrow-block">
+                    <div class="chevron-svg large">
+                        <svg viewBox="0 0 160 40">
+                            <polygon points="0,0 20,20 0,40 15,40 35,20 15,0" fill="#111" />
+                            <polygon points="40,0 60,20 40,40 55,40 75,20 55,0" fill="#111" />
+                            <polygon points="80,0 100,20 80,40 95,40 115,20 95,0" fill="#111" />
+                            <polygon points="120,0 140,20 120,40 135,40 155,20 135,0" fill="#111" />
+                        </svg>
+                    </div>
+                    <span class="vertical-text">[+03]</span>
+                </div>
+                <div class="mod-footer">
+                    <div class="switch"></div>
+                    <div class="plus-row">+++</div>
+                    <div class="barcode-v">||||</div>
+                </div>
+            </div>
+
+            <!-- Top Mid Module (Dashboard) -->
+            <div class="module mod-top-mid yellow-bg">
+                <div class="dash-grid">
+                    <div class="dash-block time-block">
+                        <span class="dash-label">SYS_TIME</span>
+                        <div class="dash-value" id="sys-time">00:00:00</div>
+                    </div>
+                    <div class="dash-block date-block">
+                        <span class="dash-label">DATE_STAMP</span>
+                        <div class="dash-value" id="sys-date">2026.01.01 // MON</div>
+                    </div>
+                    <div class="dash-block battery-block">
+                        <span class="dash-label">PWR_LVL</span>
+                        <div class="battery-container">
+                            <div class="battery-bar" style="width: 87%"></div>
+                        </div>
+                        <span class="dash-sub">87% OPTIMAL</span>
+                    </div>
+                    <div class="dash-block diag-block">
+                        <span class="dash-label">DIAGNOSTIC</span>
+                        <div class="diag-bars">
+                            <div class="d-bar"></div><div class="d-bar"></div><div class="d-bar"></div><div class="d-bar"></div><div class="d-bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Right Module -->
+            <div class="module mod-top-right yellow-bg">
+                <div class="viewfinder">
+                    <div class="vf-corner tl"></div>
+                    <div class="vf-corner tr"></div>
+                    <div class="vf-corner bl"></div>
+                    <div class="vf-corner br"></div>
+                    <div class="vf-center"></div>
+                    <div class="vf-num">04</div>
+                </div>
+                <div class="section-badge">
+                    <div class="badge-text">SECTION B8<br><span class="small-sub">KEEP THIS AREA CLEAR</span></div>
+                    <div class="badge-num">88</div>
+                </div>
+            </div>
+
+            <!-- Center Typography -->
+            <div class="hero-center">
+                <div class="system-badge">
+                    <div class="badge-q2">
+                        <span>SECTOR</span>
+                        <strong>Q2</strong>
+                    </div>
+                    <div class="badge-right">
+                        <span class="sys-label">SYSTEM</span>
+                        <div class="checker-strip"></div>
+                    </div>
+                </div>
+                <h1 class="glitch-title" data-text="HAKAI TSU">HAKAI TSU</h1>
+                <div class="hero-arrow">
+                    <svg viewBox="0 0 300 100">
+                        <polygon points="0,35 220,35 220,0 300,50 220,100 220,65 0,65" fill="#111" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Decorative Elements -->
+            <div class="deco-group">
+                <div class="bracket-scatter">[ - ]</div>
+                <div class="bracket-scatter pos2">[ - ]</div>
+                <div class="ruler-x"></div>
+                <div class="ruler-y"></div>
+                <div class="cross-scatter">+ + + + +</div>
+            </div>
+
+            <!-- Japanese Ornaments Hero -->
+            <div class="jp-ornament vertical right">機密情報 // TOP SECRET</div>
+            <div class="jp-ornament vertical left-bottom">アクセス承認</div>
+
+            <!-- Bottom Right Module -->
+            <div class="module mod-bottom-right yellow-bg">
+                <div class="qr-box">
+                    <svg viewBox="0 0 50 50" fill="#111">
+                        <rect x="0" y="0" width="15" height="15" />
+                        <rect x="35" y="0" width="15" height="15" />
+                        <rect x="0" y="35" width="15" height="15" />
+                        <rect x="20" y="20" width="10" height="10" />
+                        <rect x="40" y="40" width="10" height="10" />
+                        <rect x="35" y="20" width="5" height="5" />
+                        <rect x="5" y="20" width="5" height="5" />
+                        <rect x="20" y="5" width="5" height="5" />
+                        <rect x="20" y="40" width="5" height="5" />
+                    </svg>
+                </div>
+                <div class="rating-box">
+                    <div class="rating-id">
+                        <div class="x-mark">X</div>
+                        <div class="id-text">B38C1</div>
+                    </div>
+                    <div class="rated-label">/// RATED - X ///</div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== ABOUT SECTION ==================== -->
+        <section id="about" class="cyber-section inverted">
+            <div class="bg-grid light"></div>
+
+            <div class="about-container">
+                <div class="about-left">
+                    <div class="glitch-image-container">
+                        <img src="img/kai.jpeg" alt="Profile Picture" class="profile-img">
+                        <div class="scanline"></div>
+                        <div class="image-overlay-text">
+                            <span class="jp">対象プロフィール</span> // TARGET PROFILE
+                        </div>
+                    </div>
+                </div>
+                <div class="about-right">
+                    <div class="section-title-box">
+                        <h2>ABOUT_ME.exe</h2>
+                        <div class="title-deco">||||||||||||||||||</div>
+                    </div>
+                    <div class="terminal-box">
+                        <div class="terminal-header">
+                            <span>user@overdrive:~$</span>
+                            <div class="window-controls"><span></span><span></span><span></span></div>
+                        </div>
+                        <div class="terminal-body">
+                            <p>> EXECUTING BIO PROTOCOL...</p>
+                            <p class="typewriter">> STATUS: <span class="highlight" id="bio-status">HAKAI TSU [ONLINE]</span></p>
+                            <br>
+                            <p>> INITIALIZING SKILLSET...</p>
+                            <ul class="skill-list">
+                                <li>[+] LANGS: TS, JS, PY, C++, JAVA, PHP</li>
+                                <li>[+] FRONT: REACT, NEXT.JS, TAILWIND, FLUTTER</li>
+                                <li>[+] BACK: NEST.JS, LARAVEL, MYSQL, DOCKER</li>
+                            </ul>
+                            <br>
+                            <p>> Full stack developer from Jakarta. I build practical web apps and keep most of my work
+                                centered on tools I actually use.</p>
+                            <span class="cursor">_</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deco for about -->
+            <div class="large-watermark">PROFILE</div>
+            <!-- Japanese Ornaments About -->
+            <div class="jp-ornament horizontal top-right">データ分析完了</div>
+        </section>
+
+
+        <!-- ==================== PROJECTS SECTION ==================== -->
+        <section id="projects" class="cyber-section">
+            <div class="bg-grid"></div>
+
+            <div class="tech-bg-container">
+                <div class="radar-circle"></div>
+                <div class="radar-circle-inner"></div>
+                <div class="crosshair-huge">+</div>
+                <div class="watermark-q2">SECTION B8</div>
+            </div>
+
+            <div class="projects-wrapper">
+                <div class="section-title-box">
+                    <h2 class="glitch-title" data-text="DATA_ARCHIVE">DATA_ARCHIVE</h2>
+                    <div class="title-deco">||||||||||</div>
+                </div>
+
+                <div class="projects-list">
+                    <!-- Project 01 -->
+                    <div class="project-item">
+                        <div class="project-visual">
+                            <div class="glitch-image-container">
+                                <img src="img/web1.png" alt="Project Image" class="project-img">
+                                <div class="scanline"></div>
+                                <div class="image-overlay-text">
+                                    <span class="jp">対象データ</span> // TARGET DATA 01
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-details terminal-box">
+                            <div class="terminal-header">
+                                <span>project_01.exe</span>
+                                <div class="window-controls"><span></span><span></span><span></span></div>
+                            </div>
+                            <div class="terminal-body">
+                                <h3>PROJECT_ALPHA</h3>
+                                <p>> High-octane web interface with brutalist design principles.</p>
+                                <br>
+                                <p>> TECH_STACK:</p>
+                                <ul class="skill-list">
+                                    <li>[+] HTML/CSS</li>
+                                    <li>[+] JAVASCRIPT</li>
+                                    <li>[+] REACT.JS</li>
+                                </ul>
+                                <br>
+                                <a href="https://kaieva.vercel.app" target="_blank" class="cyber-btn small-btn">
+                                    <span class="btn-text">RUN DEMO</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 02 -->
+                    <div class="project-item reverse">
+                        <div class="project-visual">
+                            <div class="glitch-image-container">
+                                <img src="img/web1.png" alt="Project Image" class="project-img">
+                                <div class="scanline"></div>
+                                <div class="image-overlay-text">
+                                    <span class="jp">対象データ</span> // TARGET DATA 02
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-details terminal-box">
+                            <div class="terminal-header">
+                                <span>project_02.exe</span>
+                                <div class="window-controls"><span></span><span></span><span></span></div>
+                            </div>
+                            <div class="terminal-body">
+                                <h3>PROJECT_BETA</h3>
+                                <p>> Interactive dashboard with real-time data visualization.</p>
+                                <br>
+                                <p>> TECH_STACK:</p>
+                                <ul class="skill-list">
+                                    <li>[+] VUE.JS</li>
+                                    <li>[+] TAILWIND</li>
+                                    <li>[+] NODE.JS</li>
+                                </ul>
+                                <br>
+                                <a href="#" class="cyber-btn small-btn">
+                                    <span class="btn-text">RUN DEMO</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 03 -->
+                    <div class="project-item">
+                        <div class="project-visual">
+                            <div class="glitch-image-container">
+                                <img src="img/web1.png" alt="Project Image" class="project-img">
+                                <div class="scanline"></div>
+                                <div class="image-overlay-text">
+                                    <span class="jp">対象データ</span> // TARGET DATA 03
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-details terminal-box">
+                            <div class="terminal-header">
+                                <span>project_03.exe</span>
+                                <div class="window-controls"><span></span><span></span><span></span></div>
+                            </div>
+                            <div class="terminal-body">
+                                <h3>PROJECT_GAMMA</h3>
+                                <p>> E-commerce platform with cyber-punk aesthetics.</p>
+                                <br>
+                                <p>> TECH_STACK:</p>
+                                <ul class="skill-list">
+                                    <li>[+] NEXT.JS</li>
+                                    <li>[+] TYPESCRIPT</li>
+                                    <li>[+] STRIPE</li>
+                                </ul>
+                                <br>
+                                <a href="#" class="cyber-btn small-btn">
+                                    <span class="btn-text">RUN DEMO</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 04 -->
+                    <div class="project-item reverse">
+                        <div class="project-visual">
+                            <div class="glitch-image-container">
+                                <img src="img/web1.png" alt="Project Image" class="project-img">
+                                <div class="scanline"></div>
+                                <div class="image-overlay-text">
+                                    <span class="jp">対象データ</span> // TARGET DATA 04
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-details terminal-box">
+                            <div class="terminal-header">
+                                <span>project_04.exe</span>
+                                <div class="window-controls"><span></span><span></span><span></span></div>
+                            </div>
+                            <div class="terminal-body">
+                                <h3>PROJECT_DELTA</h3>
+                                <p>> Portfolio template for creative developers.</p>
+                                <br>
+                                <p>> TECH_STACK:</p>
+                                <ul class="skill-list">
+                                    <li>[+] HTML5</li>
+                                    <li>[+] VANILLA CSS</li>
+                                    <li>[+] GSAP</li>
+                                </ul>
+                                <br>
+                                <a href="#" class="cyber-btn small-btn">
+                                    <span class="btn-text">RUN DEMO</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="jp-ornament vertical right">アーカイブ // ARCHIVE</div>
+        </section>
+
+
+        <!-- ==================== CONTACT SECTION ==================== -->
+        <section id="contact" class="cyber-section inverted">
+            <div class="bg-grid"></div>
+
+            <!-- Japanese Ornaments Contact -->
+            <div class="jp-ornament vertical left-large">通信プロトコル</div>
+
+            <div class="contact-wrapper">
+                <div class="contact-header">
+                    <h2 class="glitch-title" data-text="ESTABLISH CONNECTION">ESTABLISH CONNECTION</h2>
+                    <p class="jp-subtitle">通信プロトコルを開始します</p>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-form-panel">
+                        <form action="#" class="cyber-form">
+                            <div class="input-group">
+                                <label>IDENTIFIER // NAME</label>
+                                <input type="text" placeholder="ENTER_NAME..." required>
+                            </div>
+                            <div class="input-group">
+                                <label>SIGNAL // EMAIL</label>
+                                <input type="email" placeholder="ENTER_EMAIL..." required>
+                            </div>
+                            <div class="input-group">
+                                <label>DATA_PACKET // MESSAGE</label>
+                                <textarea rows="5" placeholder="ENTER_MESSAGE..." required></textarea>
+                            </div>
+                            <button type="submit" class="cyber-btn">
+                                <span class="btn-text">TRANSMIT DATA</span>
+                                <span class="btn-icon">>></span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="contact-info-panel yellow-bg">
+                        <h3>COMM_CHANNELS</h3>
+                        <div class="channel-list">
+                            <a href="https://github.com/k41ts" target="_blank" class="channel-link">
+                                <span class="ch-id">[01]</span> <span class="ch-name">GITHUB</span>
+                            </a>
+                            <a href="https://www.linkedin.com/in/zaidanikram/" target="_blank" class="channel-link">
+                                <span class="ch-id">[02]</span> <span class="ch-name">LINKEDIN</span>
+                            </a>
+                            <a href="https://instagram.com/k41ts" target="_blank" class="channel-link">
+                                <span class="ch-id">[03]</span> <span class="ch-name">INSTAGRAM</span>
+                            </a>
+                        </div>
+
+                        <div class="status-box">
+                            <div class="status-indicator blink"></div>
+                            <span>SYSTEM READY FOR TRANSMISSION</span>
+                        </div>
+                        <div class="barcode-large">
+                            |||| ||||| || | |||| ||| ||
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="cyber-footer">
+                <div class="footer-left">ZAIDAN IKRAM // 2026</div>
+                <div class="footer-right">END_OF_FILE</div>
+            </footer>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
