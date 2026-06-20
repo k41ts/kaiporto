@@ -13,46 +13,42 @@ document.addEventListener('DOMContentLoaded', () => {
             clearInterval(loadInterval);
             setTimeout(() => {
                 loader.classList.add('hidden');
-                // Optional: remove from DOM after fade out
                 setTimeout(() => loader.style.display = 'none', 500);
             }, 300);
         }
-        loaderBar.style.width = `${progress}%`;
-        loadingProgress.innerText = `${progress}%`;
+        if (loaderBar) loaderBar.style.width = `${progress}%`;
+        if (loadingProgress) loadingProgress.innerText = `${progress}%`;
     }, 150);
 
-    // 1. Navigation Active State on Scroll
+    // 1. Navigation Active State on Scroll (window based)
     const sections = document.querySelectorAll('.cyber-section');
     const navLinks = document.querySelectorAll('.nav-link');
 
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.5 // Trigger when 50% of the section is visible
-    };
+    window.addEventListener('scroll', () => {
+        let currentId = '';
+        const scrollTop = window.scrollY;
+        const windowHeight = window.innerHeight;
 
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Remove active from all
-                navLinks.forEach(link => link.classList.remove('active'));
-                
-                // Add active to current
-                const activeId = entry.target.getAttribute('id');
-                const activeLink = document.querySelector(`.nav-link[href="#${activeId}"]`);
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                }
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            // Section is "current" if scroll is within its range
+            if (scrollTop >= sectionTop - windowHeight * 0.4 && scrollTop < sectionTop + sectionHeight - windowHeight * 0.4) {
+                currentId = section.getAttribute('id');
             }
         });
-    }, observerOptions);
 
-    sections.forEach(sec => sectionObserver.observe(sec));
+        if (currentId) {
+            navLinks.forEach(link => link.classList.remove('active'));
+            const activeLink = document.querySelector(`.nav-link[href="#${currentId}"]`);
+            if (activeLink) activeLink.classList.add('active');
+        }
+    });
 
 
     // 2. Glitch Text Effect on Hover for Titles
     const glitchTitles = document.querySelectorAll('.glitch-title');
-    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*";
+    const glitchLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*";
 
     glitchTitles.forEach(title => {
         title.addEventListener('mouseover', event => {
@@ -67,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if(index < iterations) {
                             return originalText[index];
                         }
-                        return letters[Math.floor(Math.random() * letters.length)];
+                        return glitchLetters[Math.floor(Math.random() * glitchLetters.length)];
                     })
                     .join("");
                 
@@ -87,11 +83,12 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(() => {
             chevrons.forEach(c => c.style.fill = '#111');
             if (chevronIndex < chevrons.length) {
-                chevrons[chevronIndex].style.fill = '#f1fc2f'; // Highlight with yellow
+                chevrons[chevronIndex].style.fill = '#f1fc2f';
             }
             chevronIndex = (chevronIndex + 1) % (chevrons.length + 1);
         }, 200);
     }
+
     // 4. Dashboard Clock
     const timeEl = document.getElementById('sys-time');
     const dateEl = document.getElementById('sys-date');
@@ -121,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entries[0].isIntersecting && !hasGlitched) {
                 hasGlitched = true;
                 
-                // Add a 1 second delay before starting so the user can read 'HAKAI TSU'
                 setTimeout(() => {
                     let iterations = 0;
                     
@@ -140,14 +136,54 @@ document.addEventListener('DOMContentLoaded', () => {
                             clearInterval(glitchInt);
                             bioStatus.innerText = finalName;
                         }
-                        iterations += 0.3; // Slow down the glitch: 21 / 0.3 * 50ms = ~3.5 seconds
+                        iterations += 0.3;
                     }, 50);
                 }, 1000);
             }
-        }, { threshold: 0.3 }); // Trigger when 30% of section is visible
+        }, { threshold: 0.3 });
         
         if(aboutSection) {
             aboutObserver.observe(aboutSection);
         }
+
+    }
+
+    // 1.5 Hero Media Box Hover/Click Glitch Effect
+    const heroMain = document.querySelector('.hero-main-row');
+    const mediaBoxGlitch = document.querySelector('.hero-media-box');
+    
+    if (heroMain && mediaBoxGlitch) {
+        heroMain.addEventListener('mouseenter', () => {
+            mediaBoxGlitch.classList.add('glitch-active');
+            setTimeout(() => mediaBoxGlitch.classList.remove('glitch-active'), 300);
+        });
+    }
+
+    // 6. Hero Media Box Idle Glitch Animation (every 5 seconds)
+    const mediaBox = document.querySelector('.hero-media-box');
+    if (mediaBox) {
+        setInterval(() => {
+            mediaBox.classList.add('glitch-active');
+            setTimeout(() => {
+                mediaBox.classList.remove('glitch-active');
+            }, 300);
+        }, 5000);
+    }
+    
+    // 7. Initial Typing Effect for HAKAI TSU
+    const mainTitle = document.querySelector('.hero-center .glitch-title');
+    if (mainTitle) {
+        const originalText = mainTitle.dataset.text;
+        mainTitle.textContent = '';
+        setTimeout(() => {
+            let i = 0;
+            const typeInt = setInterval(() => {
+                mainTitle.textContent += originalText.charAt(i);
+                i++;
+                if (i >= originalText.length) {
+                    clearInterval(typeInt);
+                }
+            }, 100);
+        }, 800); // Start typing after loader finishes
     }
 });
