@@ -2,11 +2,16 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  // `next build` dan `next dev` dulu sama-sama nulis ke .next, dan kalau
-  // dijalanin barengan, cache dev-nya rusak ("Cannot find module './173.js'").
-  // Dipisah otomatis lewat NODE_ENV — nggak ada variabel yang perlu diset
-  // manual, jadi nggak bisa kelupaan. Vercel build pakai .next seperti biasa.
-  distDir: process.env.NODE_ENV === "development" ? ".next-dev" : ".next",
+  // JANGAN tambahin `distDir` di sini.
+  //
+  // Sebelumnya folder build dipisah lewat NODE_ENV supaya `next build` lokal
+  // nggak ngerusak cache `next dev`. Di lokal itu jalan, tapi di Vercel
+  // deployment-nya jadi "Ready" sambil semua URL-nya balikin 404 — pemburu
+  // output Vercel nggak nemu hasil build-nya. Kenyamanan lokal nggak sebanding
+  // sama situs yang nggak bisa dibuka.
+  //
+  // Cara aman buat masalah aslinya: jangan jalanin `next build` sementara
+  // `next dev` masih hidup. Matikan dev server-nya dulu.
   images: {
     formats: ["image/avif", "image/webp"],
     // Cover & galeri diunggah ke Supabase Storage, jadi host-nya harus diizinkan
