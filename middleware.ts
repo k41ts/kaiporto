@@ -1,11 +1,25 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
-import { SUPABASE_KEY, SUPABASE_URL, supabaseReady } from "@/lib/supabase/config";
 
 /**
  * Nyegerin cookie sesi dan ngunci /studio. Halaman publik nggak disentuh —
  * middleware yang ikut campur di sana cuma bikin lambat tanpa guna.
+ *
+ * Nilai di bawah sengaja dibaca langsung, bukan diimpor dari
+ * lib/supabase/config, walaupun isinya sama persis.
+ *
+ * Alasannya: middleware dibungkus jadi Edge Function waktu deploy, dan
+ * bundler-nya nggak nerjemahin path alias "@/". Impor alias di sini bikin
+ * Vercel nganggap file itu paket eksternal yang nggak didukung, lalu
+ * menggagalkan deploy — padahal `next build` di lokal lolos, karena
+ * pembungkusan Edge Function-nya cuma jalan di sisi Vercel.
+ *
+ * Kalau dua baris ini diubah, ubah juga di lib/supabase/config.ts.
  */
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
+const SUPABASE_KEY = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? "";
+const supabaseReady = SUPABASE_URL.length > 0 && SUPABASE_KEY.length > 0;
+
 export async function middleware(request: NextRequest) {
   if (!supabaseReady) return NextResponse.next();
 
