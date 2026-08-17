@@ -37,6 +37,12 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: { card: "summary_large_image", title, description: profile.headline },
     robots: { index: true, follow: true },
+    // Kode verifikasi Google Search Console. Diisi lewat env var supaya
+    // nggak perlu ubah kode: tempel nilainya di Vercel, deploy ulang, selesai.
+    // Kalau kosong, Next nggak nulis meta tag-nya sama sekali.
+    verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+      ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+      : undefined,
   };
 }
 
