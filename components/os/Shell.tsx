@@ -22,9 +22,12 @@ export function Shell({ owner, children }: { owner: string; children: React.Reac
   const [theme, setTheme] = useState<"light" | "dark" | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Isi jendela punya penggulung sendiri, jadi Next nggak bisa mereset posisinya.
+  // Yang menggulung beda tergantung lebar layar: di layar lebar isinya kotak
+  // dalam, di HP halamannya sendiri. Dua-duanya direset supaya halaman baru
+  // selalu mulai dari atas.
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: 0 });
+    window.scrollTo({ top: 0 });
   }, [pathname]);
 
   useEffect(() => {
