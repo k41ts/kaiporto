@@ -16,8 +16,31 @@ import type { Entry, Profile } from "@/lib/types";
  * RLS — supaya draft nggak ikut kelihatan waktu pemiliknya lagi login.
  */
 
+/**
+ * Alamat kanonik situs.
+ *
+ * Nilai ini dipakai `metadataBase: new URL(...)`, dan `new URL()` melempar
+ * error kalau protokolnya nggak ada — jadi kalau di Vercel variabelnya diisi
+ * "kaiporto.vercel.app" tanpa "https://", seluruh build gagal. Di sini
+ * protokolnya ditambahin sendiri dan hasilnya divalidasi, jadi salah ketik
+ * paling parah cuma bikin URL-nya balik ke bawaan.
+ *
+ * Kalau variabelnya belum diisi sama sekali, VERCEL_URL dipakai — itu diisi
+ * otomatis oleh Vercel, jadi deploy pratinjau tetap punya alamat yang benar.
+ */
 export function getSiteUrl(): string {
-  return process.env.NEXT_PUBLIC_SITE_URL ?? SITE_URL;
+  const raw =
+    process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "") ||
+    SITE_URL;
+
+  const withProtocol = /^https?:\/\//i.test(raw) ? raw : `https://${raw}`;
+
+  try {
+    return new URL(withProtocol).origin;
+  } catch {
+    return SITE_URL;
+  }
 }
 
 function sortEntries(list: Entry[]): Entry[] {
