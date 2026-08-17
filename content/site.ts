@@ -8,7 +8,7 @@ import type { Entry, Profile } from "@/lib/types";
    never put invented projects in this file.
    ========================================================================== */
 
-export const SITE_URL = "https://hakaitsu.tech";
+export const SITE_URL = "https://zaidanikram.id";
 
 /** Bucket publik Supabase. Gambarnya bisa diakses tanpa kunci apa pun. */
 const MEDIA = "https://donlnxtgrrhbqdsdaivi.supabase.co/storage/v1/object/public/media";
