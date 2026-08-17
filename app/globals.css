@@ -1,0 +1,605 @@
+@import "tailwindcss";
+
+/* ============================================================
+   TOKEN — minimalis.
+   Aturan yang dipegang seluruh berkas ini: satu-satunya warna jenuh
+   di halaman adalah tiga lampu jendela. Sisanya netral, dan penekanan
+   dibikin lewat kontras, jarak, dan berat huruf — bukan lewat warna.
+   Netralnya dikasih semburat hangat tipis biar nggak kelihatan abu-abu mati.
+   ============================================================ */
+:root {
+  /* Latar sengaja dibikin jelas lebih gelap dari jendela. Versi sebelumnya
+     cuma beda tiga poin dan kelihatan nempel — jendelanya jadi nggak terbaca
+     sebagai benda yang melayang di atas sesuatu. */
+  --bg: #e6e3dc;
+  --surface: #ffffff;
+  --surface-2: #f4f3f1;
+  --line: #e7e5e1;
+  --line-strong: #d6d3cd;
+  --ink: #1a1917;
+  --ink-2: #5c5a55;
+  --ink-3: #8f8c85;
+  --accent: #1a1917;
+  --accent-ink: #ffffff;
+  --accent-soft: #efedea;
+  --ok: #3f7d55;
+  --warn: #8a6a1f;
+  --bad: #a3423c;
+  --shadow: 0 1px 2px rgba(26, 25, 23, 0.04);
+
+  --r-win: 10px;
+  --r-card: 8px;
+  --r-pill: 999px;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --surface: #1b1a18;
+    --surface-2: #242320;
+    --line: #35332f;
+    --line-strong: #4b4844;
+    --ink: #f5f4f2;
+    --ink-2: #a8a5a0;
+    --ink-3: #75726d;
+    --accent: #f5f4f2;
+    --accent-ink: #0a0a09;
+    --accent-soft: #232220;
+    --ok: #6ba97f;
+    --warn: #c9a24e;
+    --bad: #d4726c;
+    --shadow: 0 0 0 1px rgba(255, 255, 255, 0.02);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #000000;
+  --surface: #1b1a18;
+  --surface-2: #242320;
+  --line: #35332f;
+  --line-strong: #4b4844;
+  --ink: #f5f4f2;
+  --ink-2: #a8a5a0;
+  --ink-3: #75726d;
+  --accent: #f5f4f2;
+  --accent-ink: #0a0a09;
+  --accent-soft: #232220;
+  --ok: #6ba97f;
+  --warn: #c9a24e;
+  --bad: #d4726c;
+  --shadow: 0 0 0 1px rgba(255, 255, 255, 0.02);
+  color-scheme: dark;
+}
+:root[data-theme="light"] {
+  --bg: #e6e3dc;
+  --surface: #ffffff;
+  --surface-2: #f4f3f1;
+  --line: #e7e5e1;
+  --line-strong: #d6d3cd;
+  --ink: #1a1917;
+  --ink-2: #5c5a55;
+  --ink-3: #8f8c85;
+  --accent: #1a1917;
+  --accent-ink: #ffffff;
+  --accent-soft: #efedea;
+  --ok: #3f7d55;
+  --warn: #8a6a1f;
+  --bad: #a3423c;
+  --shadow: 0 1px 2px rgba(26, 25, 23, 0.04);
+  color-scheme: light;
+}
+
+/* ============================================================
+   DASAR
+   ============================================================ */
+html { background: var(--bg); }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.65;
+}
+h1, h2, h3, h4 { text-wrap: balance; letter-spacing: -0.021em; line-height: 1.2; font-weight: 500; }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 1.5px solid var(--ink); outline-offset: 3px; border-radius: 3px; }
+.mono { font-family: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+.tnum { font-variant-numeric: tabular-nums; }
+
+/* ============================================================
+   DESKTOP + JENDELA
+   Nggak ada bayangan berat, nggak ada blur, nggak ada gradasi.
+   Bentuknya cuma dibatasi satu garis rambut.
+   ============================================================ */
+.desktop {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.win {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+@media (min-width: 1024px) {
+  .desktop { padding: 32px 24px 40px; }
+  .win { max-width: 1080px; min-height: 0; height: calc(100dvh - 72px); border-radius: var(--r-win); }
+}
+
+.titlebar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 14px;
+  height: 42px;
+  flex: none;
+  border-bottom: 1px solid var(--line);
+}
+
+/* Satu-satunya warna jenuh di seluruh halaman. Murni hiasan —
+   bukan tombol, nggak bisa diklik, nggak difokus keyboard. */
+.lights { display: flex; gap: 7px; flex: none; }
+.light { width: 10px; height: 10px; border-radius: 50%; display: block; }
+.light-red { background: #ff5f57; }
+.light-yellow { background: #febc2e; }
+.light-green { background: #28c840; }
+
+.path {
+  font-family: var(--font-geist-mono), ui-monospace, Menlo, monospace;
+  font-size: 0.73rem;
+  color: var(--ink-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.01em;
+}
+.path b { color: var(--ink-2); font-weight: 400; }
+
+.tb-btn {
+  font-family: var(--font-geist-mono), ui-monospace, Menlo, monospace;
+  font-size: 0.69rem;
+  color: var(--ink-3);
+  border: 0;
+  background: none;
+  padding: 4px 2px;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+}
+.tb-btn:hover { color: var(--ink); }
+
+.tabs {
+  display: flex;
+  gap: 20px;
+  padding: 0 14px;
+  flex: none;
+  height: 40px;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+/* Tab aktif ditandai garis bawah setipis mungkin, bukan pil berwarna. */
+.tab {
+  font-size: 0.83rem;
+  color: var(--ink-3);
+  white-space: nowrap;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.15s ease;
+}
+.tab:hover { color: var(--ink-2); }
+.tab[aria-current="page"] { color: var(--ink); border-bottom-color: var(--ink); }
+
+.win-scroll { flex: 1; overflow-y: auto; overscroll-behavior: contain; }
+.win-body {
+  padding: clamp(26px, 4vw, 56px) clamp(20px, 4vw, 48px) clamp(48px, 6vw, 80px);
+  max-width: 880px;
+  margin: 0 auto;
+  width: 100%;
+}
+/* Pembungkus transisi halaman yang megang tata letak kolomnya. Jaraknya ada di
+   sini, bukan di .win-body, supaya nggak hilang waktu isinya dibungkus. */
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 5vw, 64px);
+}
+
+/* ============================================================
+   ISI HALAMAN
+   ============================================================ */
+.eyebrow {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.lede { font-size: 1rem; color: var(--ink-2); max-width: 58ch; }
+.note { font-size: 0.85rem; color: var(--ink-3); max-width: 66ch; }
+
+.hero { display: flex; flex-direction: column; gap: 26px; align-items: flex-start; }
+.hero-photo {
+  width: 92px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  flex: none;
+  background: var(--surface-2);
+}
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
+.hero-copy { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.hero h1 {
+  font-size: clamp(1.6rem, 3.6vw, 2.3rem);
+  letter-spacing: -0.032em;
+  font-weight: 500;
+  max-width: 22ch;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  align-self: flex-start;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.71rem;
+  color: var(--ink-3);
+}
+/* Statusnya dibedain lewat bentuk — bulat isi vs bulat kosong — bukan lewat
+   warna. Tiga lampu di title bar tetap jadi satu-satunya warna di halaman. */
+.status i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: block;
+  background: var(--ink);
+  border: 1px solid var(--ink);
+}
+.status[data-available="false"] i { background: transparent; border-color: var(--ink-3); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.chip {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.71rem;
+  color: var(--ink-3);
+}
+.chip.solid { color: var(--ink); }
+
+.g-card { }
+.role-row { display: grid; grid-template-columns: 1fr; gap: 0; border-top: 1px solid var(--line); }
+@media (min-width: 760px) { .role-row { grid-template-columns: repeat(3, 1fr); } }
+.role {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-bottom: 1px solid var(--line);
+}
+@media (min-width: 760px) {
+  .role { padding: 20px 24px 22px 0; border-bottom: 0; }
+  .role + .role { padding-left: 24px; border-left: 1px solid var(--line); }
+}
+.role .k {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.63rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.role .t { font-size: 0.92rem; font-weight: 500; }
+.role .d { font-size: 0.85rem; color: var(--ink-2); line-height: 1.6; }
+
+.section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+.section-head h2 { font-size: 0.98rem; font-weight: 500; }
+.link-more { font-size: 0.83rem; color: var(--ink-3); }
+.link-more:hover { color: var(--ink); }
+
+/* ============================================================
+   SHOWCASE — grid 12 kolom, aturannya tetap sama
+   ============================================================ */
+.showcase { display: grid; grid-template-columns: repeat(12, 1fr); gap: 28px 20px; }
+.case { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.case[data-span="12"] { grid-column: span 12; }
+.case[data-span="6"] { grid-column: span 6; }
+.case[data-span="3"] { grid-column: span 3; }
+@media (max-width: 720px) {
+  .case[data-span="6"] { grid-column: span 12; }
+  .case[data-span="3"] { grid-column: span 6; }
+}
+.case-link { display: flex; flex-direction: column; gap: 12px; }
+.case-link:hover .frame-desktop,
+.case-link:hover .frame-mobile { border-color: var(--line-strong); }
+
+.frame-desktop {
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  overflow: hidden;
+  background: var(--surface-2);
+  transition: border-color 0.2s ease;
+}
+/* Bar browsernya cuma satu garis tipis dengan kolom alamat — tanpa titik palsu,
+   supaya nggak ada yang bersaing sama tiga lampu di title bar. */
+.frame-desktop .bar {
+  height: 20px;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  border-bottom: 1px solid var(--line);
+}
+.frame-desktop .bar span { display: none; }
+.frame-desktop .bar .url {
+  width: 46%;
+  height: 7px;
+  border-radius: 99px;
+  background: var(--line);
+}
+.frame-mobile {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface-2);
+  padding: 4px;
+  transition: border-color 0.2s ease;
+}
+.frame-mobile .shot { border-radius: 9px; }
+
+.shot { position: relative; overflow: hidden; background: var(--surface-2); }
+.shot[data-ratio="desktop"] { aspect-ratio: 16 / 10; }
+.shot[data-ratio="mobile"] { aspect-ratio: 9 / 18.5; }
+.shot[data-ratio="banner"] { aspect-ratio: 16 / 7; }
+/* Gambar mengisi kotaknya persis, nggak lebih.
+   Versi sebelumnya pakai `height: auto; min-height: 100%` supaya bisa digeser
+   waktu hover — tapi buat tangkapan layar HP yang jauh lebih tinggi dari
+   kotaknya, tingginya jadi meledak dan bingkainya ikut melar. Itu yang bikin
+   gambar kelihatan "ngangkat sendiri", dan area gambar raksasa itu juga yang
+   bikin animasinya patah-patah.
+   Efek "nge-scroll waktu ditunjuk" sekarang lewat object-position — hasilnya
+   sama, tapi kotaknya nggak mungkin dilewatin. */
+.shot-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 0%;
+}
+.shot-empty {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.66rem;
+  color: var(--ink-3);
+}
+
+.case-meta { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.case-meta h3 { font-size: 0.92rem; font-weight: 500; }
+.case-meta .yr { font-family: var(--font-geist-mono), monospace; font-size: 0.71rem; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.case p { font-size: 0.85rem; color: var(--ink-2); max-width: 56ch; }
+.badge {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.63rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.note-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 0 0;
+  height: 100%;
+  border-top: 1px solid var(--line);
+}
+.note-card h3 { font-size: 0.92rem; font-weight: 500; }
+.note-card p { font-size: 0.85rem; color: var(--ink-2); flex: 1; }
+
+.ghost-card {
+  border: 1px dashed var(--line-strong);
+  border-radius: 5px;
+  display: grid;
+  place-content: center;
+  place-items: center;
+  text-align: center;
+  gap: 5px;
+  padding: 26px;
+  color: var(--ink-3);
+  min-height: 100%;
+}
+.ghost-card .t { font-size: 0.85rem; color: var(--ink-2); }
+.ghost-card .s { font-family: var(--font-geist-mono), monospace; font-size: 0.68rem; }
+
+/* ============================================================
+   ARTIKEL
+   ============================================================ */
+.article { display: grid; grid-template-columns: 1fr; gap: 34px; align-items: start; }
+@media (min-width: 880px) { .article { grid-template-columns: 1fr 200px; gap: 52px; } }
+.article-body { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.article-body h1 { font-size: clamp(1.5rem, 3.2vw, 2rem); letter-spacing: -0.03em; font-weight: 500; max-width: 24ch; }
+.article-body h2 { font-size: 1rem; font-weight: 500; margin-top: 18px; }
+.prose { display: flex; flex-direction: column; gap: 18px; }
+.prose p { font-size: 0.95rem; color: var(--ink-2); max-width: 66ch; line-height: 1.75; }
+.prose ul { display: flex; flex-direction: column; gap: 8px; padding-left: 20px; }
+.prose li { font-size: 0.95rem; color: var(--ink-2); max-width: 64ch; list-style: disc; }
+.pullquote {
+  font-size: 1.12rem;
+  color: var(--ink);
+  max-width: 44ch;
+  line-height: 1.5;
+  letter-spacing: -0.015em;
+  padding: 10px 0;
+}
+.rail { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.rail-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 10px 0;
+  font-size: 0.8rem;
+  border-bottom: 1px solid var(--line);
+}
+.rail-row .k {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  flex: none;
+}
+.rail-row .v { color: var(--ink-2); text-align: right; }
+.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+/* Tangkapan layar HP ditampilkan seukuran HP. Kolom selebar 260px bikin
+   satu layar telepon jadi setinggi 535px — beberapa berjejer langsung bikin
+   halaman kayak nggak habis-habis. */
+.gallery[data-device="mobile"] {
+  grid-template-columns: repeat(auto-fill, 180px);
+  justify-content: start;
+  gap: 16px;
+}
+.detail-cover[data-device="mobile"] { max-width: 260px; }
+
+.contact-grid { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.contact-card {
+  padding: 18px 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.contact-card:hover .v { color: var(--ink); }
+.contact-card .k {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  flex: none;
+}
+.contact-card .v { font-size: 0.95rem; color: var(--ink-2); text-align: right; }
+.contact-card .note { display: none; }
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  text-align: center;
+  padding: 56px 20px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--r-card);
+  color: var(--ink-3);
+}
+
+/* ============================================================
+   GERAK
+   Aturannya: gerakan harus ngejelasin sesuatu — dari mana sebuah elemen
+   datang, atau bahwa sesuatu bisa disentuh. Nggak ada yang bergerak cuma
+   supaya kelihatan bergerak.
+   ============================================================ */
+
+/* Jendela dan lampu masuk lewat @starting-style, bukan @keyframes.
+   Alasannya soal kegagalan: keyframe dengan fill `both` bikin elemen nempel di
+   kondisi awal (opacity 0) selama animasinya belum jalan — dan kalau nggak
+   pernah jalan, seluruh situs jadi tak terlihat. Dengan @starting-style,
+   kondisi normalnya justru terlihat; animasinya cuma jalan kalau browser
+   dukung. Gagal jadi "nggak ada animasi", bukan "halaman kosong". */
+/* ATURAN KERAS: animasi masuk cuma boleh nyentuh `transform`, nggak pernah
+   `opacity`. Kalau transisinya macet — tab latar belakang, mesin render yang
+   lagi nggak gambar frame, apa pun — yang paling buruk terjadi cuma elemen
+   berhenti di posisi yang bergeser sedikit. Isinya tetap kebaca.
+   Versi sebelumnya mudar dari opacity 0, dan waktu transisinya beku, seluruh
+   halaman jadi kosong. Itu harga yang kemahalan buat sebuah fade. */
+.win { transition: transform 520ms cubic-bezier(0.22, 0.9, 0.28, 1); }
+@starting-style {
+  :root[data-js] .win { transform: translateY(12px) scale(0.99); }
+}
+
+.light { transition: transform 340ms cubic-bezier(0.34, 1.5, 0.5, 1); }
+.light-red { transition-delay: 240ms; }
+.light-yellow { transition-delay: 300ms; }
+.light-green { transition-delay: 360ms; }
+@starting-style {
+  :root[data-js] .light { transform: scale(0); }
+}
+
+/* Animasi masuk buat blok konten.
+   Dulu ini "sembunyiin dulu, JavaScript yang nampilin" — dan begitu satu mata
+   rantai putus, isinya nggak pernah muncul sama sekali. Sekarang kondisi
+   normalnya terlihat; @starting-style cuma nambahin dari mana dia datang.
+   Browser yang nggak dukung dapat halaman tanpa animasi, bukan halaman kosong. */
+[data-reveal] {
+  transition: transform 340ms cubic-bezier(0.22, 0.9, 0.28, 1);
+}
+@starting-style {
+  :root[data-js] [data-reveal] {
+    transform: translateY(14px);
+  }
+}
+/* Berurutan, tapi jeda totalnya dijaga pendek. Versi sebelumnya nunda sampai
+   280ms, dan digabung transisi halaman rasanya jadi lebih dari satu detik
+   sebelum halaman diam — itu kebaca sebagai lemot, bukan sebagai gerakan. */
+[data-reveal]:nth-child(2) { transition-delay: 45ms; }
+[data-reveal]:nth-child(3) { transition-delay: 90ms; }
+[data-reveal]:nth-child(n + 4) { transition-delay: 130ms; }
+
+/* Tab: garis bawahnya tumbuh dari tengah, bukan muncul mendadak. */
+.tab { position: relative; }
+.tab::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transition: transform 260ms cubic-bezier(0.22, 0.9, 0.28, 1);
+}
+.tab:hover::after { transform: scaleX(0.4); }
+.tab[aria-current="page"] { border-bottom-color: transparent; }
+.tab[aria-current="page"]::after { transform: scaleX(1); }
+
+/* Kartu nggak bergerak waktu ditunjuk — nggak terangkat, gambarnya nggak
+   digeser. Gerakan yang kepicu cuma karena kursor lewat bikin orang ngerasa
+   nyenggol sesuatu yang nggak sengaja. Isyarat "ini bisa diklik" cukup dari
+   garis tepinya yang menegas. */
+.frame-desktop,
+.frame-mobile,
+.note-card,
+.ghost-card { transition: border-color 200ms ease; }
+
+/* Foto profil juga diam. Aturannya sekarang berlaku menyeluruh: gambar nggak
+   bergerak cuma karena kursor lewat di atasnya. */
+
+/* Baris kontak: anak panah maju sedikit. */
+.contact-card .v { transition: color 200ms ease, transform 260ms cubic-bezier(0.22, 0.9, 0.28, 1); }
+.contact-card:hover .v { transform: translateX(4px); }
+
+.tb-btn { transition: color 200ms ease; }
+.link-more { transition: color 200ms ease; }
+
+@media (prefers-reduced-motion: reduce) {
+  .win,
+  .light,
+  [data-reveal],
+  .contact-card .v,
+  .tab::after { transition: none; }
+  .contact-card:hover .v { transform: none; }
+}
