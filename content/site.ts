@@ -8,7 +8,10 @@ import type { Entry, Profile } from "@/lib/types";
    never put invented projects in this file.
    ========================================================================== */
 
-export const SITE_URL = "https://zaidan.dev";
+export const SITE_URL = "https://hakaitsu.tech";
+
+/** Bucket publik Supabase. Gambarnya bisa diakses tanpa kunci apa pun. */
+const MEDIA = "https://donlnxtgrrhbqdsdaivi.supabase.co/storage/v1/object/public/media";
 
 export const profile: Profile = {
   name: "Zaidan",
@@ -80,7 +83,20 @@ export const entries: Entry[] = [
     role: "Full-stack engineer and technical partner",
     duration: "Ongoing",
     stack: ["TypeScript", "React", "Vite", "NestJS", "Prisma", "PostgreSQL", "Supabase", "Tailwind"],
-    gallery: [],
+    cover: {
+      src: `${MEDIA}/1786895021459-c435zz.png`,
+      alt: 'Creativin landing page with the headline "Ketemu creator yang cocok, bukan yang cuma ramai" and two creator cards showing match score, followers, and engagement rate',
+    },
+    gallery: [
+      {
+        src: `${MEDIA}/1786895038666-hev5aa.png`,
+        alt: "Creator search page: eight creator cards in a grid, each showing niche, city, follower count, engagement rate, number of connected platforms, and starting rate",
+      },
+      {
+        src: `${MEDIA}/1786895039833-mudevh.png`,
+        alt: "Creator profile for Nadia Puspita showing 131 thousand followers and 4.8 percent engagement, with TikTok and Instagram accounts both marked Verified",
+      },
+    ],
     links: [{ label: "Site", href: "https://creativin.id" }],
     status: "published",
     order: 1,
@@ -103,7 +119,19 @@ export const entries: Entry[] = [
     role: "Sole designer and developer",
     duration: "Jun 2026 — ongoing",
     stack: ["React Native", "Expo", "Firebase", "TypeScript"],
-    gallery: [],
+    cover: {
+      src: `${MEDIA}/1786953625256-8unu74.jpeg`,
+      alt: "KaiCash home screen showing the current balance and recent transactions",
+    },
+    gallery: [
+      { src: `${MEDIA}/1786953648496-8lxta9.jpeg`, alt: "Home screen with balance, daily spending summary, and quick access to recent records" },
+      { src: `${MEDIA}/1786953648785-lx58vh.jpeg`, alt: "Add record screen where a transaction name, amount, and category are entered" },
+      { src: `${MEDIA}/1786953649847-7bkc6f.jpeg`, alt: "Add record screen continued, with optional notes and a receipt photo attached" },
+      { src: `${MEDIA}/1786953650057-pekqo5.jpeg`, alt: "Transaction history listing past records grouped by date" },
+      { src: `${MEDIA}/1786953650268-bknf8n.jpeg`, alt: "Dashboard view combining spending analytics with the transaction history below it" },
+      { src: `${MEDIA}/1786953650504-b80cq3.jpeg`, alt: "Account pairing screen used to link a parent account for spending oversight" },
+      { src: `${MEDIA}/1786953650744-wznxpm.jpeg`, alt: "Settings screen with account, budget, and notification preferences" },
+    ],
     links: [],
     status: "published",
     order: 2,
