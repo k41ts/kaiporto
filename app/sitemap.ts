@@ -1,7 +1,16 @@
 import type { MetadataRoute } from "next";
 import { getPublishedEntries, getSiteUrl } from "@/lib/content";
 
-/** Dibangkitkan dari isi konten — begitu entri diterbitkan, URL-nya langsung masuk. */
+/**
+ * Tanpa baris ini sitemap dibangkitkan sekali waktu build lalu dibekukan —
+ * entri yang diterbitkan lewat Studio nggak akan pernah masuk sampai ada
+ * deploy berikutnya. Halaman /work nggak kena karena dia punya ISR sendiri,
+ * jadi bedanya gampang kelewat: daftarnya kelihatan terbarui padahal yang
+ * dibaca mesin pencari masih daftar lama.
+ */
+export const revalidate = 60;
+
+/** Dibangkitkan dari isi konten yang statusnya published. */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = getSiteUrl();
 
