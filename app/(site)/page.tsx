@@ -20,7 +20,7 @@ export default async function HomePage() {
             width={352}
             height={352}
             priority
-            sizes="(max-width: 720px) 132px, 176px"
+            sizes="(max-width: 720px) 132px, 184px"
           />
         </div>
 

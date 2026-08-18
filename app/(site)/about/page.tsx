@@ -24,7 +24,7 @@ export default async function AboutPage() {
             width={352}
             height={352}
             priority
-            sizes="(max-width: 720px) 132px, 176px"
+            sizes="(max-width: 720px) 132px, 184px"
           />
         </div>
         <div className="hero-copy">
