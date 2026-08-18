@@ -42,7 +42,11 @@ export default async function ContactPage() {
             key={social.label}
             href={social.href}
             target="_blank"
-            rel="noopener noreferrer"
+            // rel="me" menyatakan "profil ini juga saya". GitHub sudah memasang
+            // penanda yang sama pada tautan balik di profilnya, jadi klaimnya
+            // jadi dua arah dan bisa diverifikasi mesin — itu yang dipakai
+            // mesin pencari buat nyatuin beberapa profil jadi satu identitas.
+            rel="me noopener noreferrer"
           >
             <span className="k">{social.label}</span>
             <span className="v">Open ↗</span>
