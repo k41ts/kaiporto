@@ -65,7 +65,17 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         "@id": `${siteUrl}/#person`,
         name: profile.fullName,
         url: siteUrl,
-        image: `${siteUrl}${profile.photo}`,
+        // ImageObject, bukan string biasa. Dimensinya dicantumkan supaya
+        // Google tau ini foto beresolusi penuh yang mewakili orangnya —
+        // bukan sekadar salah satu gambar yang kebetulan ada di halaman.
+        image: {
+          "@type": "ImageObject",
+          url: `${siteUrl}${profile.photo}`,
+          contentUrl: `${siteUrl}${profile.photo}`,
+          width: 3024,
+          height: 4032,
+          caption: profile.photoAlt,
+        },
         jobTitle: "Software Engineer",
         description: profile.headline,
         knowsAbout: profile.skills,
