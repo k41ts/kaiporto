@@ -655,3 +655,88 @@ a { color: inherit; text-decoration: none; }
   .tab::after { transition: none; }
   .contact-card:hover .v { transform: none; }
 }
+
+/* ---------------------------------------------------------------- galeri besar
+   Tiap gambar galeri sekarang tombol. Tombolnya dibikin tembus pandang: yang
+   kelihatan tetap bingkai perangkatnya, bukan kotak tombol bawaan browser. */
+.gallery-item {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: zoom-in;
+  border-radius: 6px;
+}
+.gallery-item:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.gallery-item:hover .frame-desktop,
+.gallery-item:hover .frame-mobile { border-color: var(--line-strong); }
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: clamp(16px, 4vw, 56px);
+  /* Latarnya diambil dari --bg, jadi ikut berubah di tema gelap tanpa aturan
+     kedua. Diburamkan sedikit supaya halaman di belakangnya nggak bersaing. */
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  backdrop-filter: blur(8px);
+  cursor: zoom-out;
+  animation: lightbox-in 140ms ease-out;
+}
+@keyframes lightbox-in { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .lightbox { animation: none; } }
+
+.lightbox-figure {
+  margin: 0;
+  max-width: min(1280px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  cursor: default;
+}
+.lightbox-img {
+  display: block;
+  max-width: 100%;
+  /* Tingginya dibatasi tinggi layar dikurangi ruang buat keterangan, biar
+     gambar panjang nggak kepotong di bawah. */
+  max-height: 78vh;
+  width: auto;
+  margin: 0 auto;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+}
+.lightbox-caption {
+  color: var(--ink);
+  opacity: 0.72;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  text-align: center;
+  max-width: 70ch;
+  margin: 0 auto;
+}
+
+.lightbox-close {
+  position: fixed;
+  top: clamp(12px, 2.5vw, 24px);
+  right: clamp(12px, 2.5vw, 24px);
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  transition: border-color 200ms ease;
+}
+.lightbox-close:hover { border-color: var(--line-strong); }
+.lightbox-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
