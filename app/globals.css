@@ -159,6 +159,11 @@ a { color: inherit; text-decoration: none; }
 .light-yellow { background: #febc2e; }
 .light-green { background: #28c840; }
 
+/* Logo duduk di antara tiga lampu dan breadcrumb. Jaraknya dipendekin dari
+   gap bawaan titlebar, supaya dia kebaca nempel ke nama pemiliknya — bukan
+   ngambang sendiri di tengah. */
+.tb-logo { flex: none; color: var(--ink); margin-right: -6px; }
+
 .path {
   font-family: var(--font-geist-mono), ui-monospace, Menlo, monospace;
   font-size: 0.73rem;

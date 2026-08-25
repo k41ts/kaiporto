@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { Logo } from "@/components/os/Logo";
 import { PageTransition } from "@/components/os/PageTransition";
 
 const TABS = [
@@ -65,6 +66,8 @@ export function Shell({ owner, children }: { owner: string; children: React.Reac
             <span className="light light-yellow" />
             <span className="light light-green" />
           </div>
+
+          <Logo className="tb-logo" />
 
           <span className="path">
             {owner}
