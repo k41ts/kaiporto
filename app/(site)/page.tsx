@@ -8,7 +8,10 @@ export const revalidate = 60;
 
 export default async function HomePage() {
   const [profile, entries] = await Promise.all([getProfile(), getPublishedEntries()]);
-  const featured = entries.slice(0, 3);
+  // Satu entri aja di halaman depan. Tiga kartu bikin beranda jadi versi
+  // kecil halaman Work, dan pengunjung mesti milih dua kali sebelum baca
+  // apa pun. Sisanya ada di /work, satu klik dari sini.
+  const featured = entries.slice(0, 1);
 
   return (
     <>
