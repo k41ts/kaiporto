@@ -35,6 +35,12 @@ export type Entry = {
   status: Status;
   order: number;
   publishedAt: string;
+  /**
+   * Kapan terakhir diubah, dipakai sitemap sebagai `lastmod`. Opsional karena
+   * isi cadangan di content/site.ts nggak punya riwayat perubahan — di sana
+   * tanggal terbitnya yang dipakai.
+   */
+  updatedAt?: string;
 };
 
 export type Ghost = { title: string; eta: string };

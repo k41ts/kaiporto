@@ -2,6 +2,8 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { after } from "next/server";
+import { pingIndexNow } from "@/lib/indexnow";
 import { createClient } from "@/lib/supabase/server";
 
 export type ActionState = { error?: string; ok?: string };
@@ -128,6 +130,14 @@ export async function saveEntry(_prev: ActionState, form: FormData): Promise<Act
 
   const { error } = await supabase.from("entries").upsert(payload, { onConflict: "slug" });
   if (error) return { error: error.message };
+
+  // Entri yang udah terbit dikabarin ke mesin pencari yang ikut IndexNow.
+  // `after` bikin ini jalan setelah responsnya kelar, jadi tombol Simpan
+  // nggak nungguin jaringan orang lain. Draft nggak dikirim — halamannya
+  // belum ada buat publik.
+  if (status === "published") {
+    after(() => pingIndexNow([`/work/${slug}`, "/work", "/", "/sitemap.xml"]));
+  }
 
   refreshPublicPages(slug);
   revalidatePath("/studio");

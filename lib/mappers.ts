@@ -63,6 +63,7 @@ export function toEntry(row: Row): Entry {
     status,
     order: num(row.order),
     publishedAt: str(row.published_at),
+    updatedAt: str(row.updated_at) || str(row.published_at),
   };
 }
 

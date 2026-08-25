@@ -24,7 +24,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const published = await getPublishedEntries();
   const entryRoutes: MetadataRoute.Sitemap = published.map((entry) => ({
     url: `${base}/work/${entry.slug}`,
-    lastModified: new Date(entry.publishedAt),
+    // `lastmod` diambil dari kapan entrinya terakhir diubah, bukan kapan
+    // diterbitkan. Kalau pakai tanggal terbit, entri yang ditulis ulang total
+    // tetap kelihatan basi buat mesin pencari dan nggak dijemput ulang.
+    lastModified: new Date(entry.updatedAt || entry.publishedAt),
     changeFrequency: "yearly",
     priority: entry.featured ? 0.8 : 0.7,
   }));
