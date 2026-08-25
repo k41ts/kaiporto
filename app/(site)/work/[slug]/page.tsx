@@ -107,7 +107,10 @@ export default async function EntryPage({ params }: Params) {
     description: entry.summary,
     datePublished: entry.publishedAt,
     url: `${siteUrl}/work/${entry.slug}`,
-    inLanguage: "id-ID",
+    // Isi entrinya bahasa Inggris. Dulu ditandai "id-ID", dan itu nyuruh
+    // Google nampilin halaman ini ke pembaca yang nyari dalam bahasa
+    // Indonesia — sinyal yang salah, bukan sekadar rapi-rapian.
+    inLanguage: "en",
     author: { "@id": `${siteUrl}/#person` },
     keywords: entry.stack.join(", "),
     // Gambar yang sama dengan kartu share. Tanpa ini, hasil pencarian yang
