@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { DeviceFrame } from "@/components/work/DeviceFrame";
-import { getAllSlugs, getEntry, getNeighbours, getSiteUrl } from "@/lib/content";
+import { Gallery } from "@/components/work/Gallery";
+import { getAllSlugs, getEntry, getNeighbours, getProfile, getSiteUrl } from "@/lib/content";
 import type { Entry } from "@/lib/types";
 
 type Params = { params: Promise<{ slug: string }> };
@@ -22,6 +23,13 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const title = entry.seoTitle ?? entry.title;
   const description = entry.seoDescription ?? entry.summary;
 
+  // Kartu share nggak mewarisi gambar dari layout: begitu halaman ini nulis
+  // openGraph sendiri, yang nggak disebut di sini hilang. Jadi gambarnya
+  // ditulis ulang — cover entri kalau ada, foto profil kalau belum.
+  const profile = await getProfile();
+  const image = entry.cover?.src ?? profile.photo;
+  const imageAlt = entry.cover?.alt || profile.photoAlt;
+
   return {
     title,
     description,
@@ -32,8 +40,9 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
       description,
       url: `/work/${entry.slug}`,
       publishedTime: entry.publishedAt,
+      images: [{ url: image, alt: imageAlt }],
     },
-    twitter: { card: "summary_large_image", title, description },
+    twitter: { card: "summary_large_image", title, description, images: [image] },
   };
 }
 
@@ -101,6 +110,9 @@ export default async function EntryPage({ params }: Params) {
     inLanguage: "id-ID",
     author: { "@id": `${siteUrl}/#person` },
     keywords: entry.stack.join(", "),
+    // Gambar yang sama dengan kartu share. Tanpa ini, hasil pencarian yang
+    // punya thumbnail nggak tau gambar mana yang mewakili entri ini.
+    ...(entry.cover?.src ? { image: entry.cover.src } : {}),
   };
 
   return (
@@ -129,18 +141,7 @@ export default async function EntryPage({ params }: Params) {
           {entry.pullquote && <p className="pullquote">{entry.pullquote}</p>}
           <Prose body={entry.body} />
 
-          {entry.gallery.length > 0 && (
-            <div className="gallery" data-device={entry.device} style={{ marginTop: 10 }}>
-              {entry.gallery.map((shot, i) => (
-                <DeviceFrame
-                  key={i}
-                  ratio={entry.device === "mobile" ? "mobile" : "desktop"}
-                  shot={shot}
-                  sizes={entry.device === "mobile" ? "200px" : "(max-width: 720px) 100vw, 340px"}
-                />
-              ))}
-            </div>
-          )}
+          {entry.gallery.length > 0 && <Gallery shots={entry.gallery} device={entry.device} />}
 
           <nav
             style={{

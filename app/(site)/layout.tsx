@@ -34,8 +34,14 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: `${profile.name} — Portfolio`,
       title,
       description: profile.headline,
+      images: [{ url: profile.photo, alt: profile.photoAlt }],
     },
-    twitter: { card: "summary_large_image", title, description: profile.headline },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: profile.headline,
+      images: [profile.photo],
+    },
     robots: { index: true, follow: true },
     // Kode verifikasi Google Search Console. Diisi lewat env var supaya
     // nggak perlu ubah kode: tempel nilainya di Vercel, deploy ulang, selesai.
