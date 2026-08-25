@@ -748,3 +748,13 @@ a { color: inherit; text-decoration: none; }
    HP dipendekin, karena kolom 340px bikin bodi 9:18.5 jadi setinggi 700px dan
    satu gambar doang udah makan seluruh layar. */
 .gallery .gallery-item:has(.frame-mobile) { max-width: 200px; justify-self: center; }
+
+/* ------------------------------------------------- daftar work satu per baris
+   Grid 12 kolom bikin ukuran kartu naik-turun cuma karena kolom `device`:
+   satu kartu lebar di sebelah dua kartu sempit kelihatan berat sebelah.
+   Di halaman daftar, tiap entri dapat barisnya sendiri. */
+.showcase[data-layout="stack"] { grid-template-columns: 1fr; gap: 44px; }
+.showcase[data-layout="stack"] .case { grid-column: 1 / -1; }
+/* Cover tegak tetap dipendekin — selebar penuh, bodi 9:19.5 tingginya
+   nyaris 1800px dan satu kartu doang makan seluruh layar. */
+.showcase[data-layout="stack"] .case-link:has(.frame-mobile) { max-width: 260px; }

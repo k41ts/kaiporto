@@ -29,7 +29,7 @@ export default async function WorkPage() {
 
       {/* Nggak ada cabang "kosong" di sini dengan sengaja: waktu belum ada entri,
           grid nampilin kartu hantu. Pengunjung lihat rencana, bukan situs rusak. */}
-      <WorkGrid entries={entries} ghosts={profile.ghosts} priorityFirst />
+      <WorkGrid entries={entries} ghosts={profile.ghosts} priorityFirst stacked />
     </>
   );
 }
