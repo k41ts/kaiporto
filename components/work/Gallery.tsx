@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { DeviceFrame } from "@/components/work/DeviceFrame";
+import { AdaptiveFrame } from "@/components/work/AdaptiveFrame";
 import type { Device, Shot } from "@/lib/types";
 
 /**
@@ -15,10 +15,6 @@ import type { Device, Shot } from "@/lib/types";
  */
 export function Gallery({ shots, device }: { shots: Shot[]; device: Device }) {
   const [open, setOpen] = useState<number | null>(null);
-  // Bentuk tiap bingkai ngikut gambarnya sendiri, bukan kolom `device` entrinya.
-  // Satu entri bisa punya tangkapan layar desktop dan HP sekaligus, dan
-  // maksa semuanya ke satu rasio bikin salah satunya kepotong.
-  const [shape, setShape] = useState<Record<number, { ratio: "desktop" | "mobile"; aspect: string }>>({});
   const closeRef = useRef<HTMLButtonElement>(null);
   const openerRef = useRef<HTMLButtonElement | null>(null);
 
@@ -64,16 +60,10 @@ export function Gallery({ shots, device }: { shots: Shot[]; device: Device }) {
               setOpen(i);
             }}
           >
-            <DeviceFrame
-              ratio={shape[i]?.ratio ?? (device === "mobile" ? "mobile" : "desktop")}
+            <AdaptiveFrame
+              initialRatio={device === "mobile" ? "mobile" : "desktop"}
               shot={shot}
-              aspect={shape[i]?.ratio === "desktop" ? shape[i].aspect : undefined}
-              sizes={shape[i]?.ratio === "mobile" || device === "mobile" ? "200px" : "(max-width: 720px) 100vw, 340px"}
-              onLoad={(w, h) =>
-                setShape((prev) =>
-                  prev[i] ? prev : { ...prev, [i]: { ratio: w >= h ? "desktop" : "mobile", aspect: `${w} / ${h}` } },
-                )
-              }
+              sizes={device === "mobile" ? "200px" : "(max-width: 720px) 100vw, 340px"}
             />
           </button>
         ))}

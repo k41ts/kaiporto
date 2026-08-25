@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { DeviceFrame } from "@/components/work/DeviceFrame";
+import { AdaptiveFrame } from "@/components/work/AdaptiveFrame";
 import { planLayout } from "@/lib/layout";
 import type { Entry, Ghost } from "@/lib/types";
 
@@ -54,8 +54,8 @@ export function WorkGrid({
                   <p>{entry.summary}</p>
                 </div>
               ) : (
-                <DeviceFrame
-                  ratio={ratio}
+                <AdaptiveFrame
+                  initialRatio={ratio}
                   shot={entry.cover}
                   priority={priorityFirst && index === 0}
                   sizes={span === 12 ? "(max-width: 720px) 100vw, 1000px" : span === 6 ? "(max-width: 720px) 100vw, 500px" : "(max-width: 720px) 50vw, 250px"}
