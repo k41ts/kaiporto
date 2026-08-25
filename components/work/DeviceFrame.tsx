@@ -12,14 +12,20 @@ export function DeviceFrame({
   shot,
   priority = false,
   sizes = "(max-width: 720px) 100vw, 50vw",
+  onLoad,
+  aspect,
 }: {
   ratio: Exclude<Ratio, "none">;
   shot?: Shot;
   priority?: boolean;
   sizes?: string;
+  /** Ukuran asli gambarnya, buat pemanggil yang bentuk bingkainya ngikut isi. */
+  onLoad?: (naturalWidth: number, naturalHeight: number) => void;
+  /** Rasio khusus, mis. "16 / 9". Nimpa rasio bawaan `ratio`. */
+  aspect?: string;
 }) {
   const screen = (
-    <div className="shot" data-ratio={ratio}>
+    <div className="shot" data-ratio={ratio} style={aspect ? { aspectRatio: aspect } : undefined}>
       {shot?.src ? (
         <Image
           className="shot-img"
@@ -28,6 +34,17 @@ export function DeviceFrame({
           fill
           sizes={sizes}
           priority={priority}
+          onLoad={onLoad ? (e) => onLoad(e.currentTarget.naturalWidth, e.currentTarget.naturalHeight) : undefined}
+          // Gambar yang udah ada di cache kadang selesai sebelum React sempat
+          // pasang handler, dan `onLoad` nggak pernah kepanggil. Jadi ukurannya
+          // juga dibaca langsung waktu elemennya nempel, kalau sudah selesai.
+          ref={
+            onLoad
+              ? (el) => {
+                  if (el?.complete && el.naturalWidth) onLoad(el.naturalWidth, el.naturalHeight);
+                }
+              : undefined
+          }
         />
       ) : (
         <span className="shot-empty" aria-hidden="true">

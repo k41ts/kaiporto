@@ -518,7 +518,10 @@ a { color: inherit; text-decoration: none; }
   justify-content: start;
   gap: 16px;
 }
-.detail-cover[data-device="mobile"] { max-width: 260px; }
+/* Lebar cover ngikut bentuk bingkainya, bukan kolom `device`. Entri mobile
+   yang cover-nya banner lebar tetap dapat lebar penuh; yang cover-nya
+   tangkapan layar HP tetap dipendekin biar nggak setinggi satu layar. */
+.detail-cover:has(.frame-mobile) { max-width: 260px; }
 
 .contact-grid { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
 .contact-card {
@@ -740,3 +743,8 @@ a { color: inherit; text-decoration: none; }
 }
 .lightbox-close:hover { border-color: var(--line-strong); }
 .lightbox-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Satu galeri boleh campur: tangkapan layar desktop dan HP. Yang berbingkai
+   HP dipendekin, karena kolom 340px bikin bodi 9:18.5 jadi setinggi 700px dan
+   satu gambar doang udah makan seluruh layar. */
+.gallery .gallery-item:has(.frame-mobile) { max-width: 200px; justify-self: center; }

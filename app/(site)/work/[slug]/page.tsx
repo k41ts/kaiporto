@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { DeviceFrame } from "@/components/work/DeviceFrame";
+import { CoverFrame } from "@/components/work/CoverFrame";
 import { Gallery } from "@/components/work/Gallery";
 import { getAllSlugs, getEntry, getNeighbours, getProfile, getSiteUrl } from "@/lib/content";
 import type { Entry } from "@/lib/types";
@@ -121,12 +121,11 @@ export default async function EntryPage({ params }: Params) {
         // Bingkai HP dibatasi lebarnya. Kalau dibiarin selebar kolom, rasio
         // 9:18.5 bikin tingginya hampir 1800px — satu tangkapan layar makan
         // seluruh layar sebelum tulisannya kelihatan.
-        <div className="detail-cover" data-device={entry.device}>
-          <DeviceFrame
-            ratio={entry.device === "mobile" ? "mobile" : "banner"}
+        <div className="detail-cover" data-device={entry.device} data-cover={entry.cover?.src ? "ada" : "kosong"}>
+          <CoverFrame
             shot={entry.cover}
-            priority
-            sizes={entry.device === "mobile" ? "260px" : "(max-width: 860px) 100vw, 880px"}
+            device={entry.device}
+            sizes="(max-width: 860px) 100vw, 880px"
           />
         </div>
       )}
