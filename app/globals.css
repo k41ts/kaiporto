@@ -332,7 +332,6 @@ a { color: inherit; text-decoration: none; }
 
 .g-card { }
 .role-row { display: grid; grid-template-columns: 1fr; gap: 0; border-top: 1px solid var(--line); }
-@media (min-width: 760px) { .role-row { grid-template-columns: repeat(3, 1fr); } }
 .role {
   padding: 20px 0;
   display: flex;
@@ -340,9 +339,23 @@ a { color: inherit; text-decoration: none; }
   gap: 6px;
   border-bottom: 1px solid var(--line);
 }
+/* Kolomnya ditentukan data-cols (= jumlah kartu peran). Empat kartu dipasang
+   2x2, bukan 4 sejajar — di lebar konten 880px satu kolom cuma 196px, dan
+   penjelasan peran jadi menara teks setinggi sepuluh baris. */
 @media (min-width: 760px) {
+  .role-row[data-cols="2"] { grid-template-columns: repeat(2, 1fr); }
+  .role-row[data-cols="3"] { grid-template-columns: repeat(3, 1fr); }
+  .role-row[data-cols="4"] { grid-template-columns: repeat(2, 1fr); }
+
   .role { padding: 20px 24px 22px 0; border-bottom: 0; }
   .role + .role { padding-left: 24px; border-left: 1px solid var(--line); }
+
+  /* Grid dua baris: garis pemisahnya horizontal buat baris pertama, dan
+     vertikal cuma di kolom kanan. */
+  .role-row[data-cols="4"] .role:nth-child(2n + 1) { padding-left: 0; border-left: 0; }
+  .role-row[data-cols="4"] .role:nth-child(2n) { padding-left: 24px; border-left: 1px solid var(--line); }
+  .role-row[data-cols="4"] .role:nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
+  .role-row[data-cols="4"] .role:nth-child(n + 3) { padding-top: 22px; }
 }
 .role .k {
   font-family: var(--font-geist-mono), monospace;

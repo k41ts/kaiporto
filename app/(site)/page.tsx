@@ -53,7 +53,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="role-row" data-reveal>
+      <section className="role-row" data-reveal data-cols={profile.roles.length}>
         {profile.roles.map((role) => (
           <div className="role g-card" key={role.key}>
             <span className="k">{role.key}</span>

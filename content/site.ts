@@ -16,7 +16,8 @@ const MEDIA = "https://donlnxtgrrhbqdsdaivi.supabase.co/storage/v1/object/public
 export const profile: Profile = {
   name: "Zaidan",
   fullName: "Zaidan Ikram",
-  headline: "Software engineer and technical partner. I build digital products from zero to production.",
+  headline:
+    "Full-stack engineer and technical partner. I build digital products from zero to production, and stay for what comes after.",
   bio: [
     "Call me Kai. I am a Computer Science student at BINUS University and a software engineer who enjoys turning ideas into digital products that solve real business problems.",
     "I enjoy the technical side of a product, but what interests me more is the business behind it. Choosing the right architecture, planning for growth, and building software that can still be maintained years later are the parts I genuinely like.",
@@ -30,18 +31,27 @@ export const profile: Profile = {
   roles: [
     {
       key: "Role 01",
-      title: "Software Engineer",
-      description: "Full-stack web and mobile. Code that real people use and that survives after I hand it over.",
+      title: "Full Stack Engineer",
+      description:
+        "Schema, API, interface, deployment, and the monitoring after — all held by one person, so nothing is lost in the handover between front end and back end.",
     },
     {
       key: "Role 02",
-      title: "Technical Partner",
-      description: "Helping founders pick a stack, weigh the cost, and decide what not to build.",
+      title: "Product Engineer",
+      description:
+        "What gets built is decided before any code is written. I read the workflow a feature replaces, and cut the parts that only look good in a demo.",
     },
     {
       key: "Role 03",
-      title: "Full-Stack Developer",
-      description: "Database schema, API, interface, deployment, and the monitoring that follows.",
+      title: "Software Architect",
+      description:
+        "Choosing the shape of a system while changing it is still cheap: data model, boundaries, where the load lands, and which decisions have to stay reversible.",
+    },
+    {
+      key: "Role 04",
+      title: "Technical Partner",
+      description:
+        "In it from early planning through deployment and the improvements after — including saying what should not be built and what a shortcut will cost later.",
     },
   ],
   skills: [

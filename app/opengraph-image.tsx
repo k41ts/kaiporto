@@ -36,7 +36,7 @@ export default async function Image() {
             {`${profile.name} — ${profile.headline}`}
           </div>
           <div style={{ fontSize: 27, color: "#B0A6C8" }}>
-            Software Engineer · Tech Partner · Full-Stack Developer
+            {profile.roles.map((role) => role.title).join(" · ")}
           </div>
         </div>
       </div>

@@ -95,7 +95,7 @@ export function ProfileForm({ profile }: { profile: Profile }) {
             label="Kartu peran"
             addLabel="Tambah peran"
             max={4}
-            autoNumber={{ key: "key", prefix: "Peran" }}
+            autoNumber={{ key: "key", prefix: "Role" }}
             fields={[
               { key: "title", label: "Judul", placeholder: "Software Engineer" },
               {
@@ -106,7 +106,7 @@ export function ProfileForm({ profile }: { profile: Profile }) {
               },
             ]}
             initial={profile.roles.map((r) => ({ title: r.title, description: r.description }))}
-            hint="Nomornya diisi otomatis. Tiga paling enak dibaca; lebih dari itu halaman depan jadi ramai."
+            hint="Nomornya diisi otomatis. Tiga sampai empat masih enak dibaca; lebih dari itu halaman depan jadi ramai."
           />
           <div className="field wide">
             <label htmlFor="skills">Skill</label>

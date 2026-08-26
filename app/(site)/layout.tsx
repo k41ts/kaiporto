@@ -9,7 +9,13 @@ import "../globals.css";
 export async function generateMetadata(): Promise<Metadata> {
   const profile = await getProfile();
   const siteUrl = getSiteUrl();
-  const title = `${profile.name} — Software Engineer & Tech Partner`;
+  // Judulnya ikut kartu peran — yang pertama dan yang terakhir — biar ganti
+  // peran di Studio nggak ninggalin sebutan lama di tab dan hasil pencarian.
+  const first = profile.roles.at(0)?.title;
+  const last = profile.roles.length > 1 ? profile.roles.at(-1)?.title : undefined;
+  const title = [profile.name, [first, last].filter(Boolean).join(" & ")]
+    .filter(Boolean)
+    .join(" — ");
 
   return {
     metadataBase: new URL(siteUrl),
@@ -19,9 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
     authors: [{ name: profile.fullName, url: siteUrl }],
     creator: profile.fullName,
     keywords: [
-      "software engineer",
-      "full-stack developer",
-      "tech partner",
+      ...profile.roles.map((role) => role.title.toLowerCase()),
       "Next.js",
       "TypeScript",
       profile.name,
@@ -82,7 +86,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           height: 4032,
           caption: profile.photoAlt,
         },
-        jobTitle: "Software Engineer",
+        // jobTitle boleh banyak; diambil dari kartu peran yang sama dengan
+        // yang dibaca orang di halaman About.
+        jobTitle: profile.roles.map((role) => role.title),
         description: profile.headline,
         knowsAbout: profile.skills,
         sameAs: profile.socials.map((s) => s.href),
