@@ -603,3 +603,75 @@ dialog.lb::backdrop { background: rgba(11, 11, 13, .82); }
   .hm-row.in figure:nth-child(2), .hm-row.in figure:nth-child(4) { transform: none; }
 }
 @media (prefers-reduced-motion: reduce) { .hm-row figure { transform: none; opacity: 1; transition: none; } }
+
+/* ===================== experience (home) ===================== */
+.exp { margin-top: 14px; background: var(--white); border-radius: var(--r-xl); padding: clamp(20px, 3vw, 44px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: clamp(20px, 3vw, 48px) clamp(24px, 4vw, 64px); }
+.exp > * { min-width: 0; }
+.exp-head h2 { margin-top: 12px; font: 700 clamp(30px, 3.6vw, 56px)/.98 var(--f-display); text-transform: uppercase; color: var(--navy); }
+.exp-head p { margin-top: 14px; color: var(--soft); max-width: 30ch; }
+.exp-list { list-style: none; margin: 0; padding: 0; grid-row: span 2; }
+.exp-list li { display: grid; grid-template-columns: 150px minmax(0, 1fr) auto; gap: 18px; padding: 20px 0; box-shadow: inset 0 1px 0 #e6e6ea; align-items: start; }
+.exp-list li:first-child { box-shadow: none; padding-top: 0; }
+.exp-list .when { color: var(--soft); font-size: 14px; font-variant-numeric: tabular-nums; padding-top: 4px; }
+.exp-list h3 { font: 700 clamp(19px, 1.6vw, 24px)/1.15 var(--f-display); text-transform: uppercase; letter-spacing: .01em; }
+.exp-list .org { margin-top: 6px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-weight: 500; }
+.exp-list .org .pill { min-height: 26px; padding: 0 10px; font-size: 12.5px; background: var(--paper); }
+.exp-list li:first-child .org .pill { background: var(--red); color: #fff; }
+.exp-list p:not(.org) { margin-top: 8px; color: var(--soft); max-width: 56ch; }
+.exp-list .where { color: var(--soft); font-size: 14px; text-align: right; padding-top: 4px; white-space: nowrap; }
+.edu { align-self: end; display: grid; gap: 10px; }
+.edu > div { background: var(--paper); border-radius: 16px; padding: 14px 16px; display: grid; gap: 2px; }
+.edu b { font-weight: 600; }
+.edu span { font-size: 15px; }
+.edu small { color: var(--soft); font-size: 13px; }
+@media (max-width: 900px) {
+  .exp { grid-template-columns: 1fr; }
+  .exp-list { grid-row: auto; }
+  .exp-list li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .exp-list .where { text-align: left; }
+}
+
+/* ===================== HakaiTask ===================== */
+.ht { position: relative; margin-top: 14px; background: var(--white); border-radius: var(--r-xl); padding: clamp(18px, 2.6vw, 40px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(20px, 3vw, 48px); align-items: center; }
+.ht > * { min-width: 0; }
+.ht-chat { background: #f4f4f1; border-radius: 22px; padding: 18px; display: grid; gap: 14px; box-shadow: inset 0 0 0 1px #e7e7e2; font-size: 15px; }
+.ht-bar { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+.ht-bar small { margin-left: auto; font-weight: 400; color: var(--soft); font-size: 12.5px; }
+.dotlive { width: 8px; height: 8px; border-radius: 50%; background: #1fbf6b; box-shadow: 0 0 0 4px rgba(31, 191, 107, .2); }
+.ht-hello { color: var(--soft); }
+.ht-chat ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.ht-chat li { max-width: 86%; padding: 10px 14px; border-radius: 16px; line-height: 1.4; }
+.ht-chat li.me { justify-self: end; background: var(--black); color: #fff; border-bottom-right-radius: 6px; }
+.ht-chat li.me code { font-family: inherit; }
+.ht-chat li.app { justify-self: start; background: #fff; border-bottom-left-radius: 6px; box-shadow: 0 0 0 1px #e7e7e2; }
+.ht-input { display: flex; justify-content: space-between; align-items: center; background: #fff; border-radius: 999px; padding: 8px 8px 8px 18px; color: #8a8a93; box-shadow: 0 0 0 1px #e7e7e2; }
+.ht-input b { background: var(--black); color: #fff; font-weight: 500; font-size: 13px; padding: 6px 12px; border-radius: 999px; }
+.ht h2 { margin-top: 12px; font: 700 clamp(44px, 6vw, 100px)/.9 var(--f-display); text-transform: uppercase; color: var(--navy); letter-spacing: -.02em; }
+.ht .info { display: flex; flex-direction: column; gap: 16px; }
+.ht .what { font-size: clamp(18px, 1.6vw, 21px); line-height: 1.45; max-width: 40ch; }
+.ht ul { margin: 0; padding-left: 1.1em; display: grid; gap: 8px; }
+.ht dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 10px 20px; font-size: 15px; }
+.ht dt { color: var(--soft); }
+.ht dd { margin: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .ht-chat.in li { animation: bubble 500ms var(--ease-out) both; }
+  .ht-chat.in li:nth-child(2) { animation-delay: 120ms; } .ht-chat.in li:nth-child(3) { animation-delay: 240ms; } .ht-chat.in li:nth-child(4) { animation-delay: 360ms; }
+  .ht-chat.in li:nth-child(5) { animation-delay: 480ms; } .ht-chat.in li:nth-child(6) { animation-delay: 600ms; } .ht-chat.in li:nth-child(7) { animation-delay: 720ms; } .ht-chat.in li:nth-child(8) { animation-delay: 840ms; }
+  @keyframes bubble { from { opacity: 0; transform: translateY(10px) scale(.98); } }
+}
+@media (max-width: 900px) { .ht { grid-template-columns: 1fr; } }
+
+/* ===================== team projects (work) ===================== */
+.teamhead { margin-top: 14px; background: var(--red); color: var(--black); border-radius: var(--r-xl); padding: clamp(22px, 3vw, 44px); }
+.teamhead .sec-tag { color: var(--black); }
+.teamhead .sec-tag .kj { color: #fff; }
+.teamhead h2 { margin-top: 12px; font: 500 clamp(44px, 7vw, 120px)/.9 var(--f-display); text-transform: uppercase; letter-spacing: -.03em; }
+.teamhead p { margin-top: 14px; font-size: clamp(17px, 1.5vw, 20px); max-width: 48ch; }
+.detail.dark { background: var(--black); color: #fff; }
+.detail.dark h3 { color: #fff; }
+.detail.dark .kick { background: var(--panel-2); color: #fff; }
+.detail.dark dt { color: var(--dim); }
+.idx a strong .team { margin-left: 10px; font: 500 12px/1 var(--f-ui); font-style: normal; text-transform: none; vertical-align: middle; padding: 5px 9px; border-radius: 999px; background: var(--red); color: #fff; letter-spacing: 0; }
+.th-kj { display: grid; place-items: center; width: 100%; height: 100%; background: var(--black); color: var(--red); font-size: 24px; }
+
+@media (max-width: 1080px) { .wtop .p-top nav a:not(.keep) { display: none; } }

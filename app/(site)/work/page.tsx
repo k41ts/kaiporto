@@ -4,8 +4,9 @@ import Link from "next/link";
 import { Barcode } from "@/components/site/Barcode";
 import { Contact } from "@/components/site/Contact";
 import { KaiCashFan } from "@/components/site/KaiCashFan";
+import { ProjectDetail } from "@/components/site/ProjectDetail";
 import { ArrowUpRight, ChevronLeft } from "@/components/site/icons";
-import { hakaikol, hakaimusic, kaicash, kaicashFeatures, passinglab, passinglabStats, profile, projects } from "@/content/site";
+import { aegisescrow, collatera, hakaikol, hakaimusic, hakaitask, hakaitaskChat, kaicash, kaicashFeatures, passinglab, passinglabStats, profile, projects } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "All work",
@@ -61,8 +62,10 @@ export default function WorkPage() {
               {projects.map((p) => (
                 <li key={p.slug}>
                   <a href={`#${p.slug}`}>
-                    <span className="th"><Image src={p.shots[0].src} alt="" width={112} height={112} sizes="56px" /></span>
-                    <strong>{p.name}</strong>
+                    <span className="th">
+                      {p.shots[0] ? <Image src={p.shots[0].src} alt="" width={112} height={112} sizes="56px" /> : <span className="kj th-kj">話</span>}
+                    </span>
+                    <strong>{p.name}{p.team && <em className="team">Team</em>}</strong>
                     <span className="kind">{p.kind}</span>
                     <span className="when">{p.when}</span>
                     <Go />
@@ -83,26 +86,7 @@ export default function WorkPage() {
             </ol>
           </section>
 
-          <section className="detail" id="hakaikol" aria-labelledby="hk-title">
-            <div className="shots" data-rv>
-              {hakaikol.shots.slice(0, 3).map((s, i) => (
-                <Image key={s.src} src={s.src} alt={s.alt} width={s.width} height={s.height} sizes={i === 0 ? "(max-width: 1080px) 100vw, 58vw" : "(max-width: 1080px) 50vw, 29vw"} />
-              ))}
-            </div>
-            <div className="info">
-              <span className="pill kick" data-rv>{hakaikol.kind}, {hakaikol.when}, featured</span>
-              <h3 id="hk-title" data-rv>{hakaikol.name}</h3>
-              <p className="what" data-rv>{hakaikol.summary}</p>
-              <ul data-rv>{hakaikol.points.map((p) => <li key={p}>{p}</li>)}</ul>
-              <dl data-rv>
-                <dt>My part</dt><dd>{hakaikol.role}</dd>
-                <dt>Built with</dt><dd>{hakaikol.stack.join(", ")}</dd>
-              </dl>
-              <a className="pill red" href={hakaikol.url} target="_blank" rel="noopener" style={{ alignSelf: "flex-start" }} data-rv>
-                Visit {hakaikol.name} <ArrowUpRight />
-              </a>
-            </div>
-          </section>
+          <ProjectDetail project={hakaikol} label={`${hakaikol.kind}, ${hakaikol.when}, featured`} />
 
           <section className="pl" id="passinglab" aria-labelledby="pl-title">
             <span className="wm kj" aria-hidden="true">試験</span>
@@ -138,6 +122,31 @@ export default function WorkPage() {
                   <dt>Built with</dt><dd>{passinglab.stack.join(", ")}</dd>
                 </dl>
               </div>
+            </div>
+          </section>
+
+          <section className="ht" id="hakaitask" aria-labelledby="ht-title">
+            <div className="ht-chat" data-rv aria-label="An example conversation with HakaiTask">
+              <div className="ht-bar"><span className="dotlive" />HakaiTask<small>offline ready</small></div>
+              <p className="ht-hello">Selamat malam, Kai. Agenda kamu berikutnya Sen 10 Agu 09:00: Standup.</p>
+              <ol>
+                {hakaitaskChat.map((m, i) => (
+                  <li key={i} className={m.from === "me" ? "me" : "app"}>{m.from === "me" ? <code>{m.text}</code> : m.text}</li>
+                ))}
+              </ol>
+              <div className="ht-input" aria-hidden="true"><span>Ketik perintah…</span><b>Enter</b></div>
+            </div>
+            <div className="info">
+              <span className="sec-tag" data-rv><span className="kj" lang="ja">話</span>{hakaitask.kind}, {hakaitask.when}</span>
+              <h2 id="ht-title" data-rv>{hakaitask.name}</h2>
+              <p className="what" data-rv>{hakaitask.summary}</p>
+              <ul data-rv>{hakaitask.points.map((pt) => <li key={pt}>{pt}</li>)}</ul>
+              <dl data-rv>
+                <dt>My part</dt><dd>{hakaitask.role}</dd>
+                <dt>Team</dt><dd>{hakaitask.team}</dd>
+                <dt>Built with</dt><dd>{hakaitask.stack.join(", ")}</dd>
+              </dl>
+              <a className="pill black" href={hakaitask.url} target="_blank" rel="noopener" style={{ alignSelf: "flex-start" }} data-rv>Open {hakaitask.name} <ArrowUpRight /></a>
             </div>
           </section>
 
@@ -204,6 +213,14 @@ export default function WorkPage() {
               ))}
             </div>
           </section>
+
+          <section className="teamhead" aria-labelledby="team-title">
+            <span className="sec-tag" data-rv><span className="kj" lang="ja">共同</span>With a team</span>
+            <h2 id="team-title" data-rv>Team projects</h2>
+            <p data-rv>Built with classmates and hackathon teammates. On both, I was the full-stack engineer.</p>
+          </section>
+          <ProjectDetail project={collatera} label={`${collatera.kind}, ${collatera.when}`} />
+          <ProjectDetail project={aegisescrow} label={`${aegisescrow.kind}, ${aegisescrow.when}`} dark />
 
           <section className="next" id="next" aria-labelledby="next-title" data-in>
             <span className="kj" aria-hidden="true">次</span>
