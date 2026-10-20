@@ -512,3 +512,32 @@ dialog.lb::backdrop { background: rgba(11, 11, 13, .82); }
 .lost h1 { position: relative; font: 500 clamp(56px, 10vw, 160px)/.9 var(--f-display); letter-spacing: -.035em; text-transform: uppercase; }
 .lost p { position: relative; font-size: 19px; max-width: 40ch; }
 .lost .acts { position: relative; display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* ===================== every width, no sideways scroll ===================== */
+/* Grid and flex children default to their content's minimum width; let them shrink so nothing pushes the page wider than the screen. */
+.work > *, .bento > *, .mods > *, .detail > *, .contact > *, .close > *, .kc > *, .wtop-in > *, .bar > *, .lead > *, .head > *, .p-foot > * { min-width: 0; }
+.logo, .me { white-space: nowrap; }
+.w-left .big .pill, .copyline .pill { white-space: normal; }
+.idea { width: 100%; }
+.sched a { grid-template-columns: 12px minmax(0, auto) minmax(0, 1fr) auto; }
+.sched a .pill { white-space: nowrap; }
+.mail { overflow-wrap: anywhere; }
+@media (max-width: 1080px) {
+  .bar { grid-template-columns: auto 1fr; }
+  .navpill { display: none; }
+  .tools-r { justify-self: end; }
+}
+@media (max-width: 480px) {
+  .me { padding: 0 4px; font-size: 0; gap: 0; }
+  .me img { width: 36px; height: 36px; }
+  .me svg { display: none; }
+  .logo { padding: 0 16px; }
+  .idea { flex-wrap: wrap; border-radius: 22px; padding: 6px; }
+  .idea input { flex: 1 1 100%; padding: 0 14px; }
+  .idea .pill { width: 100%; justify-content: center; }
+  .w-left .big { font-size: 28px; }
+  .sched a { grid-template-columns: 12px minmax(0, 1fr) auto; }
+  .sched a .when { display: none; }
+  .p-title { font-size: 13.4vw; }
+}
+@media (max-width: 760px) { .w-right .tools-r { display: none; } }
