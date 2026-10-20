@@ -9,7 +9,7 @@ import { IdeaForm } from "@/components/site/IdeaForm";
 import { PosterFx } from "@/components/site/PosterFx";
 import { Contact } from "@/components/site/Contact";
 import { ArrowRight, ArrowUpRight, Burst, Chevrons, ChevronRight, LinkedIn, Mark } from "@/components/site/icons";
-import { hakaikol, loadout, profile } from "@/content/site";
+import { education, experience, hakaikol, loadout, profile } from "@/content/site";
 
 const d = (ms: number) => ({ "--d": `${ms}ms` }) as React.CSSProperties;
 
@@ -227,6 +227,34 @@ export default function HomePage() {
             </div>
           </section>
 
+          {/* ---------- experience ---------- */}
+          <section className="exp" id="experience" aria-labelledby="exp-title">
+            <div className="exp-head">
+              <span className="sec-tag" data-rv><span className="kj" lang="ja">経歴</span>Experience</span>
+              <h2 id="exp-title" data-rv>Where I have worked</h2>
+              <p data-rv>Over three years of building for clients, teams, and my own products.</p>
+            </div>
+            <ol className="exp-list">
+              {experience.map((e) => (
+                <li key={e.role + e.org} data-rv>
+                  <span className="when">{e.when}</span>
+                  <div>
+                    <h3>{e.role}</h3>
+                    <p className="org">{e.org}<span className="pill">{e.type}</span></p>
+                    <p>{e.text}</p>
+                  </div>
+                  <span className="where">{e.where}</span>
+                </li>
+              ))}
+            </ol>
+            <div className="edu" data-rv>
+              <span className="sec-tag"><span className="kj" lang="ja">学歴</span>Education</span>
+              {education.map((e) => (
+                <div key={e.school}><b>{e.school}</b><span>{e.what}</span><small>{e.when}</small></div>
+              ))}
+            </div>
+          </section>
+
           {/* ---------- featured work ---------- */}
           <section className="work" id="work" aria-labelledby="work-title">
             <div className="w-left">
@@ -278,6 +306,7 @@ export default function HomePage() {
                 <h3>Project timeline</h3>
                 <a href="#hakaikol"><i /><span className="pill">HakaiKOL</span><span className="when">2026 to now</span><span className="gg"><Chevrons size={10} stroke={3} /></span></a>
                 <Link href="/work#passinglab"><i /><span className="pill">PassingLab</span><span className="when">Mar 2026 to now</span><span className="gg"><Chevrons size={10} stroke={3} /></span></Link>
+                <Link href="/work#hakaitask"><i /><span className="pill">HakaiTask</span><span className="when">Aug 2026</span><span className="gg"><Chevrons size={10} stroke={3} /></span></Link>
                 <Link href="/work#hakaimusic"><i /><span className="pill">HakaiMusic</span><span className="when">2026 to now</span><span className="gg"><Chevrons size={10} stroke={3} /></span></Link>
                 <Link href="/work#kaicash"><i /><span className="pill">KaiCash</span><span className="when">2026</span><span className="gg"><Chevrons size={10} stroke={3} /></span></Link>
                 <Link href="/work#next"><i style={{ background: "var(--navy)" }} /><span className="pill">Next build</span><span className="when">{profile.nextOpening}</span><span className="gg"><Chevrons size={10} stroke={3} /></span></Link>

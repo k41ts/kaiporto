@@ -32,6 +32,10 @@ export type Project = {
   role: string;
   stack: string[];
   url?: string;
+  /** Label tombol tautan, kalau bukan situs (mis. kode sumber). */
+  urlLabel?: string;
+  /** Diisi kalau dikerjakan bareng orang lain: siapa timnya. */
+  team?: string;
   shots: Shot[];
 };
 
@@ -129,8 +133,102 @@ export const hakaimusic: Project = {
   ],
 };
 
+export const hakaitask: Project = {
+  slug: "hakaitask",
+  name: "HakaiTask",
+  kind: "Web app",
+  when: "Aug 2026",
+  summary: "A task manager you talk to in Indonesian, with no AI. A readable dictionary turns one sentence into a dated task.",
+  points: [
+    "Parses everyday Indonesian like “lusa jam 3an”, and asks instead of guessing when a sentence is unclear",
+    "Offline first: every write lands on the device, and conflicts merge per field",
+    "A pure TypeScript chat engine with no React or network, tested on its own",
+    "A personal dictionary: teach it “clientan” once and it remembers",
+  ],
+  role: "Full-stack engineer",
+  team: "Built by a team of two",
+  stack: ["React", "Vite", "TypeScript", "Zustand", "Supabase", "Tailwind v4", "Turborepo"],
+  url: "https://hakaitask.my.id",
+  shots: [],
+};
+
+/** Percakapan contoh dari HakaiTask, persis seperti di README-nya. */
+export const hakaitaskChat: { from: "me" | "app"; text: string }[] = [
+  { from: "me", text: "jadwalin rapat sama klien rabu jam 3" },
+  { from: "app", text: "Oke — “Rapat sama klien”, Rab 12 Agu 15:00." },
+  { from: "me", text: "rabu jam 4 gw kosong ga?" },
+  { from: "app", text: "Rabu jam 16.00 kamu kosong, gak ada agenda di waktu itu." },
+  { from: "me", text: "selesaiin rapat" },
+  { from: "app", text: "“Rapat sama klien” ditandai selesai." },
+  { from: "me", text: "ok makasih" },
+  { from: "app", text: "Sama-sama." },
+];
+
+export const collatera: Project = {
+  slug: "collatera",
+  name: "Collatera",
+  kind: "Hackathon prototype",
+  when: "Oct 2026",
+  summary: "An on-chain promissory note that both sides sign and that is collected until it is paid, without anyone paying gas.",
+  points: [
+    "Gasless EIP-712 signatures, sent through a relayer",
+    "A non-transferable ERC-721 token as the creditor’s right to collect",
+    "Installments in a stablecoin, with automatic overdue status and reminders",
+    "An integrity check that freezes a note if the database and the chain disagree",
+  ],
+  role: "Full-stack engineer",
+  team: "Hackathon team of five",
+  stack: ["Next.js", "Prisma", "Solidity", "Hardhat", "ethers v6", "Ethereum Sepolia"],
+  url: "https://collatera.vercel.app",
+  shots: [
+    { src: "/work/collatera/hero.png", alt: "Collatera landing page for collateral and liquidation infrastructure", width: 1440, height: 900 },
+    { src: "/work/collatera/cycle.png", alt: "The collateral cycle: register and finance steps with interface previews", width: 1440, height: 900 },
+    { src: "/work/collatera/monitor.png", alt: "Monitor and enforce steps with a collateral health chart", width: 1440, height: 900 },
+  ],
+};
+
+export const aegisescrow: Project = {
+  slug: "aegisescrow",
+  name: "AegisEscrow",
+  kind: "University project",
+  when: "Sep to Oct 2026",
+  summary: "Freelance payments held by a smart contract: money unlocks per milestone, and a silent client cannot hold it hostage.",
+  points: [
+    "No withdraw, receive, or fallback function, so the client cannot pull funds back",
+    "Anyone can trigger auto-release once the review period passes",
+    "Proof of work stored on IPFS, with only its CID on-chain to save gas",
+    "Disputes decided by an arbitrator, never by either side",
+  ],
+  role: "Full-stack engineer",
+  team: "BINUS Prototyping Blockchain course, team of five",
+  stack: ["Solidity 0.8.28", "Hardhat 3", "OpenZeppelin", "React", "Vite", "ethers v6", "IPFS"],
+  url: "https://freelance-escrow.vercel.app",
+  shots: [
+    { src: "/work/escrow/hero.png", alt: "AegisEscrow landing page for blockchain freelance escrow", width: 1440, height: 900 },
+    { src: "/work/escrow/features.png", alt: "Trustless vaults, auditing, payout, and mediation features", width: 1440, height: 900 },
+    { src: "/work/escrow/lifecycle.png", alt: "The four-step agreement lifecycle from deposit to payout", width: 1440, height: 900 },
+  ],
+};
+
 /** Semua proyek, urutan tampil di halaman Work. */
-export const projects = [hakaikol, passinglab, hakaimusic, kaicash];
+export const projects = [hakaikol, passinglab, hakaitask, hakaimusic, kaicash, collatera, aegisescrow];
+
+/** Riwayat kerja dan pendidikan, dari CV. */
+export const experience = [
+  { role: "Full Stack Engineer", org: "CreativIn", type: "Contract", when: "Jul 2026 to now", where: "Hybrid, Indonesia",
+    text: "Client-facing web features end to end, schema to interface, plus architecture and data-model calls." },
+  { role: "Full Stack Software Engineer", org: "Self-employed", type: "Freelance", when: "Dec 2022 to now", where: "Remote, Jakarta",
+    text: "Laravel web apps and their backend structure, delivered from zero to production as a long-term partner." },
+  { role: "IT Support Specialist", org: "Alchemist Law Office", type: "Part-time", when: "Sep 2024 to Sep 2025", where: "Jakarta",
+    text: "Hardware, software, and network support, and the Excel workflows the office ran on." },
+  { role: "Web Designer", org: "UTERO Indonesia", type: "Internship", when: "Dec 2022 to Mar 2023", where: "Malang, East Java",
+    text: "Responsive web pages built from brand and layout requirements." },
+];
+
+export const education = [
+  { school: "BINUS University", what: "Bachelor of Computer Science", when: "2024 to 2028 (expected)" },
+  { school: "SMK Telekomunikasi Darul Ulum", what: "Software Engineering", when: "2021 to 2024" },
+];
 
 export const kaicashFeatures = [
   { kanji: "予算", title: "Budgets and savings goals", text: "Set a monthly limit, watch it fill." },
