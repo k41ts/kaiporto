@@ -179,17 +179,17 @@ export const collatera: Project = {
   role: "Full-stack engineer",
   team: "Hackathon team of five",
   stack: ["Next.js", "Prisma", "Solidity", "Hardhat", "ethers v6", "Ethereum Sepolia"],
-  url: "https://collatera.vercel.app",
+  url: "https://collatera-app.vercel.app",
   shots: [
-    { src: "/work/collatera/hero.png", alt: "Collatera landing page for collateral and liquidation infrastructure", width: 1440, height: 900 },
-    { src: "/work/collatera/cycle.png", alt: "The collateral cycle: register and finance steps with interface previews", width: 1440, height: 900 },
-    { src: "/work/collatera/monitor.png", alt: "Monitor and enforce steps with a collateral health chart", width: 1440, height: 900 },
+    { src: "/work/collatera/hero.png", alt: "Collatera landing page: Utang jelas. Tagihan tercatat. Lunas tuntas.", width: 1440, height: 900 },
+    { src: "/work/collatera/flow.png", alt: "How a note goes from draft to signed to paid, in four steps", width: 1440, height: 900 },
+    { src: "/work/collatera/detail.png", alt: "The integrity check that catches data changed off-chain", width: 1440, height: 900 },
   ],
 };
 
 export const aegisescrow: Project = {
-  slug: "aegisescrow",
-  name: "AegisEscrow",
+  slug: "escrow",
+  name: "Freelance Escrow",
   kind: "University project",
   when: "Sep to Oct 2026",
   summary: "Freelance payments held by a smart contract: money unlocks per milestone, and a silent client cannot hold it hostage.",
@@ -202,11 +202,11 @@ export const aegisescrow: Project = {
   role: "Full-stack engineer",
   team: "BINUS Prototyping Blockchain course, team of five",
   stack: ["Solidity 0.8.28", "Hardhat 3", "OpenZeppelin", "React", "Vite", "ethers v6", "IPFS"],
-  url: "https://freelance-escrow.vercel.app",
+  url: "https://flescrow.vercel.app",
   shots: [
-    { src: "/work/escrow/hero.png", alt: "AegisEscrow landing page for blockchain freelance escrow", width: 1440, height: 900 },
-    { src: "/work/escrow/features.png", alt: "Trustless vaults, auditing, payout, and mediation features", width: 1440, height: 900 },
-    { src: "/work/escrow/lifecycle.png", alt: "The four-step agreement lifecycle from deposit to payout", width: 1440, height: 900 },
+    { src: "/work/escrow/hero.png", alt: "Freelance Escrow landing page: the money is in the contract before work starts", width: 1440, height: 900 },
+    { src: "/work/escrow/dashboard.png", alt: "Demo dashboard with unfunded, locked, and paid milestones", width: 1440, height: 1040 },
+    { src: "/work/escrow/project.png", alt: "A contract with its milestones, value, and the three parties", width: 1440, height: 900 },
   ],
 };
 
