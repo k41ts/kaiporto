@@ -5,11 +5,11 @@ import { Barcode } from "@/components/site/Barcode";
 import { Contact } from "@/components/site/Contact";
 import { KaiCashFan } from "@/components/site/KaiCashFan";
 import { ArrowUpRight, ChevronLeft } from "@/components/site/icons";
-import { hakaikol, kaicash, kaicashFeatures, profile } from "@/content/site";
+import { hakaikol, hakaimusic, kaicash, kaicashFeatures, passinglab, passinglabStats, profile, projects } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "All work",
-  description: `Every product ${profile.name} has taken from an idea to production: ${hakaikol.name} and ${kaicash.name}.`,
+  description: `Every product ${profile.name} has taken from an idea to production: ${projects.map((p) => p.name).join(", ")}.`,
   alternates: { canonical: "/work" },
 };
 
@@ -28,8 +28,7 @@ export default function WorkPage() {
         <div className="p-top">
           <Link className="back" href="/"><ChevronLeft />Back to home</Link>
           <nav aria-label="Projects">
-            <a href="#hakaikol">{hakaikol.name}</a>
-            <a href="#kaicash">{kaicash.name}</a>
+            {projects.map((p) => <a key={p.slug} href={`#${p.slug}`}>{p.name}</a>)}
             <a className="keep" href="#contact">Contact</a>
           </nav>
         </div>
@@ -40,7 +39,7 @@ export default function WorkPage() {
             <p className="sub">Every product I have taken from an idea to production, with what I did on each.</p>
             <Barcode seed={909} />
             <div className="stats">
-              <span className="pill black">2 shipped</span>
+              <span className="pill black">{projects.length} products</span>
               <span className="pill">1 in progress</span>
               <span className="pill line">Web and Android</span>
             </div>
@@ -59,7 +58,7 @@ export default function WorkPage() {
             <span className="sec-tag"><span className="kj" lang="ja">一覧</span>Index</span>
             <h2 id="list-title">Projects</h2>
             <ol>
-              {[hakaikol, kaicash].map((p) => (
+              {projects.map((p) => (
                 <li key={p.slug}>
                   <a href={`#${p.slug}`}>
                     <span className="th"><Image src={p.shots[0].src} alt="" width={112} height={112} sizes="56px" /></span>
@@ -102,6 +101,67 @@ export default function WorkPage() {
               <a className="pill red" href={hakaikol.url} target="_blank" rel="noopener" style={{ alignSelf: "flex-start" }} data-rv>
                 Visit {hakaikol.name} <ArrowUpRight />
               </a>
+            </div>
+          </section>
+
+          <section className="pl" id="passinglab" aria-labelledby="pl-title">
+            <span className="wm kj" aria-hidden="true">試験</span>
+            <div className="pl-head">
+              <div>
+                <span className="sec-tag" data-rv><span className="kj" lang="ja">試験</span>{passinglab.kind}, {passinglab.when}</span>
+                <h2 id="pl-title" data-rv>{passinglab.name}</h2>
+                <p className="what" data-rv>{passinglab.summary}</p>
+              </div>
+              <a className="pill red" href={passinglab.url} target="_blank" rel="noopener" data-rv>Visit {passinglab.name} <ArrowUpRight /></a>
+            </div>
+            <div className="pl-main">
+              <figure className="browser" data-rv>
+                <div className="browser-bar" aria-hidden="true"><i /><i /><i /><span>passinglab.id/demo</span></div>
+                <Image src={passinglab.shots[0].src} alt={passinglab.shots[0].alt} width={1440} height={900} sizes="(max-width: 1080px) 100vw, 62vw" />
+              </figure>
+              <dl className="pl-stats">
+                {passinglabStats.map((s) => (
+                  <div key={s.label} data-rv><dt>{s.label}</dt><dd>{s.value}</dd></div>
+                ))}
+              </dl>
+            </div>
+            <div className="pl-foot">
+              <div className="pl-shots" data-rv>
+                {passinglab.shots.slice(1).map((s) => (
+                  <Image key={s.src} src={s.src} alt={s.alt} width={s.width} height={s.height} sizes="(max-width: 1080px) 50vw, 26vw" />
+                ))}
+              </div>
+              <div className="info">
+                <ul data-rv>{passinglab.points.map((p) => <li key={p}>{p}</li>)}</ul>
+                <dl data-rv>
+                  <dt>My part</dt><dd>{passinglab.role}</dd>
+                  <dt>Built with</dt><dd>{passinglab.stack.join(", ")}</dd>
+                </dl>
+              </div>
+            </div>
+          </section>
+
+          <section className="hm" id="hakaimusic" aria-labelledby="hm-title">
+            <span className="wm kj" aria-hidden="true">音</span>
+            <div className="hm-txt">
+              <span className="sec-tag" data-rv><span className="kj" lang="ja">音</span>{hakaimusic.kind}, {hakaimusic.when}</span>
+              <h2 id="hm-title" data-rv>{hakaimusic.name}</h2>
+              <p className="what" data-rv>{hakaimusic.summary}</p>
+              <ol className="hm-points">
+                {hakaimusic.points.map((p) => <li key={p} data-rv>{p}</li>)}
+              </ol>
+              <div className="meta" data-rv>
+                <span className="pill">{hakaimusic.role}</span>
+                {hakaimusic.stack.slice(0, 4).map((t) => <span className="pill" key={t}>{t}</span>)}
+              </div>
+              <a className="pill lime" href={hakaimusic.url} target="_blank" rel="noopener" data-rv>View the source <ArrowUpRight /></a>
+            </div>
+            <div className="hm-row" data-in>
+              {hakaimusic.shots.map((s) => (
+                <figure key={s.src}>
+                  <Image src={s.src} alt={s.alt} width={s.width} height={s.height} sizes="(max-width: 900px) 46vw, 200px" />
+                </figure>
+              ))}
             </div>
           </section>
 
