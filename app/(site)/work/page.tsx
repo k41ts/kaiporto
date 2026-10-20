@@ -1,35 +1,163 @@
 import type { Metadata } from "next";
-import { WorkGrid } from "@/components/work/WorkGrid";
-import { getProfile, getPublishedEntries } from "@/lib/content";
+import Image from "next/image";
+import Link from "next/link";
+import { Barcode } from "@/components/site/Barcode";
+import { Contact } from "@/components/site/Contact";
+import { KaiCashFan } from "@/components/site/KaiCashFan";
+import { ArrowUpRight, ChevronLeft } from "@/components/site/icons";
+import { hakaikol, kaicash, kaicashFeatures, profile } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Work",
-  description:
-    "Case studies and technical notes: systems built from scratch, systems repaired, and what I learned along the way.",
+  title: "All work",
+  description: `Every product ${profile.name} has taken from an idea to production: ${hakaikol.name} and ${kaicash.name}.`,
   alternates: { canonical: "/work" },
 };
 
-export const revalidate = 60;
+const Go = () => (
+  <span className="gg">
+    <ArrowUpRight size={14} stroke={2.6} />
+  </span>
+);
 
-export default async function WorkPage() {
-  const [profile, entries] = await Promise.all([getProfile(), getPublishedEntries()]);
-
+export default function WorkPage() {
   return (
     <>
-      <section style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-        <span className="eyebrow">Work</span>
-        <h1 style={{ fontSize: "1.7rem", fontWeight: 500, letterSpacing: "-0.035em" }}>
-          What I have built, and why it was built that way
-        </h1>
-        <p className="lede">
-          Full case studies and shorter technical notes, mixed together. Open any of them to read
-          the story — including the parts that failed first.
-        </p>
-      </section>
+      <a className="skip" href="#list">Skip to the list</a>
 
-      {/* Nggak ada cabang "kosong" di sini dengan sengaja: waktu belum ada entri,
-          grid nampilin kartu hantu. Pengunjung lihat rencana, bukan situs rusak. */}
-      <WorkGrid entries={entries} ghosts={profile.ghosts} priorityFirst stacked />
+      <header className="wtop">
+        <div className="p-top">
+          <Link className="back" href="/"><ChevronLeft />Back to home</Link>
+          <nav aria-label="Projects">
+            <a href="#hakaikol">{hakaikol.name}</a>
+            <a href="#kaicash">{kaicash.name}</a>
+            <a className="keep" href="#contact">Contact</a>
+          </nav>
+        </div>
+        <div className="wtop-in">
+          <div>
+            <span className="sec-tag" style={{ color: "var(--black)" }}><span className="kj" lang="ja" style={{ color: "#fff" }}>作品一覧</span>{profile.name}</span>
+            <h1 style={{ marginTop: 12 }}>All work</h1>
+            <p className="sub">Every product I have taken from an idea to production, with what I did on each.</p>
+            <Barcode seed={909} />
+            <div className="stats">
+              <span className="pill black">2 shipped</span>
+              <span className="pill">1 in progress</span>
+              <span className="pill line">Web and Android</span>
+            </div>
+          </div>
+          <div className="art" data-in>
+            <Image src="/img/p-oni-warrior.jpg" alt="A warrior in a red oni demon mask with long white hair, holding a club" width={1400} height={1638} priority sizes="(max-width: 900px) 100vw, 45vw" />
+            <div className="hud" aria-hidden="true"><i /><i /><i /><i /><b><span className="kj">鬼</span>ONI-04 HOSTILE</b></div>
+            <span className="vk kj" aria-hidden="true">鬼</span>
+          </div>
+        </div>
+      </header>
+
+      <div className="sheet" style={{ borderRadius: 0, marginTop: 0 }}>
+        <main>
+          <section className="idx" id="list" aria-labelledby="list-title">
+            <span className="sec-tag"><span className="kj" lang="ja">一覧</span>Index</span>
+            <h2 id="list-title">Projects</h2>
+            <ol>
+              {[hakaikol, kaicash].map((p) => (
+                <li key={p.slug}>
+                  <a href={`#${p.slug}`}>
+                    <span className="th"><Image src={p.shots[0].src} alt="" width={112} height={112} sizes="56px" /></span>
+                    <strong>{p.name}</strong>
+                    <span className="kind">{p.kind}</span>
+                    <span className="when">{p.when}</span>
+                    <Go />
+                  </a>
+                </li>
+              ))}
+              <li>
+                <a href="#next">
+                  <span className="th" style={{ background: "var(--black)", display: "grid", placeItems: "center" }}>
+                    <span className="kj" style={{ color: "var(--red)", fontSize: 26 }}>次</span>
+                  </span>
+                  <strong>Next build</strong>
+                  <span className="kind">In progress</span>
+                  <span className="when">{profile.nextOpening}</span>
+                  <Go />
+                </a>
+              </li>
+            </ol>
+          </section>
+
+          <section className="detail" id="hakaikol" aria-labelledby="hk-title">
+            <div className="shots" data-rv>
+              {hakaikol.shots.slice(0, 3).map((s, i) => (
+                <Image key={s.src} src={s.src} alt={s.alt} width={s.width} height={s.height} sizes={i === 0 ? "(max-width: 1080px) 100vw, 58vw" : "(max-width: 1080px) 50vw, 29vw"} />
+              ))}
+            </div>
+            <div className="info">
+              <span className="pill kick" data-rv>{hakaikol.kind}, {hakaikol.when}, featured</span>
+              <h3 id="hk-title" data-rv>{hakaikol.name}</h3>
+              <p className="what" data-rv>{hakaikol.summary}</p>
+              <ul data-rv>{hakaikol.points.map((p) => <li key={p}>{p}</li>)}</ul>
+              <dl data-rv>
+                <dt>My part</dt><dd>{hakaikol.role}</dd>
+                <dt>Built with</dt><dd>{hakaikol.stack.join(", ")}</dd>
+              </dl>
+              <a className="pill red" href={hakaikol.url} target="_blank" rel="noopener" style={{ alignSelf: "flex-start" }} data-rv>
+                Visit {hakaikol.name} <ArrowUpRight />
+              </a>
+            </div>
+          </section>
+
+          <section className="kc" id="kaicash" aria-labelledby="kc-title">
+            <span className="wm kj" aria-hidden="true">携</span>
+            <div className="txt">
+              <span className="sec-tag" data-rv><span className="kj" lang="ja">携</span>{kaicash.kind}, {kaicash.when}</span>
+              <h2 id="kc-title" data-rv>{kaicash.name}</h2>
+              <p className="what" data-rv>{kaicash.summary}</p>
+              <div className="feats">
+                {kaicashFeatures.map((f) => (
+                  <div className="feat" data-rv key={f.title}>
+                    <span className="kj" lang="ja">{f.kanji}</span>
+                    <div><b>{f.title}</b><span>{f.text}</span></div>
+                  </div>
+                ))}
+              </div>
+              <div className="meta" data-rv>
+                <span className="pill">{kaicash.role}</span>
+                {kaicash.stack.slice(0, 3).map((t) => <span className="pill" key={t}>{t}</span>)}
+              </div>
+            </div>
+            <div className="stage">
+              <span className="ring" aria-hidden="true" />
+              <span className="ring" aria-hidden="true" />
+              <span className="tag">KAICASH, 5 SCREENS</span>
+              <KaiCashFan shots={kaicash.shots} />
+              <div className="cap"><span>Tap a screen to open it</span><span>Android</span></div>
+            </div>
+          </section>
+
+          <section className="strip" aria-labelledby="kc-screens">
+            <h3 id="kc-screens">{kaicash.name}, screen by screen</h3>
+            <div className="row">
+              {kaicash.shots.map((s, i) => (
+                <figure key={s.src}>
+                  <Image src={s.src} alt={s.alt} width={s.width} height={s.height} sizes="220px" />
+                  <figcaption>{["Home and balance", "Add a record", "History by date", "Spending analytics", "Pair with a parent"][i]}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+
+          <section className="next" id="next" aria-labelledby="next-title" data-in>
+            <span className="kj" aria-hidden="true">次</span>
+            <div>
+              <h2 id="next-title">Next build</h2>
+              <p>Something new is being built right now. It ships in {profile.nextOpening}.</p>
+              <div className="bar" role="img" aria-label="About two thirds done"><i /></div>
+            </div>
+            <a className="pill black" href="#contact">Get early access</a>
+          </section>
+        </main>
+
+        <Contact backHome />
+      </div>
     </>
   );
 }

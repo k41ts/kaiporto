@@ -9,3 +9,9 @@ build/
 next-env.d.ts
 .vercel
 *.tsbuildinfo
+# Claude files
+.claude/
+claude/
+CLAUDE.md
+CLAUDE.local.md
+graphify-out/
