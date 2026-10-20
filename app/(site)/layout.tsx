@@ -1,124 +1,100 @@
 import type { Metadata, Viewport } from "next";
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
-import { Shell } from "@/components/os/Shell";
-import { ThemeScript } from "@/components/os/ThemeScript";
-import { getProfile, getSiteUrl } from "@/lib/content";
+import { Poppins, Tektur } from "next/font/google";
+import { Motion } from "@/components/site/Motion";
+import { SITE_URL, hakaikol, kaicash, loadout, profile } from "@/content/site";
 import "../globals.css";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const profile = await getProfile();
-  const siteUrl = getSiteUrl();
-  // Judulnya ikut kartu peran — yang pertama dan yang terakhir — biar ganti
-  // peran di Studio nggak ninggalin sebutan lama di tab dan hasil pencarian.
-  const first = profile.roles.at(0)?.title;
-  const last = profile.roles.length > 1 ? profile.roles.at(-1)?.title : undefined;
-  const title = [profile.name, [first, last].filter(Boolean).join(" & ")]
-    .filter(Boolean)
-    .join(" — ");
+const tektur = Tektur({ subsets: ["latin"], axes: ["wdth"], variable: "--font-tektur", display: "swap" });
+const poppins = Poppins({ subsets: ["latin"], weight: ["300", "400", "500", "600"], variable: "--font-poppins", display: "swap" });
 
-  return {
-    metadataBase: new URL(siteUrl),
-    title: { default: title, template: `%s — ${profile.name}` },
+/**
+ * Dela Gothic One cuma dipakai buat kanji, jadi yang diunduh hanya karakter
+ * yang benar-benar muncul (parameter `text` Google Fonts). Huruf baru di
+ * konten? Tambahkan di sini, kalau nggak dia jatuh ke font cadangan sistem.
+ */
+const KANJI = [
+  "般若鬼侍兜今推し一覧次",
+  "自己紹介技術作品連絡作品一覧",
+  "表裏蔵携礎全層構築開発者設計守攻面心刀電脳",
+  "予算親子領収書",
+  profile.katakana,
+  "フルスタック",
+  ...loadout.map((m) => m.kanji),
+].join("");
+const kanjiHref = `https://fonts.googleapis.com/css2?family=Dela+Gothic+One&text=${encodeURIComponent([...new Set(KANJI)].join(""))}&display=swap`;
+
+const title = `${profile.name} — ${profile.role}`;
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: { default: title, template: `%s — ${profile.name}` },
+  description: profile.headline,
+  applicationName: `${profile.name} — Portfolio`,
+  authors: [{ name: profile.name, url: SITE_URL }],
+  creator: profile.name,
+  keywords: ["full-stack engineer", "technical partner", "Next.js", "TypeScript", "Jakarta", profile.name, hakaikol.name, kaicash.name],
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: SITE_URL,
+    siteName: `${profile.name} — Portfolio`,
+    title,
     description: profile.headline,
-    applicationName: `${profile.name} — Portfolio`,
-    authors: [{ name: profile.fullName, url: siteUrl }],
-    creator: profile.fullName,
-    keywords: [
-      ...profile.roles.map((role) => role.title.toLowerCase()),
-      "Next.js",
-      "TypeScript",
-      profile.name,
-    ],
-    alternates: { canonical: "/" },
-    openGraph: {
-      type: "website",
-      locale: "en_US",
-      url: siteUrl,
-      siteName: `${profile.name} — Portfolio`,
-      title,
-      description: profile.headline,
-      images: [{ url: profile.photo, alt: profile.photoAlt }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description: profile.headline,
-      images: [profile.photo],
-    },
-    robots: { index: true, follow: true },
-    // Kode verifikasi Google Search Console. Diisi lewat env var supaya
-    // nggak perlu ubah kode: tempel nilainya di Vercel, deploy ulang, selesai.
-    // Kalau kosong, Next nggak nulis meta tag-nya sama sekali.
-    verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
-      ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
-      : undefined,
-  };
-}
-
-export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#efebf8" },
-    { media: "(prefers-color-scheme: dark)", color: "#050507" },
-  ],
+  },
+  twitter: { card: "summary_large_image", title, description: profile.headline },
+  robots: { index: true, follow: true },
+  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+    : undefined,
 };
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const profile = await getProfile();
-  const siteUrl = getSiteUrl();
+export const viewport: Viewport = {
+  themeColor: "#e8401c",
+  colorScheme: "light",
+};
 
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Person",
-        "@id": `${siteUrl}/#person`,
-        name: profile.fullName,
-        url: siteUrl,
-        // ImageObject, bukan string biasa. Dimensinya dicantumkan supaya
-        // Google tau ini foto beresolusi penuh yang mewakili orangnya —
-        // bukan sekadar salah satu gambar yang kebetulan ada di halaman.
-        image: {
-          "@type": "ImageObject",
-          url: `${siteUrl}${profile.photo}`,
-          contentUrl: `${siteUrl}${profile.photo}`,
-          width: 3024,
-          height: 4032,
-          caption: profile.photoAlt,
-        },
-        // jobTitle boleh banyak; diambil dari kartu peran yang sama dengan
-        // yang dibaca orang di halaman About.
-        jobTitle: profile.roles.map((role) => role.title),
+        "@id": `${SITE_URL}/#person`,
+        name: profile.name,
+        alternateName: profile.nickname,
+        url: SITE_URL,
+        image: `${SITE_URL}${profile.photo.src}`,
+        jobTitle: profile.role,
         description: profile.headline,
-        knowsAbout: profile.skills,
-        sameAs: profile.socials.map((s) => s.href),
+        address: { "@type": "PostalAddress", addressLocality: "Jakarta", addressCountry: "ID" },
+        knowsAbout: loadout.flatMap((m) => m.tools.map(([tool]) => tool)),
+        sameAs: [profile.linkedin, hakaikol.url],
       },
       {
         "@type": "WebSite",
-        "@id": `${siteUrl}/#website`,
-        url: siteUrl,
+        "@id": `${SITE_URL}/#website`,
+        url: SITE_URL,
         name: `${profile.name} — Portfolio`,
         inLanguage: "en-US",
-        publisher: { "@id": `${siteUrl}/#person` },
+        publisher: { "@id": `${SITE_URL}/#person` },
       },
     ],
   };
 
   return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${tektur.variable} ${poppins.variable}`}>
       <head>
-        <ThemeScript />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
+        <link rel="stylesheet" href={kanjiHref} />
       </head>
-      {/* Ekstensi browser (Grammarly, password manager, dark-mode) sering nempelin
-          atribut ke <body> sebelum React hydrate, dan itu memicu peringatan
-          hydration yang bukan berasal dari kode kita. Ini cuma meredam atribut
-          di elemen <body> sendiri — mismatch di dalam komponen tetap kelaporan. */}
+      {/* Ekstensi browser sering nempelin atribut ke <body> sebelum React hydrate. */}
       <body suppressHydrationWarning>
-        <Shell owner={profile.name.toLowerCase()}>{children}</Shell>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        {children}
+        <Motion />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </body>
     </html>
   );
