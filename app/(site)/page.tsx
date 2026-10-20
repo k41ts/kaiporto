@@ -277,6 +277,8 @@ export default function HomePage() {
               <div className="sched" data-rv>
                 <h3>Project timeline</h3>
                 <a href="#hakaikol"><i /><span className="pill">HakaiKOL</span><span className="when">2026 to now</span><span className="gg"><Chevrons size={10} stroke={3} /></span></a>
+                <Link href="/work#passinglab"><i /><span className="pill">PassingLab</span><span className="when">Mar 2026 to now</span><span className="gg"><Chevrons size={10} stroke={3} /></span></Link>
+                <Link href="/work#hakaimusic"><i /><span className="pill">HakaiMusic</span><span className="when">2026 to now</span><span className="gg"><Chevrons size={10} stroke={3} /></span></Link>
                 <Link href="/work#kaicash"><i /><span className="pill">KaiCash</span><span className="when">2026</span><span className="gg"><Chevrons size={10} stroke={3} /></span></Link>
                 <Link href="/work#next"><i style={{ background: "var(--navy)" }} /><span className="pill">Next build</span><span className="when">{profile.nextOpening}</span><span className="gg"><Chevrons size={10} stroke={3} /></span></Link>
               </div>

@@ -76,6 +76,62 @@ export const kaicash: Project = {
   ],
 };
 
+export const passinglab: Project = {
+  slug: "passinglab",
+  name: "PassingLab",
+  kind: "Paid tryout platform",
+  when: "Mar 2026 to now",
+  summary: "A paid UTBK tryout platform. I rewrote the live Laravel app onto Next.js, alone, without losing a single answer.",
+  points: [
+    "Autosave that keeps working while the tab is hidden, and a timer the server owns",
+    "Closed an account takeover path left in the old app",
+    "QRIS payments that are safe to repeat, verified against my own stored amount",
+    "Scoring, pricing, and shuffling in pure modules covered by unit tests",
+  ],
+  role: "Sole full-stack engineer",
+  stack: ["Next.js 16", "React 19", "TypeScript", "Supabase Postgres", "Drizzle ORM", "Tailwind v4"],
+  url: "https://passinglab.id",
+  shots: [
+    { src: "/work/passinglab/exam.png", alt: "PassingLab exam screen with a server timer, question navigator, and answer options", width: 1440, height: 900 },
+    { src: "/work/passinglab/landing.png", alt: "PassingLab landing page offering a free UTBK demo", width: 1440, height: 900 },
+    { src: "/work/passinglab/scoring.png", alt: "Score breakdown across the seven UTBK subtests with a total score ring", width: 1440, height: 900 },
+  ],
+};
+
+/** Angka nyata dari kode dan bank soal PassingLab (lihat CV). */
+export const passinglabStats = [
+  { value: "1,604", label: "questions" },
+  { value: "7", label: "UTBK subtests" },
+  { value: "24", label: "database tables" },
+  { value: "~24k", label: "lines of TypeScript" },
+];
+
+export const hakaimusic: Project = {
+  slug: "hakaimusic",
+  name: "HakaiMusic",
+  kind: "Native Android app",
+  when: "2026 to now",
+  summary: "A native Android music client that plays offline first and keeps lock screen controls through every engine swap.",
+  points: [
+    "Two playback engines behind one media session: ExoPlayer first, a headless WebView when no stream resolves",
+    "Library, queue, history, and downloads live on the device; sign-in only adds sync",
+    "Sync that assumes the connection will drop, with no duplicates on a retry",
+  ],
+  role: "Sole designer and developer",
+  stack: ["Kotlin", "Jetpack Compose", "Media3", "ExoPlayer", "Room", "WorkManager", "Firestore"],
+  url: "https://github.com/k41ts/hakaimusic",
+  shots: [
+    { src: "/work/hakaimusic/playing.jpg", alt: "Now playing screen with cover art, waveform, and playback controls", width: 709, height: 1600 },
+    { src: "/work/hakaimusic/home.jpg", alt: "Home screen with recommendations and a top daily list", width: 709, height: 1600 },
+    { src: "/work/hakaimusic/lockscreen.jpg", alt: "Lock screen media controls for the playing track", width: 709, height: 1600 },
+    { src: "/work/hakaimusic/queue.jpg", alt: "Play queue with reorder and remove controls", width: 709, height: 1600 },
+    { src: "/work/hakaimusic/downloads.jpg", alt: "Downloads saved on the device for offline playback", width: 709, height: 1600 },
+  ],
+};
+
+/** Semua proyek, urutan tampil di halaman Work. */
+export const projects = [hakaikol, passinglab, hakaimusic, kaicash];
+
 export const kaicashFeatures = [
   { kanji: "予算", title: "Budgets and savings goals", text: "Set a monthly limit, watch it fill." },
   { kanji: "親子", title: "Parent pairing", text: "A pairing code links two phones, synced in real time." },
@@ -85,15 +141,15 @@ export const kaicashFeatures = [
 /** Lapisan produk dan alat yang dipakai di tiap lapisan, beserta di mana dipakainya. */
 export const loadout = [
   { kanji: "表", reading: "omote, the front", title: "Interface", text: "Screens people understand on first use.",
-    tools: [["React", "HakaiKOL"], ["Next.js", "This site"], ["Vite", "HakaiKOL"], ["Tailwind", "HakaiKOL"]] },
+    tools: [["React", "HakaiKOL, PassingLab"], ["Next.js", "PassingLab, this site"], ["Vite", "HakaiKOL"], ["Tailwind", "HakaiKOL, PassingLab"]] },
   { kanji: "裏", reading: "ura, the back", title: "Backend", text: "Business rules written so they can change.",
-    tools: [["NestJS", "HakaiKOL"], ["Prisma", "HakaiKOL"], ["Node.js", "HakaiKOL"], ["Laravel", "Client work"]] },
+    tools: [["NestJS", "HakaiKOL"], ["Server Actions", "PassingLab"], ["Prisma, Drizzle", "HakaiKOL, PassingLab"], ["Laravel", "Freelance work"]] },
   { kanji: "蔵", reading: "kura, the storehouse", title: "Data", text: "Schemas that survive growth, access that stays locked.",
-    tools: [["PostgreSQL", "HakaiKOL"], ["Supabase", "HakaiKOL"], ["Firebase", "KaiCash"]] },
-  { kanji: "携", reading: "kei, carried with you", title: "Mobile", text: "Android apps that sync in real time.",
-    tools: [["React Native", "KaiCash"], ["Expo", "KaiCash"], ["TypeScript", "HakaiKOL, KaiCash"]] },
+    tools: [["PostgreSQL", "HakaiKOL, PassingLab"], ["Supabase", "HakaiKOL, PassingLab"], ["Firebase, Firestore", "KaiCash, HakaiMusic"], ["Room", "HakaiMusic"]] },
+  { kanji: "携", reading: "kei, carried with you", title: "Mobile", text: "Android apps that work offline and sync in real time.",
+    tools: [["Kotlin, Jetpack Compose", "HakaiMusic"], ["Media3, ExoPlayer", "HakaiMusic"], ["React Native, Expo", "KaiCash"]] },
   { kanji: "礎", reading: "ishizue, the foundation", title: "Architecture", text: "The shape of the system, chosen while change is still cheap.",
-    tools: [["System design", "HakaiKOL"], ["Row-level security", "HakaiKOL"], ["Deployment", "Both products"]] },
+    tools: [["System design", "Every product"], ["Auth and row-level security", "HakaiKOL, PassingLab"], ["Payments", "PassingLab"], ["Offline-first sync", "HakaiMusic"]] },
 ] as const;
 
 export const credits =
