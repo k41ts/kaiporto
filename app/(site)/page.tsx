@@ -281,7 +281,7 @@ export default function HomePage() {
             <div className="w-mid">
               <IdeaForm />
               <div className="w-hero" data-rv>
-                <Image className="r" src="/img/p-oni-samurai.jpg" alt="A warrior in a red oni mask, white mane and black and gold armour" width={1333} height={1800} sizes="(max-width: 1080px) 100vw, 40vw" />
+                <Image className="r" src="/img/p-oni-armor.jpg" alt="Red lacquered samurai armour with an oni face mask, behind a shop window reflecting a city street" width={1333} height={1800} sizes="(max-width: 1080px) 100vw, 40vw" />
                 <div className="hud" aria-hidden="true"><i /><i /><i /><i /><b><span className="kj">鬼</span>ONI-03 IDENTIFIED</b></div>
                 <div className="glass">
                   <small>Featured</small>

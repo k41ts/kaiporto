@@ -249,4 +249,4 @@ export const loadout = [
 ] as const;
 
 export const credits =
-  "Mask images were generated with AI for this site. Oni photos from Pexels. Product screenshots are from my own work.";
+  "Mask images were generated with AI for this site. Oni photos from Pexels and Unsplash. Product screenshots are from my own work.";
