@@ -6,7 +6,7 @@ import { Contact } from "@/components/site/Contact";
 import { KaiCashFan } from "@/components/site/KaiCashFan";
 import { ProjectDetail } from "@/components/site/ProjectDetail";
 import { ArrowUpRight, ChevronLeft } from "@/components/site/icons";
-import { aegisescrow, collatera, hakaikol, hakaimusic, hakaitask, hakaitaskChat, kaicash, kaicashFeatures, passinglab, passinglabStats, profile, projects } from "@/content/site";
+import { aegisescrow, collatera, hakaikol, hakaimusic, hakaitask, kaicash, kaicashFeatures, passinglab, passinglabStats, profile, projects } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "All work",
@@ -128,15 +128,10 @@ export default function WorkPage() {
 
 
           <section className="ht" id="hakaitask" aria-labelledby="ht-title">
-            <div className="ht-chat" data-rv aria-label="An example conversation with HakaiTask">
-              <div className="ht-bar"><span className="dotlive" />HakaiTask<small>offline ready</small></div>
-              <p className="ht-hello">Selamat malam, Kai. Agenda kamu berikutnya Sen 10 Agu 09:00: Standup.</p>
-              <ol>
-                {hakaitaskChat.map((m, i) => (
-                  <li key={i} className={m.from === "me" ? "me" : "app"}>{m.from === "me" ? <code>{m.text}</code> : m.text}</li>
-                ))}
-              </ol>
-              <div className="ht-input" aria-hidden="true"><span>Ketik perintah…</span><b>Enter</b></div>
+            <div className="ht-shots" data-rv>
+              {hakaitask.shots.map((s) => (
+                <Image key={s.src} src={s.src} alt={s.alt} width={s.width} height={s.height} sizes="(max-width: 900px) 100vw, 45vw" />
+              ))}
             </div>
             <div className="info">
               <span className="sec-tag" data-rv><span className="kj" lang="ja">話</span>{hakaitask.kind}, {hakaitask.when}</span>
