@@ -8,8 +8,9 @@ import { Decode } from "@/components/site/Decode";
 import { IdeaForm } from "@/components/site/IdeaForm";
 import { PosterFx } from "@/components/site/PosterFx";
 import { Contact } from "@/components/site/Contact";
-import { ArrowRight, ArrowUpRight, Burst, Chevrons, ChevronRight, LinkedIn, Mark } from "@/components/site/icons";
-import { education, experience, hakaikol, loadout, profile } from "@/content/site";
+import { ProjectDetail } from "@/components/site/ProjectDetail";
+import { ArrowRight, ArrowUpRight, Burst, Chevrons, ChevronRight, Download, GitHub, Instagram, LinkedIn, Mark } from "@/components/site/icons";
+import { education, experience, loadout, passinglab, profile } from "@/content/site";
 
 const d = (ms: number) => ({ "--d": `${ms}ms` }) as React.CSSProperties;
 
@@ -111,6 +112,7 @@ export default function HomePage() {
             <div className="acts">
               <a className="pill red" href="#about">Meet Kai</a>
               <a className="pill" href="#work">See the work</a>
+              <a className="pill" href={profile.cv} download>Download CV <Download /></a>
             </div>
           </div>
         </div>
@@ -137,6 +139,9 @@ export default function HomePage() {
               <div className="tools-r">
                 <CopyEmail className="ibtn" icon />
                 <a className="ibtn" href={profile.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn profile"><LinkedIn /></a>
+                <a className="ibtn soc" href={profile.github} target="_blank" rel="noopener" aria-label="GitHub profile"><GitHub /></a>
+                <a className="ibtn soc" href={profile.instagram} target="_blank" rel="noopener" aria-label="Instagram profile"><Instagram /></a>
+                <a className="ibtn" href={profile.cv} download aria-label="Download my CV"><Download size={17} /></a>
                 <a className="me" href="#contact">
                   <Image src={profile.photo.src} alt="" width={72} height={72} sizes="36px" />
                   Hire me
@@ -162,6 +167,7 @@ export default function HomePage() {
                 <div className="rows">
                   <a href="#work">See what I have built <ArrowUpRight stroke={2} /></a>
                   <a href="#contact">Start a project with me <ArrowUpRight stroke={2} /></a>
+                  <a href={profile.cv} download>Download my CV <Download /></a>
                 </div>
                 <span className="notch">
                   <a className="circle" href="#work" aria-label="Go to my work"><ArrowUpRight size={22} /></a>
@@ -263,9 +269,9 @@ export default function HomePage() {
                 <Link className="pill" href="/work"><span className="ring" />All projects</Link>
               </div>
               <span className="sec-tag" data-rv style={{ marginTop: "clamp(20px,4vw,64px)" }}><span className="kj" lang="ja">推し</span>Featured project</span>
-              <h2 id="work-title" data-rv style={{ marginTop: 0 }}>{hakaikol.name}, the one I am proudest of</h2>
-              <span className="pill date" data-rv>Live since 2026</span>
-              <p className="lead-s" data-rv>A two-sided marketplace I built end to end, from the database schema to the deploy, and still run today.</p>
+              <h2 id="work-title" data-rv style={{ marginTop: 0 }}>{passinglab.name}, the one I am proudest of</h2>
+              <span className="pill date" data-rv>Live since Mar 2026</span>
+              <p className="lead-s" data-rv>A paid UTBK tryout platform I rewrote alone, from the old Laravel app to Next.js, without losing a single answer.</p>
               <p className="big" data-rv>
                 More products on one page{" "}
                 <Link className="pill black" href="/work">See all work <span className="go"><Chevrons /></span></Link>
@@ -279,15 +285,15 @@ export default function HomePage() {
                 <div className="hud" aria-hidden="true"><i /><i /><i /><i /><b><span className="kj">鬼</span>ONI-03 IDENTIFIED</b></div>
                 <div className="glass">
                   <small>Featured</small>
-                  <p>{hakaikol.name}: brands pick creators by numbers pulled straight from Instagram and TikTok.</p>
+                  <p>{passinglab.name}: 1,604 questions across 7 UTBK subtests, with a timer the server owns.</p>
                   <div className="row">
                     <span className="faces">
-                      {hakaikol.shots.slice(1, 4).map((s) => (
+                      {passinglab.shots.map((s) => (
                         <Image key={s.src} src={s.src} alt="" width={60} height={60} sizes="30px" />
                       ))}
-                      <span>+6 screens</span>
+                      <span>3 screens</span>
                     </span>
-                    <a className="ibtn" href="#hakaikol" aria-label="See HakaiKOL details"><ArrowUpRight size={14} /></a>
+                    <a className="ibtn" href="#passinglab" aria-label="See PassingLab details"><ArrowUpRight size={14} /></a>
                   </div>
                 </div>
               </div>
@@ -295,17 +301,17 @@ export default function HomePage() {
 
             <div className="w-right">
               <div className="tools-r"><a className="pill black" href="#top">Back to top</a></div>
-              <a className="card-w" href="#hakaikol" style={{ textDecoration: "none" }} data-rv>
+              <a className="card-w" href="#passinglab" style={{ textDecoration: "none" }} data-rv>
                 <span className="shot">
-                  <Image src={hakaikol.shots[0].src} alt={hakaikol.shots[0].alt} width={hakaikol.shots[0].width} height={hakaikol.shots[0].height} sizes="(max-width: 1080px) 50vw, 25vw" />
+                  <Image src={passinglab.shots[0].src} alt={passinglab.shots[0].alt} width={passinglab.shots[0].width} height={passinglab.shots[0].height} sizes="(max-width: 1080px) 50vw, 25vw" />
                 </span>
-                <h3>{hakaikol.name} <span>Web, 2026</span></h3>
-                <span className="tg">{["React", "NestJS", "PostgreSQL", "Supabase"].map((t) => <span key={t}>{t}</span>)}</span>
+                <h3>{passinglab.name} <span>Web, 2026</span></h3>
+                <span className="tg">{["Next.js", "React", "Drizzle", "Supabase"].map((t) => <span key={t}>{t}</span>)}</span>
               </a>
               <div className="sched" data-rv>
                 <h3>Project timeline</h3>
-                <a href="#hakaikol"><i /><span className="pill">HakaiKOL</span><span className="when">2026 to now</span><span className="gg"><Chevrons size={10} stroke={3} /></span></a>
-                <Link href="/work#passinglab"><i /><span className="pill">PassingLab</span><span className="when">Mar 2026 to now</span><span className="gg"><Chevrons size={10} stroke={3} /></span></Link>
+                <a href="#passinglab"><i /><span className="pill">PassingLab</span><span className="when">Mar 2026 to now</span><span className="gg"><Chevrons size={10} stroke={3} /></span></a>
+                <Link href="/work#hakaikol"><i /><span className="pill">HakaiKOL</span><span className="when">2026 to now</span><span className="gg"><Chevrons size={10} stroke={3} /></span></Link>
                 <Link href="/work#hakaitask"><i /><span className="pill">HakaiTask</span><span className="when">Aug 2026</span><span className="gg"><Chevrons size={10} stroke={3} /></span></Link>
                 <Link href="/work#hakaimusic"><i /><span className="pill">HakaiMusic</span><span className="when">2026 to now</span><span className="gg"><Chevrons size={10} stroke={3} /></span></Link>
                 <Link href="/work#kaicash"><i /><span className="pill">KaiCash</span><span className="when">2026</span><span className="gg"><Chevrons size={10} stroke={3} /></span></Link>
@@ -314,7 +320,7 @@ export default function HomePage() {
             </div>
           </section>
 
-          <ProjectDetail />
+          <ProjectDetail project={passinglab} label={`${passinglab.kind}, ${passinglab.when}, featured`} />
         </main>
 
         <Contact />
@@ -323,27 +329,3 @@ export default function HomePage() {
   );
 }
 
-function ProjectDetail() {
-  return (
-    <section className="detail" id="hakaikol" aria-labelledby="hk-title">
-      <div className="shots" data-rv>
-        {hakaikol.shots.slice(0, 3).map((s, i) => (
-          <Image key={s.src} src={s.src} alt={s.alt} width={s.width} height={s.height} sizes={i === 0 ? "(max-width: 1080px) 100vw, 58vw" : "(max-width: 1080px) 50vw, 29vw"} />
-        ))}
-      </div>
-      <div className="info">
-        <span className="pill kick" data-rv>{hakaikol.kind}, {hakaikol.when}</span>
-        <h3 id="hk-title" data-rv>{hakaikol.name}</h3>
-        <p className="what" data-rv>{hakaikol.summary}</p>
-        <ul data-rv>{hakaikol.points.map((p) => <li key={p}>{p}</li>)}</ul>
-        <dl data-rv>
-          <dt>My part</dt><dd>{hakaikol.role}</dd>
-          <dt>Built with</dt><dd>{hakaikol.stack.join(", ")}</dd>
-        </dl>
-        <a className="pill red" href={hakaikol.url} target="_blank" rel="noopener" style={{ alignSelf: "flex-start" }} data-rv>
-          Visit {hakaikol.name} <ArrowUpRight />
-        </a>
-      </div>
-    </section>
-  );
-}

@@ -16,6 +16,10 @@ export const profile = {
   timezone: "Asia/Jakarta",
   email: "276kai@gmail.com",
   linkedin: "https://www.linkedin.com/in/zaidanikram/",
+  github: "https://github.com/k41ts",
+  instagram: "https://www.instagram.com/kai6v/",
+  /** CV yang bisa diunduh. Ganti file di public/cv kalau CV-nya diperbarui. */
+  cv: "/cv/ZaidanIkram_CV.pdf",
   nextOpening: "Q4 2026",
   photo: { src: "/zaidan.jpg", alt: "Zaidan at a cafe table with a wall of Japanese posters behind him" },
 };
@@ -211,7 +215,7 @@ export const aegisescrow: Project = {
 };
 
 /** Semua proyek, urutan tampil di halaman Work. */
-export const projects = [hakaikol, passinglab, hakaitask, hakaimusic, kaicash, collatera, aegisescrow];
+export const projects = [passinglab, hakaikol, hakaitask, hakaimusic, kaicash, collatera, aegisescrow];
 
 /** Riwayat kerja dan pendidikan, dari CV. */
 export const experience = [
