@@ -86,13 +86,11 @@ export default function WorkPage() {
             </ol>
           </section>
 
-          <ProjectDetail project={hakaikol} label={`${hakaikol.kind}, ${hakaikol.when}, featured`} />
-
           <section className="pl" id="passinglab" aria-labelledby="pl-title">
             <span className="wm kj" aria-hidden="true">試験</span>
             <div className="pl-head">
               <div>
-                <span className="sec-tag" data-rv><span className="kj" lang="ja">試験</span>{passinglab.kind}, {passinglab.when}</span>
+                <span className="sec-tag" data-rv><span className="kj" lang="ja">試験</span>{passinglab.kind}, {passinglab.when}, featured</span>
                 <h2 id="pl-title" data-rv>{passinglab.name}</h2>
                 <p className="what" data-rv>{passinglab.summary}</p>
               </div>
@@ -124,6 +122,10 @@ export default function WorkPage() {
               </div>
             </div>
           </section>
+
+          <ProjectDetail project={hakaikol} label={`${hakaikol.kind}, ${hakaikol.when}`} />
+
+
 
           <section className="ht" id="hakaitask" aria-labelledby="ht-title">
             <div className="ht-chat" data-rv aria-label="An example conversation with HakaiTask">

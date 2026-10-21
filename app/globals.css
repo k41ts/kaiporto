@@ -675,3 +675,17 @@ dialog.lb::backdrop { background: rgba(11, 11, 13, .82); }
 .th-kj { display: grid; place-items: center; width: 100%; height: 100%; background: var(--black); color: var(--red); font-size: 24px; }
 
 @media (max-width: 1080px) { .wtop .p-top nav a:not(.keep) { display: none; } }
+
+/* ===================== contact list + CV ===================== */
+.reach-list { list-style: none; margin: 24px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; max-width: 620px; }
+.reach-list a, .reach-list .static { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 14px; background: rgba(255, 255, 255, .92); color: var(--black); text-decoration: none; transition: background-color 200ms ease, transform 160ms var(--ease-out); }
+.reach-list a:active { transform: scale(.98); }
+@media (hover: hover) and (pointer: fine) { .reach-list a:hover { background: var(--black); color: #fff; } }
+.reach-list :is(a, .static) > span:last-child { display: grid; font-size: 14px; line-height: 1.3; min-width: 0; overflow-wrap: anywhere; }
+.reach-list b { font-weight: 600; font-size: 12.5px; color: inherit; opacity: .65; }
+.reach-list svg { flex: none; }
+.reach-list .pin { width: 17px; height: 17px; flex: none; border-radius: 50% 50% 50% 0; rotate: -45deg; box-shadow: inset 0 0 0 2px currentColor; }
+.copyline .pill svg { margin-left: 2px; }
+@media (max-width: 600px) { .ibtn.soc { display: none; } }
+@media (max-width: 420px) { .reach-list { grid-template-columns: 1fr; } }
+.detail .kick { white-space: normal; height: auto; min-height: 30px; padding-block: 6px; line-height: 1.3; max-width: 100%; }

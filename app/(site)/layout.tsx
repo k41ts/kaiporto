@@ -69,7 +69,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         description: profile.headline,
         address: { "@type": "PostalAddress", addressLocality: "Jakarta", addressCountry: "ID" },
         knowsAbout: loadout.flatMap((m) => m.tools.map(([tool]) => tool)),
-        sameAs: [profile.linkedin, hakaikol.url],
+        sameAs: [profile.linkedin, profile.github, profile.instagram, hakaikol.url],
       },
       {
         "@type": "WebSite",
