@@ -634,18 +634,10 @@ dialog.lb::backdrop { background: rgba(11, 11, 13, .82); }
 /* ===================== HakaiTask ===================== */
 .ht { position: relative; margin-top: 14px; background: var(--white); border-radius: var(--r-xl); padding: clamp(18px, 2.6vw, 40px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(20px, 3vw, 48px); align-items: center; }
 .ht > * { min-width: 0; }
-.ht-chat { background: #f4f4f1; border-radius: 22px; padding: 18px; display: grid; gap: 14px; box-shadow: inset 0 0 0 1px #e7e7e2; font-size: 15px; }
-.ht-bar { display: flex; align-items: center; gap: 10px; font-weight: 600; }
-.ht-bar small { margin-left: auto; font-weight: 400; color: var(--soft); font-size: 12.5px; }
+.ht-shots { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.ht-shots img { width: 100%; height: auto; border-radius: 16px; box-shadow: 0 0 0 1px #e7e7e2; background: #f4f4f1; }
+.ht-shots img:first-child { grid-column: 1 / -1; }
 .dotlive { width: 8px; height: 8px; border-radius: 50%; background: #1fbf6b; box-shadow: 0 0 0 4px rgba(31, 191, 107, .2); }
-.ht-hello { color: var(--soft); }
-.ht-chat ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
-.ht-chat li { max-width: 86%; padding: 10px 14px; border-radius: 16px; line-height: 1.4; }
-.ht-chat li.me { justify-self: end; background: var(--black); color: #fff; border-bottom-right-radius: 6px; }
-.ht-chat li.me code { font-family: inherit; }
-.ht-chat li.app { justify-self: start; background: #fff; border-bottom-left-radius: 6px; box-shadow: 0 0 0 1px #e7e7e2; }
-.ht-input { display: flex; justify-content: space-between; align-items: center; background: #fff; border-radius: 999px; padding: 8px 8px 8px 18px; color: #8a8a93; box-shadow: 0 0 0 1px #e7e7e2; }
-.ht-input b { background: var(--black); color: #fff; font-weight: 500; font-size: 13px; padding: 6px 12px; border-radius: 999px; }
 .ht h2 { margin-top: 12px; font: 700 clamp(44px, 6vw, 100px)/.9 var(--f-display); text-transform: uppercase; color: var(--navy); letter-spacing: -.02em; }
 .ht .info { display: flex; flex-direction: column; gap: 16px; }
 .ht .what { font-size: clamp(18px, 1.6vw, 21px); line-height: 1.45; max-width: 40ch; }
@@ -653,12 +645,6 @@ dialog.lb::backdrop { background: rgba(11, 11, 13, .82); }
 .ht dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 10px 20px; font-size: 15px; }
 .ht dt { color: var(--soft); }
 .ht dd { margin: 0; }
-@media (prefers-reduced-motion: no-preference) {
-  .ht-chat.in li { animation: bubble 500ms var(--ease-out) both; }
-  .ht-chat.in li:nth-child(2) { animation-delay: 120ms; } .ht-chat.in li:nth-child(3) { animation-delay: 240ms; } .ht-chat.in li:nth-child(4) { animation-delay: 360ms; }
-  .ht-chat.in li:nth-child(5) { animation-delay: 480ms; } .ht-chat.in li:nth-child(6) { animation-delay: 600ms; } .ht-chat.in li:nth-child(7) { animation-delay: 720ms; } .ht-chat.in li:nth-child(8) { animation-delay: 840ms; }
-  @keyframes bubble { from { opacity: 0; transform: translateY(10px) scale(.98); } }
-}
 @media (max-width: 900px) { .ht { grid-template-columns: 1fr; } }
 
 /* ===================== team projects (work) ===================== */

@@ -21,6 +21,8 @@ export const profile = {
   /** CV yang bisa diunduh. Ganti file di public/cv kalau CV-nya diperbarui. */
   cv: "/cv/ZaidanIkram_CV.pdf",
   nextOpening: "Q4 2026",
+  /** Jenis kerja yang dicari, bukan magang. */
+  openTo: "Part-time & full-time roles from 2027",
   photo: { src: "/zaidan.jpg", alt: "Zaidan at a cafe table with a wall of Japanese posters behind him" },
 };
 
@@ -153,20 +155,12 @@ export const hakaitask: Project = {
   team: "Built by a team of two",
   stack: ["React", "Vite", "TypeScript", "Zustand", "Supabase", "Tailwind v4", "Turborepo"],
   url: "https://hakaitask.my.id",
-  shots: [],
+  shots: [
+    { src: "/work/hakaitask/chat.png", alt: "Chat view: asking for this week's agenda, checking a free slot and finishing a task", width: 820, height: 860 },
+    { src: "/work/hakaitask/calendar.png", alt: "Month calendar with dots on days that have tasks", width: 820, height: 620 },
+    { src: "/work/hakaitask/dashboard.png", alt: "Dashboard with the next task and what comes after it", width: 820, height: 520 },
+  ],
 };
-
-/** Percakapan contoh dari HakaiTask, persis seperti di README-nya. */
-export const hakaitaskChat: { from: "me" | "app"; text: string }[] = [
-  { from: "me", text: "jadwalin rapat sama klien rabu jam 3" },
-  { from: "app", text: "Oke — “Rapat sama klien”, Rab 12 Agu 15:00." },
-  { from: "me", text: "rabu jam 4 gw kosong ga?" },
-  { from: "app", text: "Rabu jam 16.00 kamu kosong, gak ada agenda di waktu itu." },
-  { from: "me", text: "selesaiin rapat" },
-  { from: "app", text: "“Rapat sama klien” ditandai selesai." },
-  { from: "me", text: "ok makasih" },
-  { from: "app", text: "Sama-sama." },
-];
 
 export const collatera: Project = {
   slug: "collatera",

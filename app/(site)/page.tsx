@@ -184,7 +184,7 @@ export default function HomePage() {
                 <h3>Status</h3>
                 <dl>
                   <div><dt>Right now</dt><dd className="live">Taking projects</dd></div>
-                  <div><dt>Next opening</dt><dd>{profile.nextOpening}</dd></div>
+                  <div><dt>Open to</dt><dd>{profile.openTo}</dd></div>
                   <div><dt>Jakarta time</dt><dd><Clock suffix=" WIB" /></dd></div>
                   <div><dt>Replies</dt><dd>Within a day</dd></div>
                 </dl>
@@ -196,7 +196,7 @@ export default function HomePage() {
                 <div className="hud" aria-hidden="true"><i /><i /><i /><i /><b><span className="kj">鬼</span>ONI-02 TRACKED</b></div>
                 <div className="tl">
                   <span className="pill">Jakarta, UTC+7</span>
-                  <span className="pill line"><span className="dot" />Available {profile.nextOpening}</span>
+                  <span className="pill line"><span className="dot" />Open to roles, 2027</span>
                 </div>
                 <div className="glass"><small>Full stack</small><p>Every layer of the product, built by one engineer.</p></div>
                 <a className="circle" href="#skills" aria-label="See my tools"><ArrowUpRight size={26} /></a>
@@ -281,7 +281,7 @@ export default function HomePage() {
             <div className="w-mid">
               <IdeaForm />
               <div className="w-hero" data-rv>
-                <Image className="r" src="/img/p-oni-red.jpg" alt="A figure in a red oni mask and white gloves against a dark red wall" width={1333} height={1800} sizes="(max-width: 1080px) 100vw, 40vw" />
+                <Image className="r" src="/img/p-oni-samurai.jpg" alt="A warrior in a red oni mask, white mane and black and gold armour" width={1333} height={1800} sizes="(max-width: 1080px) 100vw, 40vw" />
                 <div className="hud" aria-hidden="true"><i /><i /><i /><i /><b><span className="kj">鬼</span>ONI-03 IDENTIFIED</b></div>
                 <div className="glass">
                   <small>Featured</small>
