@@ -393,19 +393,21 @@ export function mountLeadSim(root, opts) {
       { el: tag("", "Foundation", "API · web · contract · DB"), pos: bodyLabelPos, key: () => cur.form * (1 - cur.stand) },
     ];
 
-    /* camera orbit */
+    /* camera orbit; di HP kamera dikunci supaya scroll halaman nggak pernah tertahan */
     const BASE_EL = .44;
-    let az = .9, el = BASE_EL, dragging = false, touch = false, lx = 0, ly = 0, idle = 0;
-    on(stage, "pointerdown", (e) => { dragging = true; touch = e.pointerType !== "mouse"; lx = e.clientX; ly = e.clientY; stage.setPointerCapture(e.pointerId); });
-    on(stage, "pointermove", (e) => {
-      if (!dragging) return;
-      az -= (e.clientX - lx) * .006;
-      // di layar sentuh gerak vertikal itu scroll halaman, jangan ikut memiringkan kamera
-      if (!touch) el = Math.min(.85, Math.max(.2, el + (e.clientY - ly) * .004));
-      lx = e.clientX; ly = e.clientY; idle = 0; wake();
-    });
-    const end = () => { dragging = false; };
-    on(stage, "pointerup", end); on(stage, "pointercancel", end);
+    const still = matchMedia("(max-width: 760px), (pointer: coarse)").matches;
+    let az = .9, el = BASE_EL, dragging = false, lx = 0, ly = 0, idle = 0;
+    if (!still) {
+      on(stage, "pointerdown", (e) => { dragging = true; lx = e.clientX; ly = e.clientY; stage.setPointerCapture(e.pointerId); });
+      on(stage, "pointermove", (e) => {
+        if (!dragging) return;
+        az -= (e.clientX - lx) * .006;
+        el = Math.min(.85, Math.max(.2, el + (e.clientY - ly) * .004));
+        lx = e.clientX; ly = e.clientY; idle = 0; wake();
+      });
+      const end = () => { dragging = false; };
+      on(stage, "pointerup", end); on(stage, "pointercancel", end);
+    }
 
     let W = 1, Hh = 1;
     const resize = () => {
@@ -433,7 +435,7 @@ export function mountLeadSim(root, opts) {
       for (const key in tg) cur[key] = lerp(cur[key], tg[key], k);
 
       /* camera: up at the hands early, down on the system later */
-      if (!dragging && !reduce && idle > 1.5) az += dt * .05;
+      if (!dragging && !reduce && !still && idle > 1.5) az += dt * .05;
       // setelah dilepas, kemiringan kamera pelan-pelan balik ke sudut awal
       if (!dragging && idle > 2.5) el = lerp(el, BASE_EL, 1 - Math.exp(-dt * 1.5));
       const rad = (W < 560 ? 50 : W < 900 ? 38 : 30) + 3 * (1 - cur.stand);

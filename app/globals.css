@@ -243,7 +243,7 @@ h1, h2, h3 { text-wrap: balance; }
 .sim-ctl button:hover { border-color: var(--line-2); background: rgba(255,255,255,.04); }
 .sim-stage { position: relative; height: clamp(440px, 50vw, 620px); cursor: grab; touch-action: pan-y; user-select: none; }
 .sim-stage:active { cursor: grabbing; }
-#gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.sim-stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .sim-tags { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
 .tag3 { position: absolute; left: 0; top: 0; padding: 6px 10px 7px; border: 1px solid rgba(255,255,255,.16); border-radius: 8px; background: rgba(10,10,12,.72); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); font: 500 11px/1.35 var(--mono); letter-spacing: .02em; color: var(--fg); white-space: nowrap; will-change: transform, opacity; transition: opacity .5s var(--ease); }
 .tag3 small { display: block; color: var(--mute); font-size: 10px; }
@@ -391,6 +391,11 @@ html[data-intro="seen"] .intro { display: none; }
   .idx .n { display: none; }
   .proj dl.meta { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .proj dl.meta dd { margin-bottom: 8px; }
+}
+/* HP / layar sentuh: scene diam, halaman bebas di-scroll */
+@media (max-width: 760px), (pointer: coarse) {
+  .sim-stage { touch-action: auto; cursor: default; user-select: auto; }
+  .hud-br { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
