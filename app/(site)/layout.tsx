@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Loader } from "@/components/site/Loader";
 import { Motion } from "@/components/site/Motion";
-import { SITE_URL, hakaikol, kaicash, loadout, profile } from "@/content/site";
+import { INTRO_KEY, SITE_URL, hakaikol, kaicash, loadout, profile } from "@/content/site";
 import "../globals.css";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist", display: "swap" });
@@ -67,9 +68,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   };
 
   return (
-    <html lang="en" className={`${geist.variable} ${geistMono.variable}`}>
+    // suppressHydrationWarning: skrip intro di bawah mengubah atribut <html> sebelum React hydrate.
+    <html lang="en" className={`${geist.variable} ${geistMono.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Intro cuma sekali per sesi: putuskan sebelum paint supaya nggak berkedip. */}
+        <script dangerouslySetInnerHTML={{ __html: `try{var d=document.documentElement;sessionStorage.getItem("${INTRO_KEY}")?d.dataset.intro="seen":d.classList.add("intro-lock")}catch(e){document.documentElement.dataset.intro="seen"}` }} />
+        <link rel="preload" as="image" href="/img/zaidan-head.webp" />
+      </head>
       {/* Ekstensi browser sering nempelin atribut ke <body> sebelum React hydrate. */}
       <body suppressHydrationWarning>
+        <Loader />
         {children}
         <Motion />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

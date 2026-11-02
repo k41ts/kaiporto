@@ -5,6 +5,9 @@
 
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://zaidanikram.id";
 
+/** Kunci sessionStorage untuk layar intro: sekali per sesi. */
+export const INTRO_KEY = "zi-intro";
+
 export const profile = {
   name: "Zaidan Ikram",
   nickname: "Kai",
