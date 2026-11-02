@@ -298,6 +298,7 @@ h1, h2, h3 { text-wrap: balance; }
 }
 @media (max-width: 560px) {
   .steps { grid-template-columns: minmax(0, 1fr); }
+  .sim-stage { height: 500px; }
   .hud-tl, .hud-br { display: none; }
   .sim-cap { left: 20px; bottom: 40px; max-width: calc(100% - 40px); }
   .sim-cap span { display: none; }

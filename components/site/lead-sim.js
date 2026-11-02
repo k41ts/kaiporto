@@ -394,11 +394,14 @@ export function mountLeadSim(root, opts) {
     ];
 
     /* camera orbit */
-    let az = .9, el = .44, dragging = false, lx = 0, ly = 0, idle = 0;
-    on(stage, "pointerdown", (e) => { dragging = true; lx = e.clientX; ly = e.clientY; stage.setPointerCapture(e.pointerId); });
+    const BASE_EL = .44;
+    let az = .9, el = BASE_EL, dragging = false, touch = false, lx = 0, ly = 0, idle = 0;
+    on(stage, "pointerdown", (e) => { dragging = true; touch = e.pointerType !== "mouse"; lx = e.clientX; ly = e.clientY; stage.setPointerCapture(e.pointerId); });
     on(stage, "pointermove", (e) => {
       if (!dragging) return;
-      az -= (e.clientX - lx) * .006; el = Math.min(1.05, Math.max(.12, el + (e.clientY - ly) * .004));
+      az -= (e.clientX - lx) * .006;
+      // di layar sentuh gerak vertikal itu scroll halaman, jangan ikut memiringkan kamera
+      if (!touch) el = Math.min(.85, Math.max(.2, el + (e.clientY - ly) * .004));
       lx = e.clientX; ly = e.clientY; idle = 0; wake();
     });
     const end = () => { dragging = false; };
@@ -431,7 +434,9 @@ export function mountLeadSim(root, opts) {
 
       /* camera: up at the hands early, down on the system later */
       if (!dragging && !reduce && idle > 1.5) az += dt * .05;
-      const rad = (W < 560 ? 44 : W < 900 ? 36 : 30) + 3 * (1 - cur.stand);
+      // setelah dilepas, kemiringan kamera pelan-pelan balik ke sudut awal
+      if (!dragging && idle > 2.5) el = lerp(el, BASE_EL, 1 - Math.exp(-dt * 1.5));
+      const rad = (W < 560 ? 50 : W < 900 ? 38 : 30) + 3 * (1 - cur.stand);
       const lookY = lerp(9.2, 4.8, cur.stand);
       camera.position.set(Math.cos(az) * Math.cos(el) * rad, Math.sin(el) * rad + lookY - 2.5, Math.sin(az) * Math.cos(el) * rad);
       camera.lookAt(0, lookY, 0);
