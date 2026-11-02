@@ -56,28 +56,6 @@ export function LinkedIn({ size = 17 }: { size?: number }) {
   );
 }
 
-/** Logo Z dengan kursor terminal. */
-export function Mark({ size = 64, color = "#0b0b0d" }: { size?: number; color?: string }) {
-  return (
-    <svg viewBox="0 0 64 64" width={size} height={size} aria-hidden="true">
-      <path d="M8 16 H44 L8 48 H40" fill="none" stroke={color} strokeWidth="8" strokeLinecap="square" />
-      <rect x="48" y="22" width="10" height="26" fill={color} />
-    </svg>
-  );
-}
-
-/** Lencana bintang delapan di kartu nama poster. */
-export function Burst() {
-  return (
-    <svg viewBox="0 0 80 80" aria-hidden="true">
-      <g fill="#0b0b0d">
-        <path d="M36 4h8v20h-8zM36 56h8v20h-8zM4 36h20v8H4zM56 36h20v8H56z" />
-        <path d="M14 8l12 12-6 6L8 14zM66 72L54 60l6-6 12 12zM8 66l12-12 6 6-12 12zM72 14L60 26l-6-6L66 8z" />
-      </g>
-    </svg>
-  );
-}
-
 export function GitHub({ size = 17 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

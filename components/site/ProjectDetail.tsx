@@ -1,35 +1,44 @@
-import Image from "next/image";
 import type { Project } from "@/content/site";
+import { Gallery } from "@/components/site/Gallery";
 import { ArrowUpRight } from "@/components/site/icons";
 
-/**
- * Satu proyek: screenshot di kiri, ringkasan di kanan. Dipakai untuk HakaiKOL
- * dan proyek tim. `dark` membalik panelnya ke hitam, biar dua proyek
- * berurutan nggak kelihatan kembar.
- */
-export function ProjectDetail({ project: p, label, dark = false }: { project: Project; label?: string; dark?: boolean }) {
+const Check = () => (
+  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="m3 8 3.5 3.5L13 5" /></svg>
+);
+
+/** Satu proyek di halaman Work: judul, screenshot, poin, dan perannya. */
+export function ProjectDetail({ project: p, label, stats }: { project: Project; label?: string; stats?: { value: string; label: string }[] }) {
   return (
-    <section className={dark ? "detail dark" : "detail"} id={p.slug} aria-labelledby={`${p.slug}-title`}>
-      <div className="shots" data-rv>
-        {p.shots.slice(0, 3).map((s, i) => (
-          <Image key={s.src} src={s.src} alt={s.alt} width={s.width} height={s.height} sizes={i === 0 ? "(max-width: 1080px) 100vw, 58vw" : "(max-width: 1080px) 50vw, 29vw"} />
-        ))}
-      </div>
-      <div className="info">
-        <span className="pill kick" data-rv>{label ?? `${p.kind}, ${p.when}`}</span>
-        <h3 id={`${p.slug}-title`} data-rv>{p.name}</h3>
-        <p className="what" data-rv>{p.summary}</p>
-        <ul data-rv>{p.points.map((pt) => <li key={pt}>{pt}</li>)}</ul>
-        <dl data-rv>
-          <dt>My part</dt><dd>{p.role}</dd>
-          {p.team && (<><dt>Team</dt><dd>{p.team}</dd></>)}
-          <dt>Built with</dt><dd>{p.stack.join(", ")}</dd>
-        </dl>
-        {p.url && (
-          <a className="pill red" href={p.url} target="_blank" rel="noopener" style={{ alignSelf: "flex-start" }} data-rv>
-            {p.urlLabel ?? `Visit ${p.name}`} <ArrowUpRight />
-          </a>
-        )}
+    <section className="proj" id={p.slug} aria-labelledby={`${p.slug}-title`}>
+      <div className="wrap">
+        <div className="proj-head">
+          <div>
+            <span className="eyebrow">{label ?? `${p.kind} · ${p.when}`}</span>
+            <h2 id={`${p.slug}-title`} data-rv>{p.name}</h2>
+            <p data-rv>{p.summary}</p>
+          </div>
+          {p.url && (
+            <a className="btn" href={p.url} target="_blank" rel="noopener">
+              {p.urlLabel ?? `Visit ${p.name}`} <ArrowUpRight size={14} />
+            </a>
+          )}
+        </div>
+        <div className="proj-body">
+          <Gallery shots={p.shots} name={p.name} />
+          <div className="panel" data-rv>
+            <ul className="checks">{p.points.map((pt) => <li key={pt}><Check />{pt}</li>)}</ul>
+            {stats && (
+              <dl className="grid-stats">
+                {stats.map((s) => <div key={s.label}><dd>{s.value}</dd><dt>{s.label}</dt></div>)}
+              </dl>
+            )}
+            <dl className="meta">
+              <dt>My part</dt><dd>{p.role}</dd>
+              {p.team && (<><dt>Team</dt><dd>{p.team}</dd></>)}
+              <dt>Built with</dt><dd>{p.stack.join(", ")}</dd>
+            </dl>
+          </div>
+        </div>
       </div>
     </section>
   );

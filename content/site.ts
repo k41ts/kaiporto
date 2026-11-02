@@ -8,7 +8,6 @@ export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://zaidanikram
 export const profile = {
   name: "Zaidan Ikram",
   nickname: "Kai",
-  katakana: "ザイダン・イクラム",
   role: "Full-stack engineer",
   headline: "Full-stack engineer and technical partner. I build software from the first plan to production.",
   intro: "Computer Science student at BINUS University, and a long-term technical partner for businesses.",
@@ -22,9 +21,22 @@ export const profile = {
   cv: "/cv/ZaidanIkram_CV.pdf",
   nextOpening: "Q4 2026",
   /** Jenis kerja yang dicari, bukan magang. */
-  openTo: "Part-time & full-time roles from 2027",
-  photo: { src: "/zaidan.jpg", alt: "Zaidan at a cafe table with a wall of Japanese posters behind him" },
+  openTo: "Full-time work for one year, starting 2027",
+  /** Versi pendek untuk chip di foto hero. */
+  openToShort: "Full-time · 1 year · from 2027",
+  /** Potret studio dengan latar yang sudah dihapus, dipakai di hero. */
+  photo: { src: "/img/zaidan-cutout.webp", alt: "Zaidan Ikram in a black blazer and grey shirt", width: 1000, height: 1350 },
+  /** Foto aslinya, untuk JSON-LD dan tempat lain yang butuh latar. */
+  portrait: "/img/zaidan-studio.jpg",
 };
+
+/** Angka singkat di hero. Semuanya bisa dicek dari proyek di bawah. */
+export const heroStats = [
+  { value: "7", label: "Products shipped" },
+  { value: "2022", label: "Building since" },
+  { value: "1,604", label: "Exam questions live" },
+  { value: "<24h", label: "Reply time" },
+];
 
 export type Shot = { src: string; alt: string; width: number; height: number };
 
@@ -213,7 +225,7 @@ export const projects = [passinglab, hakaikol, hakaitask, hakaimusic, kaicash, c
 
 /** Riwayat kerja dan pendidikan, dari CV. */
 export const experience = [
-  { role: "Full Stack Engineer", org: "CreativIn", type: "Contract", when: "Jul 2026 to now", where: "Hybrid, Indonesia",
+  { role: "Full Stack Engineer", org: "CreativIn", type: "Contract", when: "Jul to Sep 2026", where: "Hybrid, Indonesia",
     text: "Client-facing web features end to end, schema to interface, plus architecture and data-model calls." },
   { role: "Full Stack Software Engineer", org: "Self-employed", type: "Freelance", when: "Dec 2022 to now", where: "Remote, Jakarta",
     text: "Laravel web apps and their backend structure, delivered from zero to production as a long-term partner." },
@@ -228,25 +240,58 @@ export const education = [
   { school: "SMK Telekomunikasi Darul Ulum", what: "Software Engineering", when: "2021 to 2024" },
 ];
 
-export const kaicashFeatures = [
-  { kanji: "予算", title: "Budgets and savings goals", text: "Set a monthly limit, watch it fill." },
-  { kanji: "親子", title: "Parent pairing", text: "A pairing code links two phones, synced in real time." },
-  { kanji: "領収書", title: "Receipt on every record", text: "Snap a photo when you add a transaction." },
-];
-
-/** Lapisan produk dan alat yang dipakai di tiap lapisan, beserta di mana dipakainya. */
+/** Lapisan produk dan alat yang dipakai di tiap lapisan, beserta di mana dipakainya. Architecture dapat kartu besar. */
 export const loadout = [
-  { kanji: "表", reading: "omote, the front", title: "Interface", text: "Screens people understand on first use.",
-    tools: [["React", "HakaiKOL, PassingLab"], ["Next.js", "PassingLab, this site"], ["Vite", "HakaiKOL"], ["Tailwind", "HakaiKOL, PassingLab"]] },
-  { kanji: "裏", reading: "ura, the back", title: "Backend", text: "Business rules written so they can change.",
-    tools: [["NestJS", "HakaiKOL"], ["Server Actions", "PassingLab"], ["Prisma, Drizzle", "HakaiKOL, PassingLab"], ["Laravel", "Freelance work"]] },
-  { kanji: "蔵", reading: "kura, the storehouse", title: "Data", text: "Schemas that survive growth, access that stays locked.",
-    tools: [["PostgreSQL", "HakaiKOL, PassingLab"], ["Supabase", "HakaiKOL, PassingLab"], ["Firebase, Firestore", "KaiCash, HakaiMusic"], ["Room", "HakaiMusic"]] },
-  { kanji: "携", reading: "kei, carried with you", title: "Mobile", text: "Android apps that work offline and sync in real time.",
-    tools: [["Kotlin, Jetpack Compose", "HakaiMusic"], ["Media3, ExoPlayer", "HakaiMusic"], ["React Native, Expo", "KaiCash"]] },
-  { kanji: "礎", reading: "ishizue, the foundation", title: "Architecture", text: "The shape of the system, chosen while change is still cheap.",
+  { title: "Architecture", text: "The shape of the system, chosen while change is still cheap.",
     tools: [["System design", "Every product"], ["Auth and row-level security", "HakaiKOL, PassingLab"], ["Payments", "PassingLab"], ["Offline-first sync", "HakaiMusic"]] },
+  { title: "Data", text: "Schemas that survive growth, access that stays locked.",
+    tools: [["PostgreSQL", "HakaiKOL, PassingLab"], ["Supabase", "HakaiKOL, PassingLab"], ["Firebase, Firestore", "KaiCash, HakaiMusic"], ["Room", "HakaiMusic"]] },
+  { title: "Backend", text: "Business rules written so they can change.",
+    tools: [["NestJS", "HakaiKOL"], ["Server Actions", "PassingLab"], ["Prisma, Drizzle", "HakaiKOL, PassingLab"], ["Laravel", "Freelance work"]] },
+  { title: "Interface", text: "Screens people understand on first use.",
+    tools: [["React", "HakaiKOL, PassingLab"], ["Next.js", "PassingLab, this site"], ["Vite", "HakaiKOL"], ["Tailwind", "HakaiKOL, PassingLab"]] },
+  { title: "Mobile", text: "Android apps that work offline and sync in real time.",
+    tools: [["Kotlin, Jetpack Compose", "HakaiMusic"], ["Media3, ExoPlayer", "HakaiMusic"], ["React Native, Expo", "KaiCash"]] },
 ] as const;
 
-export const credits =
-  "Mask images were generated with AI for this site. Oni photos from Pexels and Unsplash. Product screenshots are from my own work.";
+/**
+ * FundChain: peran Tech Lead. Angka diambil dari repo Fundchainbinus/fundchain,
+ * folder planning-nya, dan Jira project BFD (dicek November 2026).
+ */
+export const fundchain = {
+  name: "FundChain",
+  summary: "A BINUS fundraising platform where every paid donation is hashed onto Sepolia. I wrote the plan, built the base, and ran four workstreams on top of it.",
+  repo: "https://github.com/Fundchainbinus/fundchain",
+  url: "https://fundchain-web.vercel.app",
+  steps: [
+    { title: "Spec", caption: "27 planning docs, scattered, with 19 conflicts between them.",
+      text: "Read 27 planning docs and found 19 places where they disagreed: hash format, relayer role, webhook idempotency. Decided each one before any code." },
+    { title: "Foundation", caption: "Every decided doc becomes part of one body: API, web, contract, database.",
+      text: "Built the base myself: NestJS API, React web, a Hardhat contract and Supabase in one monorepo, live on Vercel and Sepolia by day two." },
+    { title: "Plan", caption: "It stands on its own feet and reaches out: five epics, four workstreams.",
+      text: "Opened the five epics in Jira and set the scope for sprints 3 and 4." },
+    { title: "Assign", caption: "15 people take over each limb. The strings come off.",
+      text: "Split 105 issues across a team of 15, in four workstreams that each had an owner." },
+    { title: "Review", caption: "Every pull request flows back into one core, reviewed and merged.",
+      text: "Linked GitHub to Jira, set the BFD-key branch and PR rules, and reviewed and merged the team's pull requests." },
+    { title: "Ship", caption: "It runs without the hands: web and API on Vercel, donations hashed onto Sepolia.",
+      text: "Kept the demo path working end to end: pay, hash, notarize on Sepolia, tamper, freeze. Web and API live on Vercel." },
+  ],
+  /** Issue per epic dan jumlah orang per jalur, dari Jira BFD. */
+  streams: [
+    { name: "Backend", issues: 31, people: 4 },
+    { name: "Blockchain", issues: 23, people: 4 },
+    { name: "Frontend & UI", issues: 17, people: 4 },
+    { name: "QA", issues: 20, people: 1 },
+  ],
+  stats: [
+    { value: "15", label: "People led" },
+    { value: "4", label: "Workstreams" },
+    { value: "6", label: "Sprints" },
+    { value: "105", label: "Jira issues" },
+    { value: "27", label: "Planning docs" },
+    { value: "19", label: "Spec conflicts resolved" },
+  ],
+};
+
+export const credits = "Product screenshots are from my own work. The 3D scene is drawn live with Three.js.";

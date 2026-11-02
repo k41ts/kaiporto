@@ -1,27 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Poppins, Tektur } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import { Motion } from "@/components/site/Motion";
 import { SITE_URL, hakaikol, kaicash, loadout, profile } from "@/content/site";
 import "../globals.css";
 
-const tektur = Tektur({ subsets: ["latin"], axes: ["wdth"], variable: "--font-tektur", display: "swap" });
-const poppins = Poppins({ subsets: ["latin"], weight: ["300", "400", "500", "600"], variable: "--font-poppins", display: "swap" });
-
-/**
- * Dela Gothic One cuma dipakai buat kanji, jadi yang diunduh hanya karakter
- * yang benar-benar muncul (parameter `text` Google Fonts). Huruf baru di
- * konten? Tambahkan di sini, kalau nggak dia jatuh ke font cadangan sistem.
- */
-const KANJI = [
-  "般若鬼侍兜今推し一覧次",
-  "自己紹介技術作品連絡作品一覧",
-  "表裏蔵携礎全層構築開発者設計守攻面心刀電脳",
-  "予算親子領収書試験音話共同経歴学",
-  profile.katakana,
-  "フルスタック",
-  ...loadout.map((m) => m.kanji),
-].join("");
-const kanjiHref = `https://fonts.googleapis.com/css2?family=Dela+Gothic+One&text=${encodeURIComponent([...new Set(KANJI)].join(""))}&display=swap`;
+const geist = Geist({ subsets: ["latin"], variable: "--font-geist", display: "swap" });
+const geistMono = Geist_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-geist-mono", display: "swap" });
 
 const title = `${profile.name} — ${profile.role}`;
 
@@ -32,7 +16,7 @@ export const metadata: Metadata = {
   applicationName: `${profile.name} — Portfolio`,
   authors: [{ name: profile.name, url: SITE_URL }],
   creator: profile.name,
-  keywords: ["full-stack engineer", "technical partner", "Next.js", "TypeScript", "Jakarta", profile.name, hakaikol.name, kaicash.name],
+  keywords: ["full-stack engineer", "technical partner", "tech lead", "Next.js", "TypeScript", "Jakarta", profile.name, hakaikol.name, kaicash.name],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
@@ -50,8 +34,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#e8401c",
-  colorScheme: "light",
+  themeColor: "#09090a",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -64,7 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         name: profile.name,
         alternateName: profile.nickname,
         url: SITE_URL,
-        image: `${SITE_URL}${profile.photo.src}`,
+        image: `${SITE_URL}${profile.portrait}`,
         jobTitle: profile.role,
         description: profile.headline,
         address: { "@type": "PostalAddress", addressLocality: "Jakarta", addressCountry: "ID" },
@@ -83,13 +67,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   };
 
   return (
-    <html lang="en" className={`${tektur.variable} ${poppins.variable}`}>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-        <link rel="stylesheet" href={kanjiHref} />
-      </head>
+    <html lang="en" className={`${geist.variable} ${geistMono.variable}`}>
       {/* Ekstensi browser sering nempelin atribut ke <body> sebelum React hydrate. */}
       <body suppressHydrationWarning>
         {children}

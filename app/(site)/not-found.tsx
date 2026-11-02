@@ -1,15 +1,19 @@
 import Link from "next/link";
+import { Nav } from "@/components/site/Nav";
 
 export default function NotFound() {
   return (
-    <main className="lost">
-      <span className="kj" aria-hidden="true">鬼</span>
-      <h1>Target lost</h1>
-      <p>This page does not exist. The address may have a typo, or the page has moved.</p>
-      <div className="acts">
-        <Link className="pill black" href="/">Back to home</Link>
-        <Link className="pill" href="/work">See all work</Link>
-      </div>
-    </main>
+    <>
+      <Nav page="work" />
+      <main className="wrap lost">
+        <span className="code" aria-hidden="true">404</span>
+        <h1>This page does not exist</h1>
+        <p>The address may have a typo, or the page has moved.</p>
+        <div className="acts">
+          <Link className="btn primary" href="/">Back to home</Link>
+          <Link className="btn" href="/work">See all work</Link>
+        </div>
+      </main>
+    </>
   );
 }
