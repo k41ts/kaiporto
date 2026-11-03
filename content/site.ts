@@ -35,7 +35,7 @@ export const profile = {
 
 /** Angka singkat di hero. Semuanya bisa dicek dari proyek di bawah. */
 export const heroStats = [
-  { value: "7", label: "Products shipped" },
+  { value: "9", label: "Products shipped" },
   { value: "2022", label: "Building since" },
   { value: "1,604", label: "Exam questions live" },
   { value: "<24h", label: "Reply time" },
@@ -154,6 +154,53 @@ export const hakaimusic: Project = {
   ],
 };
 
+export const shiki: Project = {
+  slug: "shiki",
+  name: "Shiki",
+  kind: "Windows desktop app",
+  when: "Oct 2026",
+  summary: "A voice assistant for Windows. Hold a key, say it in everyday Indonesian, and it types, opens apps, plays music, or sends a file on WhatsApp.",
+  points: [
+    "Hold Ctrl+Win and talk: messy speech comes back as clean text, pasted where the cursor is",
+    "Commands and routines like “tiap pagi jam 9 buka Unity dan Spotify”",
+    "Finds a file and sends it on WhatsApp Web, and asks once before it sends",
+    "An island at the top of the screen for chat, media, to-dos, stats, and apps",
+  ],
+  role: "Sole designer and developer",
+  stack: ["Rust", "Tauri 2", "Gemini API", "Win32 API", "WebView2", "HTML", "CSS"],
+  url: "https://github.com/k41ts/shiki",
+  urlLabel: "View source",
+  shots: [
+    { src: "/work/shiki/chat.jpg", alt: "Shiki's island open on the Chat tab, setting a morning routine and playing a song on YouTube", width: 1440, height: 900 },
+    { src: "/work/shiki/controls.jpg", alt: "Controls tab with Wi-Fi, Bluetooth, volume, and the song that is playing", width: 1440, height: 900 },
+    { src: "/work/shiki/today.jpg", alt: "Today tab with the clock, this week, the next routine, a focus timer, and to-dos", width: 1440, height: 900 },
+    { src: "/work/shiki/loadout.jpg", alt: "Loadout window where the mask, personality, voice, and abilities are chosen", width: 1440, height: 900 },
+  ],
+};
+
+export const pokerizz: Project = {
+  slug: "pokerizz",
+  name: "Pokerizz",
+  kind: "Multiplayer web game",
+  when: "Oct 2026",
+  summary: "Kartu Duel, a poker duel for two: play a combo, and the gap between the scores becomes damage. Online with friends, ranked, or against a bot.",
+  points: [
+    "Online rooms on Supabase Realtime: the host runs the game, so a guest never receives the other hand",
+    "Ranked matchmaking falls back to a bot at your rank; the top bots simulate draws instead of peeking at the deck",
+    "A seeded match effect and a Joker every three rounds change the scoring each game",
+    "The game is a pure reducer covered by 50 unit tests, and every sound is synthesised with Web Audio",
+  ],
+  role: "Sole designer and developer",
+  stack: ["Next.js 16", "React 19", "TypeScript", "Supabase Realtime", "Supabase Auth", "Motion", "Tailwind v4", "Vitest"],
+  url: "https://pokerizz.vercel.app",
+  shots: [
+    { src: "/work/pokerizz/hand.jpg", alt: "A practice match against a bot, with a pair of queens picked from the hand", width: 740, height: 1601 },
+    { src: "/work/pokerizz/reveal.jpg", alt: "The reveal: the bot's straight beats the pair and takes 45 HP", width: 740, height: 1601 },
+    { src: "/work/pokerizz/joker.jpg", alt: "Picking a Joker after round three: Vampire, Shield, or Loyal Pair", width: 740, height: 1601 },
+    { src: "/work/pokerizz/menu.jpg", alt: "Main menu with ranked matches, private rooms, practice, and the tutorial", width: 740, height: 1601 },
+  ],
+};
+
 export const hakaitask: Project = {
   slug: "hakaitask",
   name: "HakaiTask",
@@ -224,7 +271,7 @@ export const aegisescrow: Project = {
 };
 
 /** Semua proyek, urutan tampil di halaman Work. */
-export const projects = [passinglab, hakaikol, hakaitask, hakaimusic, kaicash, collatera, aegisescrow];
+export const projects = [passinglab, hakaikol, hakaitask, shiki, pokerizz, hakaimusic, kaicash, collatera, aegisescrow];
 
 /** Riwayat kerja dan pendidikan, dari CV. */
 export const experience = [
@@ -248,13 +295,13 @@ export const loadout = [
   { title: "Architecture", text: "The shape of the system, chosen while change is still cheap.",
     tools: [["System design", "Every product"], ["Auth and row-level security", "HakaiKOL, PassingLab"], ["Payments", "PassingLab"], ["Offline-first sync", "HakaiMusic"]] },
   { title: "Data", text: "Schemas that survive growth, access that stays locked.",
-    tools: [["PostgreSQL", "HakaiKOL, PassingLab"], ["Supabase", "HakaiKOL, PassingLab"], ["Firebase, Firestore", "KaiCash, HakaiMusic"], ["Room", "HakaiMusic"]] },
+    tools: [["PostgreSQL", "HakaiKOL, PassingLab"], ["Supabase", "HakaiKOL, PassingLab, Pokerizz"], ["Firebase, Firestore", "KaiCash, HakaiMusic"], ["Room", "HakaiMusic"]] },
   { title: "Backend", text: "Business rules written so they can change.",
     tools: [["NestJS", "HakaiKOL"], ["Server Actions", "PassingLab"], ["Prisma, Drizzle", "HakaiKOL, PassingLab"], ["Laravel", "Freelance work"]] },
   { title: "Interface", text: "Screens people understand on first use.",
     tools: [["React", "HakaiKOL, PassingLab"], ["Next.js", "PassingLab, this site"], ["Vite", "HakaiKOL"], ["Tailwind", "HakaiKOL, PassingLab"]] },
-  { title: "Mobile", text: "Android apps that work offline and sync in real time.",
-    tools: [["Kotlin, Jetpack Compose", "HakaiMusic"], ["Media3, ExoPlayer", "HakaiMusic"], ["React Native, Expo", "KaiCash"]] },
+  { title: "Mobile and desktop", text: "Android apps that work offline, and a Windows app that lives in the tray.",
+    tools: [["Kotlin, Jetpack Compose", "HakaiMusic"], ["Media3, ExoPlayer", "HakaiMusic"], ["React Native, Expo", "KaiCash"], ["Rust, Tauri", "Shiki"]] },
 ] as const;
 
 /**

@@ -155,16 +155,16 @@
 %-----------SUMMARY--------------------------
 \section{Full Stack Engineer}
 \small{
-  Full stack engineer and technical partner, building since 2022, and a \textbf{Computer Science student at BINUS University}. I take products \textbf{from the first plan to production} --- architecture, data model, backend, web and Android, and the decisions in between --- with \textbf{7 products shipped}. As \textbf{tech lead on FundChain} I turned 27 conflicting planning docs into one spec and led a \textbf{team of 15 across four workstreams}. Primary stack: \textbf{TypeScript, React, Next.js, NestJS, and PostgreSQL}. Open to \textbf{full time work for one year, starting 2027}.
+  Full stack engineer and technical partner, building since 2022, and a \textbf{Computer Science student at BINUS University}. I take products \textbf{from the first plan to production} --- architecture, data model, backend, web and Android, and the decisions in between --- with \textbf{9 products shipped}. As \textbf{tech lead on FundChain} I turned 27 conflicting planning docs into one spec and led a \textbf{team of 15 across four workstreams}. Primary stack: \textbf{TypeScript, React, Next.js, NestJS, and PostgreSQL}. Open to \textbf{full time work for one year, starting 2027}.
 }
 %--------------------------------------------
 
 %--------------SKILLS------------------------
 \section{Technical Skills}
   \resumeHeadingListStart{}
-    \resumeSectionType{Languages}{:}{TypeScript, JavaScript, Kotlin, Solidity, PHP, SQL, HTML, CSS}
+    \resumeSectionType{Languages}{:}{TypeScript, JavaScript, Kotlin, Rust, Solidity, PHP, SQL, HTML, CSS}
     \resumeSectionType{Frontend}{:}{React, Next.js, Vite, Tailwind CSS, Zustand, Three.js}
-    \resumeSectionType{Mobile}{:}{Kotlin, Jetpack Compose, Media3, ExoPlayer, React Native (Expo)}
+    \resumeSectionType{Mobile, Desktop}{:}{Kotlin, Jetpack Compose, Media3, ExoPlayer, React Native (Expo), Tauri 2, Win32 API}
     \resumeSectionType{Backend}{:}{Node.js, NestJS, Laravel, Server Actions, Prisma, Drizzle ORM, REST APIs}
     \resumeSectionType{Databases}{:}{PostgreSQL, Supabase, Firebase, Firestore, Room}
     \resumeSectionType{Blockchain}{:}{Solidity, Hardhat, OpenZeppelin, ethers v6, EIP-712, IPFS, Ethereum Sepolia}
@@ -258,6 +258,26 @@
         \resumeItem{\textbf{Full stack engineer in a team of two} on a task manager you talk to in Indonesian: a readable dictionary turns one sentence like \textit{``lusa jam 3an''} into a dated task, and it \textbf{asks instead of guessing} when a sentence is unclear}
         \resumeItem{\textbf{Offline first}: every write lands on the device first, and conflicts merge per field}
         \resumeItem{Kept the chat engine in \textbf{pure TypeScript with no React or network}, tested on its own, plus a personal dictionary that remembers words a user teaches it once}
+      \resumeItemListEnd{}
+
+    % Judul Shiki sempat nyangkut sendirian di bawah halaman 2.
+    \newpage
+    \resumeQuadHeading{Shiki --- voice assistant for Windows}{Oct 2026}
+    {Rust, Tauri 2, Gemini API, Win32 API, WebView2}
+    {\href{https://github.com/k41ts/shiki}{\uline{Source}}}
+      \resumeItemListStart{}
+        \resumeItem{\textbf{Sole designer and developer} of a tray app you talk to in everyday Indonesian: hold \textbf{Ctrl+Win} and messy speech comes back as clean text pasted where the cursor is, or hold Ctrl+Shift to open apps, play music, and set routines like \textit{``tiap pagi jam 9 buka Unity dan Spotify''}}
+        \resumeItem{Finds a file on disk and \textbf{sends it on WhatsApp Web}, matching the contact name with fuzzy search, and \textbf{asks once before it sends}}
+        \resumeItem{A notch style island for chat, media, to-dos, system stats, clipboard, and apps; the \textbf{Rust core idles at about 8 MB of RAM}}
+      \resumeItemListEnd{}
+
+    \resumeQuadHeading{Pokerizz --- multiplayer poker duel}{Oct 2026}
+    {Next.js 16, React 19, TypeScript, Supabase Realtime, Supabase Auth, Vitest}
+    {\href{https://pokerizz.vercel.app}{\uline{pokerizz.vercel.app}}}
+      \resumeItemListStart{}
+        \resumeItem{\textbf{Sole designer and developer} of a two player card game where the gap between poker scores becomes damage, playable online with friends, ranked, or against a bot}
+        \resumeItem{Online rooms on \textbf{Supabase Realtime} where the host runs the game, so a guest \textbf{never receives the other hand}; ranked matchmaking falls back to a bot at the player's rank, and the top bots simulate draws instead of peeking at the deck}
+        \resumeItem{Game logic as a \textbf{pure reducer covered by 50 unit tests}, with a seeded match effect and Jokers that change the scoring every game}
       \resumeItemListEnd{}
 
     \resumeQuadHeading{HakaiMusic --- native Android music client}{2026 -- Present}
