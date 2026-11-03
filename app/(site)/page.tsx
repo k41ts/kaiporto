@@ -68,7 +68,6 @@ export default function HomePage() {
           <div className="wrap">
             <span className="mono">Shipped</span>
             {projects.map((p) => <Link key={p.slug} href={`/work#${p.slug}`}>{p.name}</Link>)}
-            <a href={fundchain.url} target="_blank" rel="noopener">{fundchain.name}</a>
           </div>
         </nav>
 

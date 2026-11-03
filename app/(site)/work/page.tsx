@@ -55,7 +55,7 @@ export default function WorkPage() {
         ))}
 
         <div className="wrap">
-          <div className="next" id="fundchain">
+          <div className="next" id="fundchain-lead">
             <div>
               <span className="eyebrow">Leadership</span>
               <h2>{fundchain.name}, as Tech Lead</h2>

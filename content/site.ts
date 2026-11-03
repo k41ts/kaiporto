@@ -35,7 +35,7 @@ export const profile = {
 
 /** Angka singkat di hero. Semuanya bisa dicek dari proyek di bawah. */
 export const heroStats = [
-  { value: "9", label: "Products shipped" },
+  { value: "10", label: "Products shipped" },
   { value: "2022", label: "Building since" },
   { value: "1,604", label: "Exam questions live" },
   { value: "<24h", label: "Reply time" },
@@ -72,7 +72,7 @@ export const hakaikol: Project = {
     "A printable performance report for every campaign",
     "The browser never reads a data table directly",
   ],
-  role: "Full-stack engineer and technical partner",
+  role: "Sole developer and technical partner",
   stack: ["React", "Vite", "NestJS", "Prisma", "PostgreSQL", "Supabase", "Tailwind"],
   url: "https://hakaikol.vercel.app",
   shots: [
@@ -106,14 +106,15 @@ export const passinglab: Project = {
   name: "PassingLab",
   kind: "Paid tryout platform",
   when: "Mar 2026 to now",
-  summary: "A paid UTBK tryout platform. I rewrote the live Laravel app onto Next.js, alone, without losing a single answer.",
+  summary: "A paid UTBK tryout platform. We rewrote the live Laravel app onto Next.js without losing a single answer.",
   points: [
     "Autosave that keeps working while the tab is hidden, and a timer the server owns",
     "Closed an account takeover path left in the old app",
-    "QRIS payments that are safe to repeat, verified against my own stored amount",
+    "QRIS payments that are safe to repeat, verified against the amount we stored",
     "Scoring, pricing, and shuffling in pure modules covered by unit tests",
   ],
-  role: "Sole full-stack engineer",
+  role: "Full-stack engineer",
+  team: "Built by a team of two",
   stack: ["Next.js 16", "React 19", "TypeScript", "Supabase Postgres", "Drizzle ORM", "Tailwind v4"],
   url: "https://passinglab.id",
   shots: [
@@ -270,8 +271,32 @@ export const aegisescrow: Project = {
   ],
 };
 
+export const fundchainProject: Project = {
+  slug: "fundchain",
+  name: "FundChain",
+  kind: "Fundraising platform",
+  when: "2026",
+  summary: "A BINUS student fundraising platform where every paid donation is hashed and notarised on Sepolia, so anyone can check that a record was not changed.",
+  points: [
+    "Each paid donation becomes a Keccak-256 hash, written on-chain by a relayer",
+    "A proof page per donation recomputes the hash in the browser and compares it with the chain",
+    "A record changed in the database after the fact is caught and the campaign is frozen",
+    "I led the team as Tech Lead: the spec, the foundation, the sprints, and the code review",
+  ],
+  role: "Tech Lead and full-stack engineer",
+  team: "BINUS team of 15, in four workstreams",
+  stack: ["NestJS", "React", "Vite", "Supabase", "Prisma", "Solidity", "Hardhat", "Ethereum Sepolia", "Vercel"],
+  url: "https://fundchain-web.vercel.app",
+  shots: [
+    { src: "/work/fundchain/proof.jpg", alt: "Donation proof page: canonical payload, stored hash, transaction hash, and the on-chain hash on Sepolia", width: 1440, height: 900 },
+    { src: "/work/fundchain/donations.jpg", alt: "Campaign donations, each confirmed on-chain and verified against its hash", width: 1440, height: 900 },
+    { src: "/work/fundchain/home.jpg", alt: "FundChain home inside BINUSMaya with funds raised, public campaigns, and donation integrity", width: 1440, height: 900 },
+    { src: "/work/fundchain/campaign.jpg", alt: "A campaign page with its proposal, progress toward the target, and verified donations", width: 1440, height: 900 },
+  ],
+};
+
 /** Semua proyek, urutan tampil di halaman Work. */
-export const projects = [passinglab, hakaikol, hakaitask, shiki, pokerizz, hakaimusic, kaicash, collatera, aegisescrow];
+export const projects = [passinglab, fundchainProject, hakaikol, hakaitask, shiki, pokerizz, hakaimusic, kaicash, collatera, aegisescrow];
 
 /** Riwayat kerja dan pendidikan, dari CV. */
 export const experience = [

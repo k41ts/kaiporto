@@ -155,7 +155,7 @@
 %-----------SUMMARY--------------------------
 \section{Full Stack Engineer}
 \small{
-  Full stack engineer and technical partner, building since 2022, and a \textbf{Computer Science student at BINUS University}. I take products \textbf{from the first plan to production} --- architecture, data model, backend, web and Android, and the decisions in between --- with \textbf{9 products shipped}. As \textbf{tech lead on FundChain} I turned 27 conflicting planning docs into one spec and led a \textbf{team of 15 across four workstreams}. Primary stack: \textbf{TypeScript, React, Next.js, NestJS, and PostgreSQL}. Open to \textbf{full time work for one year, starting 2027}.
+  Full stack engineer and technical partner, building since 2022, and a \textbf{Computer Science student at BINUS University}. I take products \textbf{from the first plan to production} --- architecture, data model, backend, web and Android, and the decisions in between --- with \textbf{10 products shipped}. As \textbf{tech lead on FundChain} I turned 27 conflicting planning docs into one spec and led a \textbf{team of 15 across four workstreams}. Primary stack: \textbf{TypeScript, React, Next.js, NestJS, and PostgreSQL}. Open to \textbf{full time work for one year, starting 2027}.
 }
 %--------------------------------------------
 
@@ -235,10 +235,10 @@
     {Next.js 16, React 19, TypeScript, Supabase Postgres, Drizzle ORM, Tailwind v4}
     {\href{https://passinglab.id}{\uline{passinglab.id}}}
       \resumeItemListStart{}
-        \resumeItem{\textbf{Sole full stack engineer} on a full rewrite of a live Laravel and Blade product onto \textbf{Next.js 16 App Router, React 19 Server Actions, and Drizzle}, migrating the old MySQL data with a script that runs dry under \texttt{--check} first; now \textbf{24 tables, 177 TypeScript files, and roughly 24,000 lines} serving 1,604 questions across 7 UTBK subtests}
+        \resumeItem{\textbf{Full stack engineer in a team of two} on a full rewrite of a live Laravel and Blade product onto \textbf{Next.js 16 App Router, React 19 Server Actions, and Drizzle}, migrating the old MySQL data with a script that runs dry under \texttt{--check} first; now \textbf{24 tables, 177 TypeScript files, and roughly 24,000 lines} serving 1,604 questions across 7 UTBK subtests}
         \resumeItem{Built the exam engine so \textbf{an answer cannot be lost}: idempotent autosave upserts that keep working while the tab is hidden, a \textbf{server computed timer} that never trusts the browser clock, and deterministic seed based shuffling so a reload restores the exact same question order}
         \resumeItem{Closed an \textbf{account takeover path} inherited from the old app --- OTPs are now scoped by purpose, single use, constant time compared, and capped at five attempts; added bcrypt at 12 rounds, \textbf{database backed rate limiting} that holds across instances, and moved an admin role check copied into some 40 controller methods (one of them missing it) onto the admin layout}
-        \resumeItem{Made \textbf{QRIS payments} safe to repeat: the public webhook is treated only as a nudge to re verify with the provider against my own stored amount, entitlements are granted by one function shared with the admin button, and invoice PDF, email, and Telegram all run after the response so an approval never waits on a mail server}
+        \resumeItem{Made \textbf{QRIS payments} safe to repeat: the public webhook is treated only as a nudge to re verify with the provider against the amount we stored, entitlements are granted by one function shared with the admin button, and invoice PDF, email, and Telegram all run after the response so an approval never waits on a mail server}
         \resumeItem{Kept scoring, pricing, and shuffling in \textbf{pure modules with no database imports}, covered by unit tests on exactly the paths where a mistake costs the most}
       \resumeItemListEnd{}
 
@@ -246,7 +246,7 @@
     {React, Vite, NestJS, Prisma, PostgreSQL, Supabase, Tailwind}
     {\href{https://hakaikol.vercel.app}{\uline{hakaikol.vercel.app}}}
       \resumeItemListStart{}
-        \resumeItem{\textbf{Full stack engineer and technical partner} on a two sided KOL marketplace where brands pick creators by numbers they can check, running a campaign end to end in one record: creator discovery, brief, content drafts, proof of posting, invoice, and a printable performance report}
+        \resumeItem{\textbf{Sole developer and technical partner} on a two sided KOL marketplace where brands pick creators by numbers they can check, running a campaign end to end in one record: creator discovery, brief, content drafts, proof of posting, invoice, and a printable performance report}
         \resumeItem{Creators connect Instagram and TikTok through \textbf{OAuth}, so follower counts and engagement rates come straight from the platforms instead of self reported rate cards}
         \resumeItem{Hardened the data layer: the public Supabase key shipped in every browser bundle holds \textbf{only auth and storage rights and zero table access}, with all data going through NestJS as a BYPASSRLS role and \textbf{RLS still enabled on every table} as a second layer}
       \resumeItemListEnd{}
