@@ -12,8 +12,8 @@ export const profile = {
   name: "Zaidan Ikram",
   nickname: "Kai",
   role: "Full-stack engineer",
-  headline: "Full-stack engineer and technical partner. I build software from the first plan to production.",
-  intro: "Computer Science student at BINUS University, and a long-term technical partner for businesses.",
+  headline: "Full-stack engineer and CS student at BINUS University, available full-time for 12 months in 2027 through the BINUS Enrichment Program.",
+  intro: "Computer Science student at BINUS University, with paid client and contract work since 2022.",
   location: "Jakarta, Indonesia",
   timezone: "Asia/Jakarta",
   email: "276kai@gmail.com",
@@ -22,11 +22,10 @@ export const profile = {
   instagram: "https://www.instagram.com/kai6v/",
   /** CV yang bisa diunduh. Ganti file di public/cv kalau CV-nya diperbarui. */
   cv: "/cv/ZaidanIkram_CV.pdf",
-  nextOpening: "Q4 2026",
-  /** Jenis kerja yang dicari, bukan magang. */
-  openTo: "Full-time work for one year, starting 2027",
+  /** Jenis kerja yang dicari: satu tahun penuh lewat BINUS Enrichment Program. */
+  openTo: "Full-time for 12 months in 2027 · BINUS Enrichment Program",
   /** Versi pendek untuk chip di foto hero. */
-  openToShort: "Full-time · 1 year · from 2027",
+  openToShort: "Full-time · 12 months · 2027",
   /** Potret studio dengan latar yang sudah dihapus, dipakai di hero. */
   photo: { src: "/img/zaidan-cutout.webp", alt: "Zaidan Ikram in a black blazer and grey shirt", width: 1000, height: 1350 },
   /** Foto aslinya, untuk JSON-LD dan tempat lain yang butuh latar. */
@@ -35,10 +34,10 @@ export const profile = {
 
 /** Angka singkat di hero. Semuanya bisa dicek dari proyek di bawah. */
 export const heroStats = [
-  { value: "10", label: "Products shipped" },
-  { value: "2022", label: "Building since" },
-  { value: "1,604", label: "Exam questions live" },
-  { value: "<24h", label: "Reply time" },
+  { value: "10", label: "Products built" },
+  { value: "15", label: "People led as Tech Lead" },
+  { value: "12 mo", label: "Full-time in 2027" },
+  { value: "2022", label: "Paid work since" },
 ];
 
 export type Shot = { src: string; alt: string; width: number; height: number };
@@ -63,16 +62,16 @@ export type Project = {
 export const hakaikol: Project = {
   slug: "hakaikol",
   name: "HakaiKOL",
-  kind: "Web platform",
+  kind: "Personal project",
   when: "2026 to now",
-  summary: "An influencer marketplace where brands pick creators by numbers they can check.",
+  summary: "An influencer marketplace where brands pick creators by numbers they can check. A personal project, not launched.",
   points: [
     "Follower and engagement data pulled from Instagram and TikTok",
     "A campaign runs from brief to invoice in one record",
     "A printable performance report for every campaign",
     "The browser never reads a data table directly",
   ],
-  role: "Sole developer and technical partner",
+  role: "Sole developer",
   stack: ["React", "Vite", "NestJS", "Prisma", "PostgreSQL", "Supabase", "Tailwind"],
   url: "https://hakaikol.vercel.app",
   shots: [
@@ -104,9 +103,9 @@ export const kaicash: Project = {
 export const passinglab: Project = {
   slug: "passinglab",
   name: "PassingLab",
-  kind: "Paid tryout platform",
+  kind: "Freelance · UTBK tryout platform",
   when: "Mar 2026 to now",
-  summary: "A paid UTBK tryout platform. We rewrote the live Laravel app onto Next.js without losing a single answer.",
+  summary: "A UTBK tryout platform, rewritten from Laravel onto Next.js as a freelance job. Built so an answer cannot be lost; launching soon.",
   points: [
     "Autosave that keeps working while the tab is hidden, and a timer the server owns",
     "Closed an account takeover path left in the old app",
@@ -124,12 +123,12 @@ export const passinglab: Project = {
   ],
 };
 
-/** Angka nyata dari kode dan bank soal PassingLab (lihat CV). */
+/** Angka nyata dari PassingLab (lihat CV). Belum launching, jadi belum ada angka pengguna. */
 export const passinglabStats = [
-  { value: "1,604", label: "questions" },
+  { value: "1,604", label: "questions ready" },
   { value: "7", label: "UTBK subtests" },
   { value: "24", label: "database tables" },
-  { value: "~24k", label: "lines of TypeScript" },
+  { value: "2", label: "engineers" },
 ];
 
 export const hakaimusic: Project = {
@@ -300,10 +299,10 @@ export const projects = [passinglab, fundchainProject, hakaikol, hakaitask, shik
 
 /** Riwayat kerja dan pendidikan, dari CV. */
 export const experience = [
-  { role: "Full Stack Engineer", org: "CreativIn", type: "Contract", when: "Jul to Sep 2026", where: "Hybrid, Indonesia",
-    text: "Client-facing web features end to end, schema to interface, plus architecture and data-model calls." },
+  { role: "Full Stack Engineer", org: "Creativin", type: "Contract", when: "Jul to Sep 2026", where: "Hybrid, Indonesia",
+    text: "Features for creativin.id, a KOL marketplace: creator search, the campaign flow from invite to invoice, and creator stats." },
   { role: "Full Stack Software Engineer", org: "Self-employed", type: "Freelance", when: "Dec 2022 to now", where: "Remote, Jakarta",
-    text: "Laravel web apps and their backend structure, delivered from zero to production as a long-term partner." },
+    text: "A Laravel inventory system, product catalogue landing pages, and company profile sites for small businesses. Now: PassingLab." },
   { role: "IT Support Specialist", org: "Alchemist Law Office", type: "Part-time", when: "Sep 2024 to Sep 2025", where: "Jakarta",
     text: "Hardware, software, and network support, and the Excel workflows the office ran on." },
   { role: "Web Designer", org: "UTERO Indonesia", type: "Internship", when: "Dec 2022 to Mar 2023", where: "Malang, East Java",
@@ -322,7 +321,7 @@ export const loadout = [
   { title: "Data", text: "Schemas that survive growth, access that stays locked.",
     tools: [["PostgreSQL", "HakaiKOL, PassingLab"], ["Supabase", "HakaiKOL, PassingLab, Pokerizz"], ["Firebase, Firestore", "KaiCash, HakaiMusic"], ["Room", "HakaiMusic"]] },
   { title: "Backend", text: "Business rules written so they can change.",
-    tools: [["NestJS", "HakaiKOL"], ["Server Actions", "PassingLab"], ["Prisma, Drizzle", "HakaiKOL, PassingLab"], ["Laravel", "Freelance work"]] },
+    tools: [["NestJS", "HakaiKOL"], ["Server Actions", "PassingLab"], ["Prisma, Drizzle", "HakaiKOL, PassingLab"], ["Laravel", "Freelance: inventory system"]] },
   { title: "Interface", text: "Screens people understand on first use.",
     tools: [["React", "HakaiKOL, PassingLab"], ["Next.js", "PassingLab, this site"], ["Vite", "HakaiKOL"], ["Tailwind", "HakaiKOL, PassingLab"]] },
   { title: "Mobile and desktop", text: "Android apps that work offline, and a Windows app that lives in the tray.",
@@ -366,6 +365,63 @@ export const fundchain = {
     { value: "105", label: "Jira issues" },
     { value: "27", label: "Planning docs" },
     { value: "19", label: "Spec conflicts resolved" },
+  ],
+};
+
+/**
+ * Studi kasus FundChain di /work/fundchain. Semua fakta dari repo FundChain:
+ * README (tabel keputusan vs dokumen planning), packages/shared/canonical.ts,
+ * DonationRegistry.sol, dan docs/blockchain/TAMPER-DEMO-RUNBOOK.md.
+ */
+export const fundchainCase = {
+  title: "Proving a donation was not changed, with a team of 15",
+  intro: "FundChain is a fundraising platform for BINUS students, built as a university project. I was the Tech Lead: I wrote the spec, built the foundation, and ran four workstreams on top of it.",
+  problem: [
+    "Student fundraisers ask people to trust a spreadsheet. If someone with database access edits a donation after it is paid, nobody outside can tell.",
+    "The brief was to make that edit visible. Keeping the money on-chain was out of scope: payments stay in rupiah through a normal gateway, and the chain is only a proof layer.",
+  ],
+  constraints: [
+    ["Team", "15 students across backend, blockchain, frontend and QA, most new to Solidity"],
+    ["Time", "Six sprints, with a demo day at the end"],
+    ["Spec", "27 planning docs written in parallel, with 19 places where they disagreed"],
+    ["Budget", "Free tiers only: Vercel, Supabase, and the Sepolia testnet"],
+    ["Privacy", "Anything written on a public chain stays there, so no names or emails"],
+  ],
+  /** Keputusan teknis, masing-masing dengan harga yang dibayar. */
+  decisions: [
+    { title: "One canonical hash, defined in one place",
+      text: "Each paid donation becomes the string v1|donationId|pseudonym|amount|paidAtSeconds, hashed with Keccak-256. It lives in a shared package used by both the notarizer and the checker, so the two can never format it differently.",
+      cost: "Fields are strict: whole rupiah only, a pseudonym like STU-00042 instead of a name, and the stored payment time instead of now(). The v1 prefix leaves room to change the format later." },
+    { title: "A relayer that can only write once",
+      text: "The contract has two roles. A cold admin wallet can revoke the relayer; the hot relayer on the backend is the only one allowed to notarize, and a second write to the same donation reverts.",
+      cost: "A wrong hash can never be corrected on-chain. That is the point, but it means the hash format had to be settled before the first notarization." },
+    { title: "An outbox table instead of Redis and BullMQ",
+      text: "The plan called for Redis and BullMQ. Notarization jobs go into a blockchain_transactions table instead, and a worker polls it with retry, backoff, and a FAILED state.",
+      cost: "Polling is slower than a queue, and on Vercel the worker only runs when a request or the daily cron wakes it. One less service to host for free and to explain to 15 people." },
+    { title: "Freeze the campaign, not just flag the row",
+      text: "The integrity checker recomputes every hash from the database and compares it with the chain. A mismatch marks the donation TAMPERED, freezes the campaign, writes an audit log, and blocks every disbursement.",
+      cost: "One bad row stops a whole campaign until an admin looks at it. For a fundraiser, a false stop is cheaper than a quiet payout." },
+  ],
+  /** Cara kerja tim, dari Jira BFD. */
+  process: [
+    "Resolved the 19 spec conflicts in writing before any code: hash format, relayer role, webhook idempotency, and the rest.",
+    "Built the monorepo myself (NestJS API, React web, Hardhat contract, Supabase) and had it live on Vercel and Sepolia by day two, so the team started from working code.",
+    "Opened five epics in Jira, split 105 issues across four workstreams, each with one owner.",
+    "Linked GitHub to Jira with BFD-key branch and PR names, and reviewed and merged the team's pull requests.",
+  ],
+  /** Hasil yang bisa dicek sendiri. */
+  results: [
+    "Web and API live on Vercel; donations notarized on Sepolia with an Etherscan link per donation",
+    "A public proof page per donation that recomputes the hash in the browser",
+    "The demo path runs end to end: pay, hash, notarize, edit the amount in the database, detect, freeze, refuse the payout",
+    "Tests on the canonical hash, the contract (9 tests), the campaign state machine, the disbursement rules, and webhook signatures",
+  ],
+  /** Yang masih terbuka. Jujur lebih meyakinkan daripada sempurna. */
+  open: [
+    "Sign-in is a persona switcher for the demo. Microsoft SSO for BINUS is researched but not built.",
+    "Payments run on a mock provider, with a Pakasir adapter ready. No real money has gone through it.",
+    "On Vercel the automatic check runs once a day, so a tamper can sit unnoticed for hours unless an admin runs the check.",
+    "It runs on Sepolia, a test network. Mainnet would need a funded relayer and a plan for gas.",
   ],
 };
 

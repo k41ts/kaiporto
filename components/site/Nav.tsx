@@ -18,7 +18,7 @@ export function Nav({ page = "home" }: { page?: "home" | "work" }) {
           <a href={`${home}#experience`}>Experience</a>
           <a href="#contact">Contact</a>
         </nav>
-        <a className="btn sm" href="#contact">Book a call</a>
+        <a className="btn sm" href="#contact">Contact</a>
       </div>
     </header>
   );

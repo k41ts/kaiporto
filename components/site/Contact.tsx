@@ -11,8 +11,8 @@ export function Contact() {
           <div className="cta" data-rv>
             <div>
               <span className="eyebrow">Contact</span>
-              <h2 id="contact-title">Need a technical partner for your product?</h2>
-              <p>A rough idea is enough to start. Tell me who will use it and what it must do on day one. I reply within a day.</p>
+              <h2 id="contact-title">Hiring for 2027? Let&apos;s talk.</h2>
+              <p>I&apos;m available full-time for 12 months in 2027 through the BINUS Enrichment Program. Email me with the role and team, and I&apos;ll send anything else you need. Freelance projects are welcome too.</p>
             </div>
             <div className="mailbox">
               <div className="mailrow">

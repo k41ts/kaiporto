@@ -26,12 +26,13 @@ export function Motion() {
             io.unobserve(e.target);
           }
         }),
-      { rootMargin: "0px 0px -8% 0px" },
+      // margin bawah positif: konten sudah muncul sebelum masuk layar, jadi scroll cepat nggak ketemu blok kosong
+      { rootMargin: "0px 0px 15% 0px" },
     );
     targets.forEach((el) => {
       if (el.hasAttribute("data-rv")) {
         const sibs = [...(el.parentElement?.children ?? [])].filter((s) => s.hasAttribute("data-rv"));
-        el.style.setProperty("--d", Math.min(sibs.indexOf(el), 5) * 80 + "ms");
+        el.style.setProperty("--d", Math.min(sibs.indexOf(el), 3) * 60 + "ms");
         el.classList.add("rv");
       }
       io.observe(el);

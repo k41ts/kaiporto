@@ -33,9 +33,9 @@ export default function HomePage() {
           <div className="wrap hero-grid">
             <div>
               <span className="pill"><span className="dot" /><b>Available</b> {profile.openTo}</span>
-              <h1 id="hero-title">I build and run the tech behind <span className="soft">your product.</span></h1>
+              <h1 id="hero-title">Full-stack engineer who ships <span className="soft">to production.</span></h1>
               <p className="lede">
-                <b>{profile.name}, full-stack engineer and technical partner.</b> Architecture, data model, backend, web and Android, from the first plan to production, and the decisions in between.
+                <b>{profile.name}, Computer Science student at {education[0].school}.</b> Architecture, data model, backend, web and Android: I own a feature from the schema to the screen. Available full-time for 12 months in 2027 through the BINUS Enrichment Program.
               </p>
               <div className="acts">
                 <a className="btn primary" href="#work">See the work <ArrowRight size={14} /></a>
@@ -66,7 +66,7 @@ export default function HomePage() {
 
         <nav className="strip" aria-label="Products">
           <div className="wrap">
-            <span className="mono">Shipped</span>
+            <span className="mono">Built</span>
             {projects.map((p) => <Link key={p.slug} href={`/work#${p.slug}`}>{p.name}</Link>)}
           </div>
         </nav>
@@ -76,7 +76,7 @@ export default function HomePage() {
           <div className="wrap">
             <div className="head">
               <div><span className="eyebrow">Capabilities</span><h2 id="cap-title" data-rv>One engineer across every layer of the product</h2></div>
-              <p data-rv>Each tool is listed with the product where I used it in production, not just in a tutorial.</p>
+              <p data-rv>Each tool is listed with the project where I used it, so you can check it.</p>
             </div>
             <div className="bento">
               <article className="card span-4" data-rv>
@@ -132,6 +132,7 @@ export default function HomePage() {
             <dl className="lead-stats">
               {fundchain.stats.map((s) => <div key={s.label}><dd>{s.value}</dd><dt>{s.label}</dt></div>)}
             </dl>
+            <div className="acts cs-acts"><Link className="btn primary" href="/work/fundchain">Read the full case study <ArrowRight size={14} /></Link></div>
           </div>
         </section>
 
@@ -139,7 +140,7 @@ export default function HomePage() {
         <section className="sec tight" id="work" aria-labelledby="work-title">
           <div className="wrap">
             <div className="head">
-              <div><span className="eyebrow">Featured case</span><h2 id="work-title" data-rv>A live platform, rewritten without losing an answer</h2></div>
+              <div><span className="eyebrow">Featured case</span><h2 id="work-title" data-rv>An exam platform built so no answer is lost</h2></div>
               <Link className="btn" href="/work">All {projects.length} products <ArrowRight size={14} /></Link>
             </div>
             <article className="case" data-rv>
@@ -154,7 +155,7 @@ export default function HomePage() {
                 <dl className="grid-stats">
                   {passinglabStats.map((s) => <div key={s.label}><dd>{s.value}</dd><dt>{s.label}</dt></div>)}
                 </dl>
-                <Link className="btn primary" href="/work#passinglab">Read the case study <ArrowRight size={14} /></Link>
+                <Link className="btn primary" href="/work#passinglab">See the details <ArrowRight size={14} /></Link>
               </div>
             </article>
           </div>
@@ -163,7 +164,7 @@ export default function HomePage() {
         {/* ---------- experience ---------- */}
         <section className="sec tight" id="experience" aria-labelledby="exp-title">
           <div className="wrap">
-            <div className="head"><div><span className="eyebrow">Experience</span><h2 id="exp-title" data-rv>Building for clients and teams since 2022</h2></div></div>
+            <div className="head"><div><span className="eyebrow">Experience</span><h2 id="exp-title" data-rv>Paid work for clients and teams since 2022</h2></div></div>
             <div className="tl" data-rv>
               {experience.map((e) => (
                 <div key={e.role + e.org}>

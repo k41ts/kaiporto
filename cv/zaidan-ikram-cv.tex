@@ -65,8 +65,9 @@
 %------------------------------------------
 
 %--------SECTIONING COMMANDS---------
+% Judul polos (bukan \scshape): small caps terbaca "EXPERiENCE" oleh ATS.
 \titleformat{\section}
-  {\scshape\large}{}
+  {\bfseries\large}{}
     {0em}{\color{blue}}[\color{black}\titlerule\vspace{0pt}]
 %-------------------------------------
 
@@ -155,7 +156,7 @@
 %-----------SUMMARY--------------------------
 \section{Full Stack Engineer}
 \small{
-  Full stack engineer and technical partner, building since 2022, and a \textbf{Computer Science student at BINUS University}. I take products \textbf{from the first plan to production} --- architecture, data model, backend, web and Android, and the decisions in between --- with \textbf{10 products shipped}. As \textbf{tech lead on FundChain} I turned 27 conflicting planning docs into one spec and led a \textbf{team of 15 across four workstreams}. Primary stack: \textbf{TypeScript, React, Next.js, NestJS, and PostgreSQL}. Open to \textbf{full time work for one year, starting 2027}.
+  \textbf{Computer Science student at BINUS University} available \textbf{full-time for 12 months in 2027 through the BINUS Enrichment Program}. Paid client and contract work since 2022. I own features \textbf{from the schema to the screen}: architecture, data model, backend, web and Android. Rewrote a UTBK exam platform (PassingLab) so an answer cannot be lost, and as \textbf{tech lead on a 15-person university project} turned 27 conflicting planning docs into one spec. Primary stack: \textbf{TypeScript, React, Next.js, NestJS, and PostgreSQL}.
 }
 %--------------------------------------------
 
@@ -168,37 +169,26 @@
     \resumeSectionType{Backend}{:}{Node.js, NestJS, Laravel, Server Actions, Prisma, Drizzle ORM, REST APIs}
     \resumeSectionType{Databases}{:}{PostgreSQL, Supabase, Firebase, Firestore, Room}
     \resumeSectionType{Blockchain}{:}{Solidity, Hardhat, OpenZeppelin, ethers v6, EIP-712, IPFS, Ethereum Sepolia}
-    \resumeSectionType{Practices}{:}{System design, data modelling, auth, RLS, offline first sync, payments, sprint planning, code review}
-    \resumeSectionType{Dev Tools}{:}{Git, GitHub, Jira, Vercel, Turborepo, pnpm, Vitest}
+    \resumeSectionType{Practices, Tools}{:}{System design, auth and RLS, offline-first sync, payments, code review; Git, Jira, Vercel, Turborepo, Vitest}
   \resumeHeadingListEnd{}
 %--------------------------------------------
 
 %-----------EXPERIENCE-----------------------
-% TODO: bullet CreativIn masih umum -- ganti dengan produk/fitur nyata yang kamu kerjakan di sana.
+% Bullet Creativin diambil dari fitur di creativin.id -- pastikan cuma bagian yang kamu kerjakan.
 \section{Experience}
 \resumeHeadingListStart{}
-  \resumeQuadHeading{Tech Lead}{2026}
-  {FundChain --- BINUS fundraising platform (team of 15)}{\href{https://fundchain-web.vercel.app}{\uline{fundchain-web.vercel.app}}}
-    \resumeItemListStart{}
-      \resumeItem{\textbf{Led a team of 15} across four workstreams (backend, blockchain, frontend, QA) on a platform where every paid donation is hashed onto Ethereum Sepolia; split \textbf{105 Jira issues} over five epics and six sprints, each workstream with its own owner}
-      \resumeItem{Read \textbf{27 planning docs} and resolved \textbf{19 conflicts} between them --- hash format, relayer role, webhook idempotency --- before any code was written}
-      \resumeItem{Built the foundation myself: \textbf{NestJS API, React web, a Hardhat contract, and Supabase in one monorepo}, live on Vercel and Sepolia by day two}
-      \resumeItem{Linked GitHub to Jira with key based branch and PR rules, \textbf{reviewed and merged the team's pull requests}, and kept the demo path working end to end: pay, hash, notarize, tamper, freeze}
-    \resumeItemListEnd{}
-
   \resumeQuadHeading{Full Stack Engineer}{Jul 2026 -- Sep 2026}
-  {CreativIn (Contract)}{Hybrid --- Indonesia}
+  {Creativin (Contract) --- \href{https://creativin.id}{\uline{creativin.id}}}{Hybrid --- Indonesia}
     \resumeItemListStart{}
-      \resumeItem{Built and shipped client facing web features end to end with \textbf{TypeScript, React, and Node.js}, owning schema, API, and interface in the same pass}
-      \resumeItem{Worked directly with the team on \textbf{architecture and data modelling} decisions, keeping the reversible ones cheap to change}
+      \resumeItem{Built features for a \textbf{KOL marketplace} with \textbf{TypeScript, React, and Node.js}: creator search filtered by niche, platform, city, followers and engagement rate, and creator profiles with stats synced from Instagram}
+      \resumeItem{Worked on the \textbf{campaign flow from invite to invoice}: invitations and applications, draft review with revisions, and invoices with PDF and CSV export, plus \textbf{architecture and data modelling} decisions with the team}
     \resumeItemListEnd{}
 
   \resumeQuadHeading{Full Stack Software Engineer}{Dec 2022 -- Present}
   {Self Employed (Freelance)}{Remote --- Jakarta, Indonesia}
     \resumeItemListStart{}
-      \resumeItem{Develop web applications with \textbf{Laravel}, and design the \textbf{backend system structure and application logic} behind them}
-      \resumeItem{Deliver products \textbf{from zero to production} --- schema, API, interface, deployment, and the monitoring after --- so nothing is lost in the handover between front end and back end}
-      \resumeItem{Act as a \textbf{long term technical partner} for founders: involved from early planning through launch and the improvements after, including saying what should not be built and what a shortcut will cost later}
+      \resumeItem{Built a \textbf{Laravel inventory system}, product catalogue landing pages, and company profile sites for small businesses, as the only engineer from schema to deployment}
+      \resumeItem{Now building \textbf{PassingLab}, a UTBK tryout platform, in a team of two (see Projects)}
     \resumeItemListEnd{}
 
   \resumeQuadHeading{IT Support Specialist}{Sep 2024 -- Sep 2025}
@@ -231,22 +221,29 @@
 %-----------PROJECTS--------------------------
 \section{Projects}
   \resumeHeadingListStart{}
-    \resumeQuadHeading{PassingLab --- paid UTBK tryout platform}{Mar 2026 -- Present}
+    \resumeQuadHeading{FundChain --- Tech Lead, university project}{2026}
+    {NestJS, React, Supabase, Prisma, Solidity, Hardhat --- BINUS team of 15}
+    {\href{https://fundchain-web.vercel.app}{\uline{fundchain-web.vercel.app}}}
+      \resumeItemListStart{}
+        \resumeItem{\textbf{Led a team of 15} across four workstreams on a fundraising platform where every paid donation is hashed onto Ethereum Sepolia (testnet); split \textbf{105 Jira issues} over five epics and six sprints}
+        \resumeItem{Resolved \textbf{19 conflicts across 27 planning docs} before any code; built the NestJS, React, Hardhat and Supabase monorepo myself, live by day two; \textbf{reviewed and merged the team's pull requests}}
+      \resumeItemListEnd{}
+
+    \resumeQuadHeading{PassingLab --- UTBK tryout platform (freelance, pre-launch)}{Mar 2026 -- Present}
     {Next.js 16, React 19, TypeScript, Supabase Postgres, Drizzle ORM, Tailwind v4}
     {\href{https://passinglab.id}{\uline{passinglab.id}}}
       \resumeItemListStart{}
-        \resumeItem{\textbf{Full stack engineer in a team of two} on a full rewrite of a live Laravel and Blade product onto \textbf{Next.js 16 App Router, React 19 Server Actions, and Drizzle}, migrating the old MySQL data with a script that runs dry under \texttt{--check} first; now \textbf{24 tables, 177 TypeScript files, and roughly 24,000 lines} serving 1,604 questions across 7 UTBK subtests}
+        \resumeItem{\textbf{Full stack engineer in a team of two} on a full rewrite of a Laravel product onto \textbf{Next.js 16, React 19 Server Actions, and Drizzle}, with a MySQL migration script that runs dry first; 1,604 questions across 7 UTBK subtests}
         \resumeItem{Built the exam engine so \textbf{an answer cannot be lost}: idempotent autosave upserts that keep working while the tab is hidden, a \textbf{server computed timer} that never trusts the browser clock, and deterministic seed based shuffling so a reload restores the exact same question order}
-        \resumeItem{Closed an \textbf{account takeover path} inherited from the old app --- OTPs are now scoped by purpose, single use, constant time compared, and capped at five attempts; added bcrypt at 12 rounds, \textbf{database backed rate limiting} that holds across instances, and moved an admin role check copied into some 40 controller methods (one of them missing it) onto the admin layout}
-        \resumeItem{Made \textbf{QRIS payments} safe to repeat: the public webhook is treated only as a nudge to re verify with the provider against the amount we stored, entitlements are granted by one function shared with the admin button, and invoice PDF, email, and Telegram all run after the response so an approval never waits on a mail server}
-        \resumeItem{Kept scoring, pricing, and shuffling in \textbf{pure modules with no database imports}, covered by unit tests on exactly the paths where a mistake costs the most}
+        \resumeItem{Closed an \textbf{account takeover path} inherited from the old app --- OTPs are now scoped by purpose, single use, constant time compared, and capped at five attempts; added bcrypt at 12 rounds, \textbf{database backed rate limiting} that holds across instances, and replaced an admin check copied into some 40 controller methods (one missing it) with a single layout guard}
+        \resumeItem{Made \textbf{QRIS payments} safe to repeat: the public webhook is treated only as a nudge to re verify with the provider against the amount we stored, and entitlements are granted by one function shared with the admin button}
       \resumeItemListEnd{}
 
-    \resumeQuadHeading{HakaiKOL --- influencer marketplace}{2026 -- Present}
+    \resumeQuadHeading{HakaiKOL --- influencer marketplace (personal project)}{2026 -- Present}
     {React, Vite, NestJS, Prisma, PostgreSQL, Supabase, Tailwind}
     {\href{https://hakaikol.vercel.app}{\uline{hakaikol.vercel.app}}}
       \resumeItemListStart{}
-        \resumeItem{\textbf{Sole developer and technical partner} on a two sided KOL marketplace where brands pick creators by numbers they can check, running a campaign end to end in one record: creator discovery, brief, content drafts, proof of posting, invoice, and a printable performance report}
+        \resumeItem{\textbf{Sole developer} of a two sided KOL marketplace where brands pick creators by numbers they can check, running a campaign end to end in one record: creator discovery, brief, content drafts, proof of posting, invoice, and a printable performance report}
         \resumeItem{Creators connect Instagram and TikTok through \textbf{OAuth}, so follower counts and engagement rates come straight from the platforms instead of self reported rate cards}
         \resumeItem{Hardened the data layer: the public Supabase key shipped in every browser bundle holds \textbf{only auth and storage rights and zero table access}, with all data going through NestJS as a BYPASSRLS role and \textbf{RLS still enabled on every table} as a second layer}
       \resumeItemListEnd{}
@@ -260,15 +257,12 @@
         \resumeItem{Kept the chat engine in \textbf{pure TypeScript with no React or network}, tested on its own, plus a personal dictionary that remembers words a user teaches it once}
       \resumeItemListEnd{}
 
-    % Judul Shiki sempat nyangkut sendirian di bawah halaman 2.
-    \newpage
     \resumeQuadHeading{Shiki --- voice assistant for Windows}{Oct 2026}
     {Rust, Tauri 2, Gemini API, Win32 API, WebView2}
     {\href{https://github.com/k41ts/shiki}{\uline{Source}}}
       \resumeItemListStart{}
         \resumeItem{\textbf{Sole designer and developer} of a tray app you talk to in everyday Indonesian: hold \textbf{Ctrl+Win} and messy speech comes back as clean text pasted where the cursor is, or hold Ctrl+Shift to open apps, play music, and set routines like \textit{``tiap pagi jam 9 buka Unity dan Spotify''}}
         \resumeItem{Finds a file on disk and \textbf{sends it on WhatsApp Web}, matching the contact name with fuzzy search, and \textbf{asks once before it sends}}
-        \resumeItem{A notch style island for chat, media, to-dos, system stats, clipboard, and apps; the \textbf{Rust core idles at about 8 MB of RAM}}
       \resumeItemListEnd{}
 
     \resumeQuadHeading{Pokerizz --- multiplayer poker duel}{Oct 2026}
@@ -276,8 +270,7 @@
     {\href{https://pokerizz.vercel.app}{\uline{pokerizz.vercel.app}}}
       \resumeItemListStart{}
         \resumeItem{\textbf{Sole designer and developer} of a two player card game where the gap between poker scores becomes damage, playable online with friends, ranked, or against a bot}
-        \resumeItem{Online rooms on \textbf{Supabase Realtime} where the host runs the game, so a guest \textbf{never receives the other hand}; ranked matchmaking falls back to a bot at the player's rank, and the top bots simulate draws instead of peeking at the deck}
-        \resumeItem{Game logic as a \textbf{pure reducer covered by 50 unit tests}, with a seeded match effect and Jokers that change the scoring every game}
+        \resumeItem{Online rooms on \textbf{Supabase Realtime} where the host runs the game, so a guest \textbf{never receives the other hand}; game logic is a \textbf{pure reducer covered by 50 unit tests}}
       \resumeItemListEnd{}
 
     \resumeQuadHeading{HakaiMusic --- native Android music client}{2026 -- Present}
@@ -285,32 +278,14 @@
     {\href{https://github.com/k41ts/hakaimusic}{\uline{Source}}}
       \resumeItemListStart{}
         \resumeItem{Built a \textbf{dual engine player} behind a single media session: ExoPlayer is tried first, and when no usable stream URL resolves, playback swaps to a headless WebView engine implemented as a Media3 player --- so lock screen, notification, and Bluetooth controls keep working across the swap}
-        \resumeItem{Made the \textbf{device the source of truth}: library, queue, history, and downloads live in \textbf{Room} and never need a network round trip; signing in is optional and only adds sync}
         \resumeItem{Wrote sync that \textbf{assumes the connection will drop} --- timestamps are stamped only after the Firestore batch commits, so an unsent row is visibly unsynced rather than silently lost, and client generated ids make a repeated sync produce no duplicates}
       \resumeItemListEnd{}
 
-    \resumeQuadHeading{KaiCash --- personal finance app}{Jun 2026}
-    {React Native, Expo, Firebase, TypeScript}
-    {\href{https://github.com/k41ts/kaicash}{\uline{Source}}}
+    \resumeQuadHeadingChild{Other projects}{2026}
       \resumeItemListStart{}
-        \resumeItem{\textbf{Sole designer and developer} of an Android money tracker with budgets, savings goals, and a receipt photo on every record}
-        \resumeItem{Built an \textbf{account pairing system} that lets a parent supervise spending in real time without anyone borrowing a phone or a login, using \textbf{Firebase} for two sided sync instead of a custom socket layer}
-      \resumeItemListEnd{}
-
-    \resumeQuadHeading{Collatera --- on-chain promissory notes (hackathon)}{Oct 2026}
-    {Next.js, Prisma, Solidity, Hardhat, ethers v6, Ethereum Sepolia}
-    {\href{https://collatera-app.vercel.app}{\uline{collatera-app.vercel.app}}}
-      \resumeItemListStart{}
-        \resumeItem{\textbf{Full stack engineer in a team of five}: a promissory note both sides sign with \textbf{gasless EIP-712 signatures} through a relayer, with a non-transferable \textbf{ERC-721} token as the creditor's right to collect}
-        \resumeItem{Stablecoin installments with automatic overdue status, and an \textbf{integrity check that freezes a note} if the database and the chain disagree}
-      \resumeItemListEnd{}
-
-    \resumeQuadHeading{Freelance Escrow --- milestone escrow contract}{Sep 2026 -- Oct 2026}
-    {Solidity 0.8.28, Hardhat 3, OpenZeppelin, React, Vite, ethers v6, IPFS}
-    {\href{https://flescrow.vercel.app}{\uline{flescrow.vercel.app}}}
-      \resumeItemListStart{}
-        \resumeItem{\textbf{Full stack engineer in a team of five} (BINUS Prototyping Blockchain course): freelance payments released per milestone, with \textbf{no withdraw, receive, or fallback function} so a client cannot pull funds back}
-        \resumeItem{Anyone can trigger \textbf{auto release} once the review period passes, so a silent client cannot hold money hostage; proof of work sits on \textbf{IPFS with only its CID on-chain} to save gas, and disputes go to an arbitrator}
+        \resumeItem{\textbf{KaiCash} (React Native, Firebase): Android money tracker with real-time parent pairing --- \href{https://github.com/k41ts/kaicash}{\uline{source}}}
+        \resumeItem{\textbf{Collatera} (hackathon, team of five): on-chain promissory notes with gasless EIP-712 signatures and a non-transferable ERC-721 claim, on Sepolia testnet}
+        \resumeItem{\textbf{Freelance Escrow} (BINUS course, team of five): milestone escrow contract with no withdraw path for the client and IPFS proof of work, on Sepolia testnet}
       \resumeItemListEnd{}
   \resumeHeadingListEnd{}
 %--------------------------------------------

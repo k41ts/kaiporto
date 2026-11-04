@@ -9,7 +9,7 @@ import { fundchain, passinglab, passinglabStats, profile, projects } from "@/con
 
 export const metadata: Metadata = {
   title: "All work",
-  description: `Every product ${profile.name} has taken from an idea to production: ${projects.map((p) => p.name).join(", ")}.`,
+  description: `Every product ${profile.name} has built: ${projects.map((p) => p.name).join(", ")}.`,
   alternates: { canonical: "/work" },
 };
 
@@ -23,7 +23,7 @@ export default function WorkPage() {
         <header className="wtop">
           <div className="wrap">
             <span className="eyebrow">All work · {projects.length} products</span>
-            <h1>Every product, from idea to production</h1>
+            <h1>Every product I have built</h1>
             <p>Web platforms, Android apps and on-chain prototypes, with what I did on each. Click any screenshot to see it full size.</p>
           </div>
         </header>
@@ -59,17 +59,9 @@ export default function WorkPage() {
             <div>
               <span className="eyebrow">Leadership</span>
               <h2>{fundchain.name}, as Tech Lead</h2>
-              <p>How I took a team of 15 from 27 planning docs to production, shown as a live 3D walkthrough.</p>
+              <p>How I took a team of 15 from 27 planning docs to a working platform: the problem, four decisions and their trade-offs, and what is still open.</p>
             </div>
-            <Link className="btn primary" href="/#lead">See the walkthrough <ArrowRight size={14} /></Link>
-          </div>
-          <div className="next" id="next">
-            <div>
-              <span className="eyebrow">In progress</span>
-              <h2>Next build</h2>
-              <p>Something new is being built right now. It ships in {profile.nextOpening}.</p>
-            </div>
-            <a className="btn" href="#contact">Get early access</a>
+            <Link className="btn primary" href="/work/fundchain">Read the case study <ArrowRight size={14} /></Link>
           </div>
         </div>
       </main>

@@ -32,7 +32,8 @@ export function Loader() {
       return;
     }
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const MIN = reduce ? 400 : 2300, MAX = 4500;
+    // Pendek: pengunjung dari LinkedIn langsung lihat isi, bukan nunggu animasi.
+    const MIN = reduce ? 300 : 900, MAX = 2500;
     const t0 = performance.now();
     const timers: ReturnType<typeof setTimeout>[] = [];
     let ready = false, raf = 0, shown = 0;
@@ -41,13 +42,13 @@ export function Loader() {
     Promise.all([document.fonts?.ready, loaded]).then(() => (ready = true));
 
     const finish = () => {
-      timers.push(setTimeout(() => setExit(true), 280));
+      timers.push(setTimeout(() => setExit(true), 120));
       timers.push(setTimeout(() => {
         html.dataset.intro = "seen";
         html.classList.remove("intro-lock");
         try { sessionStorage.setItem(INTRO_KEY, "1"); } catch {}
         setGone(true);
-      }, reduce ? 700 : 1350));
+      }, reduce ? 500 : 900));
     };
     const tick = (now: number) => {
       // timestamp rAF bisa sedikit lebih awal dari t0, jadi jangan sampai negatif

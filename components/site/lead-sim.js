@@ -386,8 +386,8 @@ export function mountLeadSim(root, opts) {
     const handLabelPos = V(0, 0, 0), bodyLabelPos = V(0, 0, 0);
     const labels = [
       ...streams.map((s) => ({ el: tag("", s.name, `${s.issues} issues · ${s.people} ${s.people > 1 ? "people" : "person"}`), pos: s.top, key: () => s.state.build })),
-      { el: tag("hub", "Kai · Tech Lead", "plans · builds · hands off"), pos: handLabelPos, key: () => 1 - cur.cut },
-      { el: tag("hub", "FundChain core", "reviewed and merged by Kai"), pos: V(0, HUB_Y + 2.3, 0), key: () => cur.merge },
+      { el: tag("hub", "Zaidan · Tech Lead", "plans · builds · hands off"), pos: handLabelPos, key: () => 1 - cur.cut },
+      { el: tag("hub", "FundChain core", "reviewed and merged by Zaidan"), pos: V(0, HUB_Y + 2.3, 0), key: () => cur.merge },
       { el: tag("prod", "Production", "Vercel · Sepolia"), pos: V(0, PROD_Y + 1.2, 0), key: () => cur.prod },
       { el: tag("", "Spec", "27 docs · 19 conflicts"), pos: V(4.2, 10, 2.6), key: () => cur.spec },
       { el: tag("", "Foundation", "API · web · contract · DB"), pos: bodyLabelPos, key: () => cur.form * (1 - cur.stand) },
