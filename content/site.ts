@@ -64,7 +64,7 @@ export const hakaikol: Project = {
   name: "HakaiKOL",
   kind: "Personal project",
   when: "2026 to now",
-  summary: "An influencer marketplace where brands pick creators by numbers they can check. A personal project, not launched.",
+  summary: "An influencer marketplace where brands pick creators by numbers they can check. A personal project, not launched, and unrelated to my contract work at Creativin.",
   points: [
     "Follower and engagement data pulled from Instagram and TikTok",
     "A campaign runs from brief to invoice in one record",
