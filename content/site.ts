@@ -88,7 +88,7 @@ export const kaicash: Project = {
   kind: "Android app",
   when: "2026",
   summary: "A money tracker you can pair with a parent, so they can see your spending without borrowing your phone.",
-  points: ["Budgets and savings goals", "Parent pairing, synced in real time", "A receipt photo on every record"],
+  points: ["Budgets and savings goals", "Parent pairing on shared Firestore records", "A receipt photo on every record"],
   role: "Sole designer and developer",
   stack: ["React Native", "Expo", "Firebase", "TypeScript"],
   shots: [
