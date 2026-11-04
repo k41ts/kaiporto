@@ -40,7 +40,8 @@ const nextConfig: NextConfig = {
       { source: "/about", destination: "/#about", permanent: true },
       { source: "/contact", destination: "/#contact", permanent: true },
       // /work/fundchain halaman sendiri (studi kasus); slug lain masih ke anchor di /work.
-      { source: "/work/:slug((?!fundchain$).*)", destination: "/work#:slug", permanent: true },
+      // Satu segmen saja ([^/]+): screenshot di /work/<proyek>/*.jpg jangan ikut ke-redirect.
+      { source: "/work/:slug((?!fundchain(?:/|$))[^/]+)", destination: "/work#:slug", permanent: true },
       { source: "/studio/:path*", destination: "/", permanent: false },
     ];
   },
