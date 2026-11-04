@@ -5,7 +5,7 @@ import { Contact } from "@/components/site/Contact";
 import { LeadSim } from "@/components/site/LeadSim";
 import { Nav } from "@/components/site/Nav";
 import { ArrowRight, Download } from "@/components/site/icons";
-import { education, experience, fundchain, heroStats, loadout, passinglab, passinglabStats, profile, projects } from "@/content/site";
+import { education, experience, fundchain, fundchainCase, fundchainFeaturedStats, fundchainProject, heroStats, loadout, profile, projects } from "@/content/site";
 
 const Check = () => (
   <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="m3 8 3.5 3.5L13 5" /></svg>
@@ -132,7 +132,6 @@ export default function HomePage() {
             <dl className="lead-stats">
               {fundchain.stats.map((s) => <div key={s.label}><dd>{s.value}</dd><dt>{s.label}</dt></div>)}
             </dl>
-            <div className="acts cs-acts"><Link className="btn primary" href="/work/fundchain">Read the full case study <ArrowRight size={14} /></Link></div>
           </div>
         </section>
 
@@ -140,22 +139,22 @@ export default function HomePage() {
         <section className="sec tight" id="work" aria-labelledby="work-title">
           <div className="wrap">
             <div className="head">
-              <div><span className="eyebrow">Featured case</span><h2 id="work-title" data-rv>An exam platform built so no answer is lost</h2></div>
+              <div><span className="eyebrow">Featured case</span><h2 id="work-title" data-rv>{fundchainCase.title}</h2></div>
               <Link className="btn" href="/work">All {projects.length} products <ArrowRight size={14} /></Link>
             </div>
             <article className="case" data-rv>
               <figure>
-                <Image src={passinglab.shots[0].src} alt={passinglab.shots[0].alt} width={passinglab.shots[0].width} height={passinglab.shots[0].height} sizes="(max-width: 980px) 100vw, 700px" />
+                <Image src={fundchainProject.shots[0].src} alt={fundchainProject.shots[0].alt} width={fundchainProject.shots[0].width} height={fundchainProject.shots[0].height} sizes="(max-width: 980px) 100vw, 700px" />
               </figure>
               <div className="body">
-                <span className="mono">{passinglab.kind} · {passinglab.when} · {passinglab.role}</span>
-                <h3>{passinglab.name}</h3>
-                <p>{passinglab.summary}</p>
-                <ul className="checks">{passinglab.points.slice(0, 3).map((pt) => <li key={pt}><Check />{pt}</li>)}</ul>
+                <span className="mono">University project · {fundchainProject.when} · {fundchainProject.role}</span>
+                <h3>{fundchainProject.name}</h3>
+                <p>{fundchainProject.summary}</p>
+                <ul className="checks">{fundchainProject.points.slice(0, 3).map((pt) => <li key={pt}><Check />{pt}</li>)}</ul>
                 <dl className="grid-stats">
-                  {passinglabStats.map((s) => <div key={s.label}><dd>{s.value}</dd><dt>{s.label}</dt></div>)}
+                  {fundchainFeaturedStats.map((s) => <div key={s.label}><dd>{s.value}</dd><dt>{s.label}</dt></div>)}
                 </dl>
-                <Link className="btn primary" href="/work#passinglab">See the details <ArrowRight size={14} /></Link>
+                <Link className="btn primary" href="/work/fundchain">Read the case study <ArrowRight size={14} /></Link>
               </div>
             </article>
           </div>

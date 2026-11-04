@@ -425,4 +425,12 @@ export const fundchainCase = {
   ],
 };
 
+/** Angka di kartu Featured case beranda. Dari repo FundChain (test kontrak, keputusan di studi kasus). */
+export const fundchainFeaturedStats = [
+  { value: "1", label: "write per donation, on-chain" },
+  { value: "9", label: "contract tests" },
+  { value: "4", label: "decisions with trade-offs" },
+  { value: "105", label: "Jira issues shipped" },
+];
+
 export const credits = "Product screenshots are from my own work. The 3D scene is drawn live with Three.js.";

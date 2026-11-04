@@ -5,7 +5,7 @@ import { Contact } from "@/components/site/Contact";
 import { Nav } from "@/components/site/Nav";
 import { ProjectDetail } from "@/components/site/ProjectDetail";
 import { ArrowRight, ArrowUpRight } from "@/components/site/icons";
-import { fundchain, passinglab, passinglabStats, profile, projects } from "@/content/site";
+import { fundchain, fundchainProject, passinglab, passinglabStats, profile, projects } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "All work",
@@ -49,7 +49,7 @@ export default function WorkPage() {
           <ProjectDetail
             key={p.slug}
             project={p}
-            label={`${p.kind} · ${p.when}${p.slug === passinglab.slug ? " · Featured" : ""}`}
+            label={`${p.kind} · ${p.when}${p.slug === fundchainProject.slug ? " · Featured" : ""}`}
             stats={p.slug === passinglab.slug ? passinglabStats : undefined}
           />
         ))}
