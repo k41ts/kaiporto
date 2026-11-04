@@ -36,8 +36,8 @@ export const profile = {
 export const heroStats = [
   { value: "10", label: "Products built" },
   { value: "15", label: "People led as Tech Lead" },
-  { value: "12 mo", label: "Full-time in 2027" },
-  { value: "2022", label: "Paid work since" },
+  { value: "4", label: "Paid roles since 2022" },
+  { value: "3", label: "Platforms: web, Android, Windows" },
 ];
 
 export type Shot = { src: string; alt: string; width: number; height: number };
@@ -128,7 +128,7 @@ export const passinglabStats = [
   { value: "1,604", label: "questions ready" },
   { value: "7", label: "UTBK subtests" },
   { value: "24", label: "database tables" },
-  { value: "2", label: "engineers" },
+  { value: "40 → 1", label: "copied admin checks, now one guard" },
 ];
 
 export const hakaimusic: Project = {
@@ -275,9 +275,9 @@ export const fundchainProject: Project = {
   name: "FundChain",
   kind: "Fundraising platform",
   when: "2026",
-  summary: "A BINUS student fundraising platform where every paid donation is hashed and notarised on Sepolia, so anyone can check that a record was not changed.",
+  summary: "A BINUS student fundraising platform where every donation marked paid is hashed and notarised on Sepolia, so anyone can check that a record was not changed.",
   points: [
-    "Each paid donation becomes a Keccak-256 hash, written on-chain by a relayer",
+    "Each donation marked paid becomes a Keccak-256 hash, written on-chain by a relayer",
     "A proof page per donation recomputes the hash in the browser and compares it with the chain",
     "A record changed in the database after the fact is caught and the campaign is frozen",
     "I led the team as Tech Lead: the spec, the foundation, the sprints, and the code review",
@@ -334,7 +334,7 @@ export const loadout = [
  */
 export const fundchain = {
   name: "FundChain",
-  summary: "A BINUS fundraising platform where every paid donation is hashed onto Sepolia. I wrote the plan, built the base, and ran four workstreams on top of it.",
+  summary: "A BINUS fundraising platform where every donation marked paid is hashed onto Sepolia. I wrote the plan, built the base, and ran four workstreams on top of it.",
   repo: "https://github.com/Fundchainbinus/fundchain",
   url: "https://fundchain-web.vercel.app",
   steps: [
@@ -345,13 +345,17 @@ export const fundchain = {
     { title: "Plan", caption: "It stands on its own feet and reaches out: five epics, four workstreams.",
       text: "Opened the five epics in Jira and set the scope for sprints 3 and 4." },
     { title: "Assign", caption: "15 people take over each limb. The strings come off.",
-      text: "Split 105 issues across a team of 15, in four workstreams that each had an owner." },
+      text: "Split 91 Jira tasks across four workstreams, each with an owner, and kept the 8 integration tasks myself." },
     { title: "Review", caption: "Every pull request flows back into one core, reviewed and merged.",
       text: "Linked GitHub to Jira, set the BFD-key branch and PR rules, and reviewed and merged the team's pull requests." },
     { title: "Ship", caption: "It runs without the hands: web and API on Vercel, donations hashed onto Sepolia.",
       text: "Kept the demo path working end to end: pay, hash, notarize on Sepolia, tamper, freeze. Web and API live on Vercel." },
   ],
-  /** Issue per epic dan jumlah orang per jalur, dari Jira BFD. */
+  /**
+   * Task per epic, dari Jira BFD (dicek 4 Nov 2026): 99 task di 5 epic + 1 epic tenggat.
+   * `people` cuma untuk jumlah figur di scene 3D, nggak ditampilkan sebagai angka:
+   * anggota tim lintas jalur (Randy di FE dan QA), jadi jumlahnya nggak bisa dijumlah ke 15.
+   */
   streams: [
     { name: "Backend", issues: 31, people: 4 },
     { name: "Blockchain", issues: 23, people: 4 },
@@ -362,7 +366,7 @@ export const fundchain = {
     { value: "15", label: "People led" },
     { value: "4", label: "Workstreams" },
     { value: "6", label: "Sprints" },
-    { value: "105", label: "Jira issues" },
+    { value: "99", label: "Jira tasks" },
     { value: "27", label: "Planning docs" },
     { value: "19", label: "Spec conflicts resolved" },
   ],
@@ -390,7 +394,7 @@ export const fundchainCase = {
   /** Keputusan teknis, masing-masing dengan harga yang dibayar. */
   decisions: [
     { title: "One canonical hash, defined in one place",
-      text: "Each paid donation becomes the string v1|donationId|pseudonym|amount|paidAtSeconds, hashed with Keccak-256. It lives in a shared package used by both the notarizer and the checker, so the two can never format it differently.",
+      text: "Each donation marked paid becomes the string v1|donationId|pseudonym|amount|paidAtSeconds, hashed with Keccak-256. It lives in a shared package used by both the notarizer and the checker, so the two can never format it differently.",
       cost: "Fields are strict: whole rupiah only, a pseudonym like STU-00042 instead of a name, and the stored payment time instead of now(). The v1 prefix leaves room to change the format later." },
     { title: "A relayer that can only write once",
       text: "The contract has two roles. A cold admin wallet can revoke the relayer; the hot relayer on the backend is the only one allowed to notarize, and a second write to the same donation reverts.",
@@ -406,7 +410,7 @@ export const fundchainCase = {
   process: [
     "Resolved the 19 spec conflicts in writing before any code: hash format, relayer role, webhook idempotency, and the rest.",
     "Built the monorepo myself (NestJS API, React web, Hardhat contract, Supabase) and had it live on Vercel and Sepolia by day two, so the team started from working code.",
-    "Opened five epics in Jira, split 105 issues across four workstreams, each with one owner.",
+    "Opened five epics in Jira: 91 tasks across four workstreams, each with one owner, and 8 integration tasks (CI, sprint checks, demo rehearsal) that I kept.",
     "Linked GitHub to Jira with BFD-key branch and PR names, and reviewed and merged the team's pull requests.",
   ],
   /** Hasil yang bisa dicek sendiri. */
@@ -426,11 +430,14 @@ export const fundchainCase = {
 };
 
 /** Angka di kartu Featured case beranda. Dari repo FundChain (test kontrak, keputusan di studi kasus). */
+/** Epic kelima di Jira BFD: kerjaan integrasi yang dipegang Tech Lead. */
+export const fundchainLeadStream = { name: "Tech Lead & integration", issues: 8 };
+
 export const fundchainFeaturedStats = [
-  { value: "1", label: "write per donation, on-chain" },
   { value: "9", label: "contract tests" },
+  { value: "5", label: "areas under test" },
   { value: "4", label: "decisions with trade-offs" },
-  { value: "105", label: "Jira issues shipped" },
+  { value: "2", label: "wallets: cold admin, hot relayer" },
 ];
 
 export const credits = "Product screenshots are from my own work. The 3D scene is drawn live with Three.js.";

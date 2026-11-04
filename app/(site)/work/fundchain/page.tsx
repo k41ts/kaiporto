@@ -4,7 +4,7 @@ import { Contact } from "@/components/site/Contact";
 import { Gallery } from "@/components/site/Gallery";
 import { Nav } from "@/components/site/Nav";
 import { ArrowRight, ArrowUpRight, GitHub } from "@/components/site/icons";
-import { fundchain, fundchainCase, fundchainProject } from "@/content/site";
+import { fundchain, fundchainCase, fundchainLeadStream, fundchainProject } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "FundChain case study",
@@ -84,8 +84,8 @@ export default function FundChainCasePage() {
               <h2 id="cs-process">From 27 docs to four workstreams</h2>
               <ul className="checks">{c.process.map((t) => <li key={t}><Check />{t}</li>)}</ul>
               <div className="cs-streams">
-                {fundchain.streams.map((s) => (
-                  <div key={s.name}><b>{s.name}</b><span className="mono">{s.issues} issues · {s.people} {s.people > 1 ? "people" : "person"}</span></div>
+                {[...fundchain.streams, fundchainLeadStream].map((s) => (
+                  <div key={s.name}><b>{s.name}</b><span className="mono">{s.issues} tasks</span></div>
                 ))}
               </div>
             </div>

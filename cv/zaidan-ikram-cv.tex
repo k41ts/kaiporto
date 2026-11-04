@@ -41,7 +41,16 @@
 \fi
 
 %----------FONT OPTIONS-------------------
-\usepackage[default]{sourcesanspro}
+% XeTeX/Tectonic: Source Sans Pro memetakan "-" ke U+2011, jadi ATS membaca
+% "fundchain‑web" dan "real‑time" dengan tanda hubung yang salah. TeX Gyre Heros
+% (mirip Helvetica) mengekstrak "-" biasa. pdfLaTeX (Overleaf) tetap Source Sans.
+\ifPDFTeX
+  \usepackage[default]{sourcesanspro}
+\else
+  \usepackage{fontspec}
+  \setmainfont{texgyreheros}[Extension=.otf, Scale=0.92,
+    UprightFont=*-regular, BoldFont=*-bold, ItalicFont=*-italic, BoldItalicFont=*-bolditalic]
+\fi
 \urlstyle{same}
 %-----------------------------------------
 
@@ -135,11 +144,11 @@
   {\Huge\textbf{Zaidan Ikram}}\vspace{4pt}
 
   \begin{tabular*}{\linewidth}{l@{\extracolsep{\fill}}r}
-    \href{https://zaidanikram.id}{\uline{zaidanikram.id}} $|$
-    \href{https://www.linkedin.com/in/zaidanikram/}{\uline{LinkedIn}} $|$
-    \href{https://github.com/k41ts}{\uline{GitHub}} &
+    \href{https://zaidanikram.id}{\underline{zaidanikram.id}} $|$
+    \href{https://www.linkedin.com/in/zaidanikram/}{\underline{LinkedIn}} $|$
+    \href{https://github.com/k41ts}{\underline{GitHub}} &
     Jakarta, Indonesia \\
-    \href{mailto:276kai@gmail.com}{\uline{276kai@gmail.com}} &
+    \href{mailto:276kai@gmail.com}{\underline{276kai@gmail.com}} &
     % TODO: nomor HP di sini
     \\
   \end{tabular*}
@@ -178,7 +187,7 @@
 \section{Experience}
 \resumeHeadingListStart{}
   \resumeQuadHeading{Full Stack Engineer}{Jul 2026 -- Sep 2026}
-  {Creativin (Contract) --- \href{https://creativin.id}{\uline{creativin.id}}}{Hybrid --- Indonesia}
+  {Creativin (Contract) --- \href{https://creativin.id}{\underline{creativin.id}}}{Hybrid --- Indonesia}
     \resumeItemListStart{}
       \resumeItem{Built features for a \textbf{KOL marketplace} with \textbf{TypeScript, React, and Node.js}: creator search filtered by niche, platform, city, followers and engagement rate, and creator profiles with stats synced from Instagram}
       \resumeItem{Worked on the \textbf{campaign flow from invite to invoice}: invitations and applications, draft review with revisions, and invoices with PDF and CSV export, plus \textbf{architecture and data modelling} decisions with the team}
@@ -223,17 +232,17 @@
   \resumeHeadingListStart{}
     \resumeQuadHeading{FundChain --- Tech Lead, university project}{2026}
     {NestJS, React, Supabase, Prisma, Solidity, Hardhat --- BINUS team of 15}
-    {\href{https://fundchain-web.vercel.app}{\uline{fundchain-web.vercel.app}}}
+    {\href{https://fundchain-web.vercel.app}{\underline{fundchain-web.vercel.app}}}
       \resumeItemListStart{}
-        \resumeItem{\textbf{Led a team of 15} across four workstreams on a fundraising platform where every paid donation is hashed onto Ethereum Sepolia (testnet); split \textbf{105 Jira issues} over five epics and six sprints}
+        \resumeItem{\textbf{Led a team of 15} across four workstreams on a fundraising platform where every donation marked paid is hashed onto Ethereum Sepolia (testnet); split \textbf{99 Jira tasks} over five epics and six sprints}
         \resumeItem{Resolved \textbf{19 conflicts across 27 planning docs} before any code; built the NestJS, React, Hardhat and Supabase monorepo myself, live by day two; \textbf{reviewed and merged the team's pull requests}}
       \resumeItemListEnd{}
 
     \resumeQuadHeading{PassingLab --- UTBK tryout platform (freelance, pre-launch)}{Mar 2026 -- Present}
     {Next.js 16, React 19, TypeScript, Supabase Postgres, Drizzle ORM, Tailwind v4}
-    {\href{https://passinglab.id}{\uline{passinglab.id}}}
+    {\href{https://passinglab.id}{\underline{passinglab.id}}}
       \resumeItemListStart{}
-        \resumeItem{\textbf{Full stack engineer in a team of two} on a full rewrite of a Laravel product onto \textbf{Next.js 16, React 19 Server Actions, and Drizzle}, with a MySQL migration script that runs dry first; 1,604 questions across 7 UTBK subtests}
+        \resumeItem{\textbf{Full stack engineer in a team of two} on a full rewrite of a Laravel product onto \textbf{Next.js 16, React 19 Server Actions, and Drizzle}, with a MySQL migration script that runs dry first, and a bank of 1,604 questions across 7 UTBK subtests}
         \resumeItem{Built the exam engine so \textbf{an answer cannot be lost}: idempotent autosave upserts that keep working while the tab is hidden, a \textbf{server computed timer} that never trusts the browser clock, and deterministic seed based shuffling so a reload restores the exact same question order}
         \resumeItem{Closed an \textbf{account takeover path} inherited from the old app --- OTPs are now scoped by purpose, single use, constant time compared, and capped at five attempts; added bcrypt at 12 rounds, \textbf{database backed rate limiting} that holds across instances, and replaced an admin check copied into some 40 controller methods (one missing it) with a single layout guard}
         \resumeItem{Made \textbf{QRIS payments} safe to repeat: the public webhook is treated only as a nudge to re verify with the provider against the amount we stored, and entitlements are granted by one function shared with the admin button}
@@ -241,49 +250,44 @@
 
     \resumeQuadHeading{HakaiKOL --- influencer marketplace (personal project)}{2026 -- Present}
     {React, Vite, NestJS, Prisma, PostgreSQL, Supabase, Tailwind}
-    {\href{https://hakaikol.vercel.app}{\uline{hakaikol.vercel.app}}}
+    {\href{https://hakaikol.vercel.app}{\underline{hakaikol.vercel.app}}}
       \resumeItemListStart{}
         \resumeItem{\textbf{Sole developer} of a two sided KOL marketplace where brands pick creators by numbers they can check, running a campaign end to end in one record: creator discovery, brief, content drafts, proof of posting, invoice, and a printable performance report}
-        \resumeItem{Creators connect Instagram and TikTok through \textbf{OAuth}, so follower counts and engagement rates come straight from the platforms instead of self reported rate cards}
         \resumeItem{Hardened the data layer: the public Supabase key shipped in every browser bundle holds \textbf{only auth and storage rights and zero table access}, with all data going through NestJS as a BYPASSRLS role and \textbf{RLS still enabled on every table} as a second layer}
       \resumeItemListEnd{}
 
     \resumeQuadHeading{HakaiTask --- Indonesian chat task manager, no AI}{Aug 2026}
     {React, Vite, TypeScript, Zustand, Supabase, Tailwind v4, Turborepo}
-    {\href{https://hakaitask.my.id}{\uline{hakaitask.my.id}}}
+    {\href{https://hakaitask.my.id}{\underline{hakaitask.my.id}}}
       \resumeItemListStart{}
         \resumeItem{\textbf{Full stack engineer in a team of two} on a task manager you talk to in Indonesian: a readable dictionary turns one sentence like \textit{``lusa jam 3an''} into a dated task, and it \textbf{asks instead of guessing} when a sentence is unclear}
-        \resumeItem{\textbf{Offline first}: every write lands on the device first, and conflicts merge per field}
         \resumeItem{Kept the chat engine in \textbf{pure TypeScript with no React or network}, tested on its own, plus a personal dictionary that remembers words a user teaches it once}
       \resumeItemListEnd{}
 
     \resumeQuadHeading{Shiki --- voice assistant for Windows}{Oct 2026}
     {Rust, Tauri 2, Gemini API, Win32 API, WebView2}
-    {\href{https://github.com/k41ts/shiki}{\uline{Source}}}
+    {\href{https://github.com/k41ts/shiki}{\underline{Source}}}
       \resumeItemListStart{}
         \resumeItem{\textbf{Sole designer and developer} of a tray app you talk to in everyday Indonesian: hold \textbf{Ctrl+Win} and messy speech comes back as clean text pasted where the cursor is, or hold Ctrl+Shift to open apps, play music, and set routines like \textit{``tiap pagi jam 9 buka Unity dan Spotify''}}
-        \resumeItem{Finds a file on disk and \textbf{sends it on WhatsApp Web}, matching the contact name with fuzzy search, and \textbf{asks once before it sends}}
       \resumeItemListEnd{}
 
     \resumeQuadHeading{Pokerizz --- multiplayer poker duel}{Oct 2026}
     {Next.js 16, React 19, TypeScript, Supabase Realtime, Supabase Auth, Vitest}
-    {\href{https://pokerizz.vercel.app}{\uline{pokerizz.vercel.app}}}
+    {\href{https://pokerizz.vercel.app}{\underline{pokerizz.vercel.app}}}
       \resumeItemListStart{}
-        \resumeItem{\textbf{Sole designer and developer} of a two player card game where the gap between poker scores becomes damage, playable online with friends, ranked, or against a bot}
-        \resumeItem{Online rooms on \textbf{Supabase Realtime} where the host runs the game, so a guest \textbf{never receives the other hand}; game logic is a \textbf{pure reducer covered by 50 unit tests}}
+        \resumeItem{\textbf{Sole designer and developer} of a two player card game, online, ranked, or against a bot; the host runs each room on \textbf{Supabase Realtime} so a guest \textbf{never receives the other hand}, and the game is a \textbf{pure reducer covered by 50 unit tests}}
       \resumeItemListEnd{}
 
     \resumeQuadHeading{HakaiMusic --- native Android music client}{2026 -- Present}
     {Kotlin, Jetpack Compose, Media3, ExoPlayer, Room, WorkManager, Firestore}
-    {\href{https://github.com/k41ts/hakaimusic}{\uline{Source}}}
+    {\href{https://github.com/k41ts/hakaimusic}{\underline{Source}}}
       \resumeItemListStart{}
-        \resumeItem{Built a \textbf{dual engine player} behind a single media session: ExoPlayer is tried first, and when no usable stream URL resolves, playback swaps to a headless WebView engine implemented as a Media3 player --- so lock screen, notification, and Bluetooth controls keep working across the swap}
-        \resumeItem{Wrote sync that \textbf{assumes the connection will drop} --- timestamps are stamped only after the Firestore batch commits, so an unsent row is visibly unsynced rather than silently lost, and client generated ids make a repeated sync produce no duplicates}
+        \resumeItem{\textbf{Dual engine player} behind one media session (ExoPlayer, then a headless WebView engine), so lock screen and Bluetooth controls survive the swap; \textbf{offline first} with Room, and sync that produces no duplicates on retry}
       \resumeItemListEnd{}
 
     \resumeQuadHeadingChild{Other projects}{2026}
       \resumeItemListStart{}
-        \resumeItem{\textbf{KaiCash} (React Native, Firebase): Android money tracker with real-time parent pairing --- \href{https://github.com/k41ts/kaicash}{\uline{source}}}
+        \resumeItem{\textbf{KaiCash} (React Native, Firebase): Android money tracker with real-time parent pairing --- \href{https://github.com/k41ts/kaicash}{\underline{source}}}
         \resumeItem{\textbf{Collatera} (hackathon, team of five): on-chain promissory notes with gasless EIP-712 signatures and a non-transferable ERC-721 claim, on Sepolia testnet}
         \resumeItem{\textbf{Freelance Escrow} (BINUS course, team of five): milestone escrow contract with no withdraw path for the client and IPFS proof of work, on Sepolia testnet}
       \resumeItemListEnd{}
@@ -294,7 +298,7 @@
 % TODO: sertifikasi tidak ada di data repo. Isi dari LinkedIn, atau hapus blok ini.
 % \section{Certifications}
 %   \resumeItemListStart{}
-%     \resumeItem{\href{https://example.com}{\uline{Nama sertifikasi}}}
+%     \resumeItem{\href{https://example.com}{\underline{Nama sertifikasi}}}
 %   \resumeItemListEnd{}
 %--------------------------------------------
 

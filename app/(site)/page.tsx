@@ -35,7 +35,7 @@ export default function HomePage() {
               <span className="pill"><span className="dot" /><b>Available</b> {profile.openTo}</span>
               <h1 id="hero-title">Full-stack engineer who ships <span className="soft">to production.</span></h1>
               <p className="lede">
-                <b>{profile.name}, Computer Science student at {education[0].school}.</b> Architecture, data model, backend, web and Android: I own a feature from the schema to the screen. Available full-time for 12 months in 2027 through the BINUS Enrichment Program.
+                <b>{profile.name}, Computer Science student at {education[0].school}.</b> Architecture, data model, backend, web and Android: I own a feature from the schema to the screen.
               </p>
               <div className="acts">
                 <a className="btn primary" href="#work">See the work <ArrowRight size={14} /></a>

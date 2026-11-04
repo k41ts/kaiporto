@@ -10,7 +10,7 @@ const LINES: [number, string][] = [
   [0, "Booting profile"],
   [22, "Loading capabilities"],
   [48, "Compiling the FundChain scene"],
-  [74, "Fetching shipped products"],
+  [74, "Fetching products"],
   [100, "Ready"],
 ];
 
