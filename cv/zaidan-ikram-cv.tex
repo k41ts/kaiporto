@@ -179,6 +179,7 @@
     \resumeSectionType{Databases}{:}{PostgreSQL, Supabase, Firebase, Firestore, Room}
     \resumeSectionType{Blockchain}{:}{Solidity, Hardhat, OpenZeppelin, ethers v6, EIP-712, IPFS, Ethereum Sepolia}
     \resumeSectionType{Practices, Tools}{:}{System design, auth and RLS, offline-first sync, payments, code review; Git, Jira, Vercel, Turborepo, Vitest}
+    \resumeSectionType{Certifications}{:}{HackerRank: \href{https://www.hackerrank.com/certificates/fc4fb3613a4c}{\underline{SQL (Advanced)}}, \href{https://www.hackerrank.com/certificates/72297aab2544}{\underline{Software Engineer}}, \href{https://www.hackerrank.com/certificates/30f6c5f47eae}{\underline{React}}; Anthropic: \href{https://academy.claude.com/verify/8e433d12cfaa91788f6797f266f0195c}{\underline{Claude Code}}, \href{https://academy.claude.com/verify/6b9ad08288522d778cf0181f930c8d44}{\underline{MCP}}}
   \resumeHeadingListEnd{}
 %--------------------------------------------
 
@@ -196,14 +197,14 @@
   \resumeQuadHeading{Full Stack Software Engineer}{Dec 2022 -- Present}
   {Self Employed (Freelance)}{Remote --- Jakarta, Indonesia}
     \resumeItemListStart{}
-      \resumeItem{Built a \textbf{Laravel inventory system}, product catalogue landing pages, and company profile sites for small businesses, as the only engineer from schema to deployment}
+      \resumeItem{Built a \textbf{Laravel inventory system}, catalogue landing pages, and company sites for small businesses, schema to deployment}
       \resumeItem{Now building \textbf{PassingLab}, a UTBK tryout platform, in a team of two (see Projects)}
     \resumeItemListEnd{}
 
   \resumeQuadHeading{IT Support Specialist}{Sep 2024 -- Sep 2025}
   {Alchemist Law Office (Part-time)}{On-site --- Jakarta, Indonesia}
     \resumeItemListStart{}
-      \resumeItem{Provided \textbf{technical support} for staff hardware, software, and network issues, keeping day to day legal work running without interruption}
+      \resumeItem{Provided \textbf{technical support} for staff hardware, software, and network issues so legal work kept running}
       \resumeItem{Maintained internal systems and \textbf{Microsoft Excel} based workflows used across the office}
     \resumeItemListEnd{}
 
@@ -244,7 +245,7 @@
       \resumeItemListStart{}
         \resumeItem{\textbf{Full stack engineer in a team of two} on a full rewrite of a Laravel product onto \textbf{Next.js 16, React 19 Server Actions, and Drizzle}, with a MySQL migration script that runs dry first, and a bank of 1,604 questions across 7 UTBK subtests}
         \resumeItem{Built the exam engine so \textbf{an answer cannot be lost}: idempotent autosave upserts that keep working while the tab is hidden, a \textbf{server computed timer} that never trusts the browser clock, and deterministic seed based shuffling so a reload restores the exact same question order}
-        \resumeItem{Closed an \textbf{account takeover path} inherited from the old app --- OTPs are now scoped by purpose, single use, constant time compared, and capped at five attempts; added bcrypt at 12 rounds, \textbf{database backed rate limiting} that holds across instances, and replaced an admin check copied into some 40 controller methods (one missing it) with a single layout guard}
+        \resumeItem{Closed an \textbf{account takeover path} inherited from the old app: single use OTPs scoped by purpose and capped at five attempts, bcrypt, \textbf{database backed rate limiting}, and one layout guard replacing an admin check copied into some 40 methods (one missing it)}
         \resumeItem{Made \textbf{QRIS payments} safe to repeat: the public webhook is treated only as a nudge to re verify with the provider against the amount we stored, and entitlements are granted by one function shared with the admin button}
       \resumeItemListEnd{}
 
@@ -288,18 +289,15 @@
     \resumeQuadHeadingChild{Other projects}{2026}
       \resumeItemListStart{}
         \resumeItem{\textbf{KaiCash} (React Native, Firebase): Android money tracker with parent pairing --- \href{https://github.com/k41ts/kaicash}{\underline{source}}}
-        \resumeItem{\textbf{Collatera} (hackathon, team of five): on-chain promissory notes with gasless EIP-712 signatures and a non-transferable ERC-721 claim, on Sepolia testnet}
-        \resumeItem{\textbf{Freelance Escrow} (BINUS course, team of five): milestone escrow contract with no withdraw path for the client and IPFS proof of work, on Sepolia testnet}
+        \resumeItem{\textbf{Collatera} (hackathon, team of five): on-chain promissory notes with gasless EIP-712 signing, on Sepolia testnet}
+        \resumeItem{\textbf{Freelance Escrow} (BINUS course, team of five): milestone escrow with no client withdraw path and IPFS proof of work}
       \resumeItemListEnd{}
   \resumeHeadingListEnd{}
 %--------------------------------------------
 
 %----------------OTHERS----------------------
-% TODO: sertifikasi tidak ada di data repo. Isi dari LinkedIn, atau hapus blok ini.
-% \section{Certifications}
-%   \resumeItemListStart{}
-%     \resumeItem{\href{https://example.com}{\underline{Nama sertifikasi}}}
-%   \resumeItemListEnd{}
+% Sertifikasi ada di baris Certifications pada Technical Skills (dari LinkedIn, Nov 2026).
+% Digital Security Training 2024 sengaja tidak dimasukkan: sertifikat partisipasi, bukan ujian.
 %--------------------------------------------
 
 \end{document}
