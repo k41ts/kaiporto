@@ -16,7 +16,7 @@ export const profile = {
   intro: "Computer Science student at BINUS University, with paid client and contract work since 2022.",
   location: "Jakarta, Indonesia",
   timezone: "Asia/Jakarta",
-  email: "276kai@gmail.com",
+  email: "kai@zaidanikram.id",
   linkedin: "https://www.linkedin.com/in/zaidanikram/",
   github: "https://github.com/k41ts",
   instagram: "https://www.instagram.com/kai6v/",
