@@ -35,7 +35,7 @@ export const profile = {
 /** Angka singkat di hero. Semuanya bisa dicek dari proyek di bawah. */
 export const heroStats = [
   { value: "10", label: "Products built" },
-  { value: "15", label: "People led as Tech Lead" },
+  { value: "15", label: "People led as Product & Tech Lead" },
   { value: "4", label: "Paid roles since 2022" },
   { value: "3", label: "Platforms: web, Android, Windows" },
 ];
@@ -280,9 +280,9 @@ export const fundchainProject: Project = {
     "Each donation marked paid becomes a Keccak-256 hash, written on-chain by a relayer",
     "A proof page per donation recomputes the hash in the browser and compares it with the chain",
     "A record changed in the database after the fact is caught and the campaign is frozen",
-    "I led the team as Tech Lead: the spec, the foundation, the sprints, and the code review",
+    "I led the product and the team as Product & Tech Lead: the scope, the spec, the foundation, the sprints, and the code review",
   ],
-  role: "Tech Lead and full-stack engineer",
+  role: "Product & Tech Lead and full-stack engineer",
   team: "BINUS team of 15, in four workstreams",
   stack: ["NestJS", "React", "Vite", "Supabase", "Prisma", "Solidity", "Hardhat", "Ethereum Sepolia", "Vercel"],
   url: "https://fundchain-web.vercel.app",
@@ -329,7 +329,7 @@ export const loadout = [
 ] as const;
 
 /**
- * FundChain: peran Tech Lead. Angka diambil dari repo Fundchainbinus/fundchain,
+ * FundChain: peran Product & Tech Lead. Angka diambil dari repo Fundchainbinus/fundchain,
  * folder planning-nya, dan Jira project BFD (dicek November 2026).
  */
 export const fundchain = {
@@ -379,7 +379,7 @@ export const fundchain = {
  */
 export const fundchainCase = {
   title: "Proving a donation was not changed, with a team of 15",
-  intro: "FundChain is a fundraising platform for BINUS students, built as a university project. I was the Tech Lead: I wrote the spec, built the foundation, and ran four workstreams on top of it.",
+  intro: "FundChain is a fundraising platform for BINUS students, built as a university project. I was the Product & Tech Lead: I set the product scope, wrote the spec, built the foundation, and ran four workstreams on top of it.",
   problem: [
     "Student fundraisers ask people to trust a spreadsheet. If someone with database access edits a donation after it is paid, nobody outside can tell.",
     "The brief was to make that edit visible. Keeping the money on-chain was out of scope: payments stay in rupiah through a normal gateway, and the chain is only a proof layer.",
@@ -430,7 +430,7 @@ export const fundchainCase = {
 };
 
 /** Angka di kartu Featured case beranda. Dari repo FundChain (test kontrak, keputusan di studi kasus). */
-/** Epic kelima di Jira BFD: kerjaan integrasi yang dipegang Tech Lead. */
+/** Epic kelima di Jira BFD: kerjaan integrasi yang dipegang Product & Tech Lead. */
 export const fundchainLeadStream = { name: "Tech Lead & integration", issues: 8 };
 
 export const fundchainFeaturedStats = [

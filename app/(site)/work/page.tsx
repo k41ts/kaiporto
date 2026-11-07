@@ -58,7 +58,7 @@ export default function WorkPage() {
           <div className="next" id="fundchain-lead">
             <div>
               <span className="eyebrow">Leadership</span>
-              <h2>{fundchain.name}, as Tech Lead</h2>
+              <h2>{fundchain.name}, as Product &amp; Tech Lead</h2>
               <p>How I took a team of 15 from 27 planning docs to a working platform: the problem, four decisions and their trade-offs, and what is still open.</p>
             </div>
             <Link className="btn primary" href="/work/fundchain">Read the case study <ArrowRight size={14} /></Link>

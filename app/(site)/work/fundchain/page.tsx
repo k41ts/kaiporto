@@ -27,7 +27,7 @@ export default function FundChainCasePage() {
       <main id="main">
         <header className="wtop">
           <div className="wrap">
-            <span className="eyebrow">Case study · {fundchainProject.name} · Tech Lead · University project</span>
+            <span className="eyebrow">Case study · {fundchainProject.name} · Product &amp; Tech Lead · University project</span>
             <h1>{c.title}</h1>
             <p>{c.intro}</p>
             <div className="acts cs-acts">

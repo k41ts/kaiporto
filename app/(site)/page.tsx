@@ -125,7 +125,7 @@ export default function HomePage() {
         <section className="sec tight" id="lead" aria-labelledby="lead-title">
           <div className="wrap">
             <div className="head">
-              <div><span className="eyebrow">Case: {fundchain.name} · Tech Lead</span><h2 id="lead-title" data-rv>How I lead a product team, from spec to production</h2></div>
+              <div><span className="eyebrow">Case: {fundchain.name} · Product &amp; Tech Lead</span><h2 id="lead-title" data-rv>How I lead a product team, from spec to production</h2></div>
               <p data-rv>{fundchain.summary}</p>
             </div>
             <LeadSim />
